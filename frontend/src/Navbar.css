@@ -1,0 +1,34 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+  }
+  
+  .home-container h1 {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .home-container p {
+    font-size: 24px;
+    margin-bottom: 40px;
+  }
+  
+  .home-container ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .home-container li {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .home-container img {
+    max-width: 100%;
+    margin-bottom: 40px;
+  }
+  
