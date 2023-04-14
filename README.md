@@ -58,7 +58,7 @@ This project was contributed to by:
 * [Lincoln Kimutai Too](https://github.com/LincKim)
 * [Nyokabi Kamau](https://github.com/NyokabiKamau/)
 * [Venus Kabera](https://github.com/venus714)
-* [Luul Bana](#https://github.com/LULAZ7)
+* [Luul Bana](https://github.com/LULAZ7)
 
 
 ## License
