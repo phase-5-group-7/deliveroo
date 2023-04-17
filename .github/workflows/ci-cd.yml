@@ -28,20 +28,20 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      # - name: Install dependencies
-      #   run: |
-      #     cd frontend
-      #     npm install
+      - name: Install dependencies
+        run: |
+          cd frontend
+          npm install
 
-      # - name: Build frontend
-      #   run: |
-      #     cd frontend
-      #     npm run test a
+      - name: Build frontend
+        run: |
+          cd frontend
+          npm run test a
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.0'
+          ruby-version: '2.7.4'
 
       - name: Install dependencies
         run: |
@@ -56,19 +56,19 @@ jobs:
           bundle exec rails db:create db:migrate
           bundle exec rspec
 
-  jobs:
-    test:
-      runs-on: ubuntu-latest
+  # jobs:
+  #   test:
+  #     runs-on: ubuntu-latest
 
-      steps:
-          - uses: actions/checkout@v2
+  #     steps:
+  #         - uses: actions/checkout@v2
 
-          - name: Install dependencies
-            run: |
-              cd frontend
-              npm install
+  #         - name: Install dependencies
+  #           run: |
+  #             cd frontend
+  #             npm install
 
-          - name: Test frontend
-            run: |
-              cd frontend
-              npm run test a
+  #         - name: Test frontend
+  #           run: |
+  #             cd frontend
+  #             npm run test a
