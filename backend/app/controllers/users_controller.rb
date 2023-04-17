@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
     skip_before_action :authorized, only: [:create]  # This code ensures that users can create an account first before authentification
 
-    def index   # This code was added to confirm that the user are in the db
+    def index   # This code was added to confirm that the users are in the db
         user = User.all 
         render json: user, status: :ok
     end
