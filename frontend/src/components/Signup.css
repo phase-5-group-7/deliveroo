@@ -1,0 +1,40 @@
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    width: 300px;
+    height: 30px;
+    padding: 5px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  }
+  
+  button {
+
+    width: 100px;
+    height: 30px;
+background: rgb(2,0,36);
+background: rgb(164,108,215);
+background: rgb(164,108,215);
+background: linear-gradient(90deg, rgba(164,108,215,1) 14%, rgba(6,236,14,1) 34%, rgba(39,196,47,1) 69%, rgb(114, 13, 209) 100%);    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    cursor:zoom-out;
+  }
+  
+  button:hover {
+    background-color: #0062a6;
+  }
+  
+  a {
+    color: #0074d9;
+  }
