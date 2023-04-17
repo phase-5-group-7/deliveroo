@@ -1,14 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
+import '../components/Signup.css'
 
 function Signup() {
-  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const handleNameChange = (event) => {
-    setName(event.target.value);
-  };
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -22,7 +18,6 @@ function Signup() {
     event.preventDefault();
     try {
       const response = await axios.post("place your signup api here ", {
-        name,
         email,
         password,
       });
@@ -36,9 +31,6 @@ function Signup() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="name">Name</label>
-      <input type="text" id="name" value={name} onChange={handleNameChange} />
-
       <label htmlFor="email">Email</label>
       <input type="email" id="email" value={email} onChange={handleEmailChange} />
 
