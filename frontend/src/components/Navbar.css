@@ -5,11 +5,12 @@ nav {
     justify-content: flex-end;
     align-items: center;
     height:75px;
-    padding: 1px;
+    padding: 6.5px;
     border-bottom: 3px solid #ccc; /* Change the border color and size to your desired style */
 
 }
   
+<<<<<<< HEAD
 nav ul {
   display: flex;
   list-style: none;
@@ -32,3 +33,28 @@ nav a {
 nav a:hover {
   color: #e90839;
 }
+=======
+  nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav li {
+    margin-right: 20px;
+  }
+  
+  nav a {
+    color: #f5e1e1;
+    text-decoration:underline;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.2s ease-in-out;
+  }
+  
+  nav a:hover {
+    color: #e90839;
+  }
+  
+>>>>>>> Daryl-ui
