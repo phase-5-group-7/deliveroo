@@ -3,9 +3,9 @@
 one:
   username: MyString
   email: MyString
-  password_digest: 1
+  password_digest: MyString
 
 two:
   username: MyString
   email: MyString
-  password_digest: 1
+  password_digest: MyString
