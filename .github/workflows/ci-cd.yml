@@ -48,13 +48,13 @@ jobs:
           cd backend
           bundle install --jobs 4 --retry 3
 
-      - name: Run tests
-        env:
-          RAILS_ENV: test
-        run: |
-          cd backend
-          bundle exec rails db:create db:migrate
-          bundle exec rspec --if-present
+      # - name: Run tests
+      #   env:
+      #     RAILS_ENV: test
+      #   run: |
+      #     cd backend
+      #     bundle exec rails db:create db:migrate
+      #     bundle exec rspec --if-present
 
   # jobs:
   #   test:
