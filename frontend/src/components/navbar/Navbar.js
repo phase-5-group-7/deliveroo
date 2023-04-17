@@ -4,19 +4,22 @@ import './Navbar.css';
 
 function Navbar() {
   return (
-    <nav>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
+    <nav classname="navbar navbar-expand-lg bg-body-tertiary" >
+       <div classname="container-fluid">
+        <span id="logo" className="navbar-brand  h1">DELIVEROO</span>
+      </div>
+      <ul classname="navbar-nav me-auto mb-2 mb-lg-0">
+        <li classname="navbar-item">
+          <Link to="/">HOME</Link>
         </li>
-        <li>
-          <Link to="/about">About</Link>
+        <li classname="navbar-item">
+          <Link to="/about">ABOUT</Link>
         </li>
-        <li>
-          <Link to="/login">Login</Link>
+        <li classname="navbar-item">
+          <Link to="/login">ORDER</Link>
         </li>
-        <li>
-          <Link to="/login">Order</Link>
+        <li classname="navbar-item">
+          <Link id="login" to="/login">LOGIN</Link>
         </li>
       </ul>
     </nav>

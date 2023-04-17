@@ -1,19 +1,33 @@
 import React from 'react';
-import './Home.css'
+import './Home.css';
+import image from './homepage-image.png'
+import 'bootstrap/dist/css/bootstrap.css';
+
 
 function Home() {
   return (
-    <div>
-      <h1>Welcome to Deliveroo</h1>
-      <p>Order food delivery from your favorite restaurants with Deliveroo. Enjoy a variety of cuisines, from local favorites to international classics.</p>
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6bhz0Y7tgLnaoYPWtT-A34UgiZArWBJu_mgwMXgvmBg&s" alt="Deliveroo" />
-      <p>Deliveroo is the go-to platform for food delivery from the best restaurants near you. With our user-friendly app and website, you can easily find restaurants, browse menus, and place an order for delivery or pickup. Our mission is to make it simple for you to enjoy great food whenever you want, wherever you are.</p>
-      <ul>
+  <div>
+    <div className="container">
+      <div className="row">
+        <div id="home" className="col-sm-5 col-md-8">
+          <h1 id="welcome">Welcome to Deliveroo</h1>
+          <p>Your smart choice parcel delivery service.
+          Sign up to gain access to a quick and efficient delivery for your  personal use or business products</p>
+          <button id="btn">Get Stated</button>
+        </div>
+        <div className="col-sm-5 offset-sm-2 col-md-4 offset-md-0">
+          <img id="img" src={image} alt="Deliveroo" />
+        </div>
+      </div>
+      
+     
+      {/* <div className="card-footer">
         <li>Find restaurants near you</li>
         <li>Explore menus and reviews</li>
         <li>Place an order for delivery or pickup</li>
-      </ul>
+      </div> */}
     </div>
+  </div>
   );
 }
 
