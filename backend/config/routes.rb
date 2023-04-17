@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   resources :orders
+
+
+  resources :users, only: [:index, :create]
+  post '/login', to: 'auth#create'
+  get '/orders', to: 'users#orders'  #This routes needs review after merge
+  
 end
 
 
