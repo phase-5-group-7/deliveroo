@@ -69,15 +69,15 @@ jobs:
           push: false
           tags: myapp:${{ github.sha }}
 
-  deploy:
-    needs: build
+  # deploy:
+  #   needs: build
 
-    environment:
-      name: production
-      url: ${{ secrets.PRODUCTION_URL }}
+  #   environment:
+  #     name: production
+  #     url: ${{ secrets.PRODUCTION_URL }}
 
-    steps:
-      - name: Deploy to production
-        uses: easingthemes/ssh-deploy@v2.2.0
-        with:
-          ssh_private_key: $
+  #   steps:
+  #     - name: Deploy to production
+  #       uses: easingthemes/ssh-deploy@v2.2.0
+  #       with:
+  #         ssh_private_key: $
