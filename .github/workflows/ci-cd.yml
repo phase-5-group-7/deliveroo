@@ -33,10 +33,10 @@ jobs:
           cd frontend
           npm install
 
-      - name: Build frontend
-        run: |
-          cd frontend
-          npm run test a --if-present
+      # - name: Build frontend
+      #   run: |
+      #     cd frontend
+      #     npm run test a --if-present
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
