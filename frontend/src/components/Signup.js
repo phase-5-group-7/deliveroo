@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
+import '../components/Signup.css'
 
-function Login() {
+function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -16,7 +17,7 @@ function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("place your login api here ", {
+      const response = await axios.post("place your signup api here ", {
         email,
         password,
       });
@@ -24,7 +25,7 @@ function Login() {
       window.location.href = "/dashboard";
     } catch (error) {
       console.error(error);
-      alert("An error occurred during login.");
+      alert("An error occurred during signup.");
     }
   };
 
@@ -36,9 +37,10 @@ function Login() {
       <label htmlFor="password">Password</label>
       <input type="password" id="password" value={password} onChange={handlePasswordChange} />
 
-      <button type="submit">Login</button>
+      <button type="submit">Signup</button>
+      <p>Already have an account? <a href="/login">Login here</a>.</p>
     </form>
   );
 }
 
-export default Login;
+export default Signup;
