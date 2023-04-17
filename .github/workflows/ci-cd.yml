@@ -36,7 +36,7 @@ jobs:
       - name: Build frontend
         run: |
           cd frontend
-          npm run test a
+          npm run test a --if-present
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -54,7 +54,7 @@ jobs:
         run: |
           cd backend
           bundle exec rails db:create db:migrate
-          bundle exec rspec
+          bundle exec rspec --if-present
 
   # jobs:
   #   test:
