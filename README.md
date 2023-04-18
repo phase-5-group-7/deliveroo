@@ -64,7 +64,7 @@ This project was contributed to by:
 * [Nyokabi Kamau](https://github.com/NyokabiKamau/)
 * [Venus Kabera](https://github.com/venus714)
 * [Luul Bana](https://github.com/LULAZ7)
-
+* [Charles Ndung'u](https://github.com/KarimCarl)
 
 ## License
 * This project is licensed under MIT License
