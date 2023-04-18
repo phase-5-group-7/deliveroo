@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif&family=Playfair+Display&family=Roboto:wght@100&display=swap');
+
 /* About.css */
 .about-container {
     max-width: 600px;
@@ -44,3 +46,6 @@
     border: 0;
   }
   
+  .about {
+    font-family: 'Roboto', sans-serif;
+  }
