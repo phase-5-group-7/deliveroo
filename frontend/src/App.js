@@ -7,10 +7,10 @@ import About from './components/About';
 import LoginSignup from './components/LoginSignup';
 import Footer from './components/Footer';
 import FAQPage from './components/FAQPage';
-
 function App() {
   return (
     <div className="App">
+      
       <Router>
         <Navbar />
         <Routes>

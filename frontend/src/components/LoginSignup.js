@@ -5,7 +5,6 @@ import Signup from '../components/Signup';
 function LoginSignup() {
   return (
     <div>
-      <h2>Login or Signup</h2>
       <div>
         <Login />
         <Signup />

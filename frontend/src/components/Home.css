@@ -41,3 +41,20 @@ h1 {
     border-radius: 5px; /* Add a border radius to the image */
   }
     
+  /* Set default background color and text color */
+body, nav, footer {
+  background-color: white;
+  color: black;
+}
+
+/* Set background color and text color for black theme */
+.black {
+  background-color: #000000;
+  color: white;
+}
+
+/* Set background color and text color for white theme */
+.white {
+  background-color: #ffffff;
+  color: black;
+}
