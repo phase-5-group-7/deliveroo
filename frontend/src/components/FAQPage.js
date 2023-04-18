@@ -12,13 +12,13 @@ function FAQPage() {
           <div className="faq-answer">
             <li>Login to your account
               <li>Fill out the required details
-                <li>place your order</li>
+                <li>Place your order</li>
               </li>
             </li>
           </div>
         </div>
         <div className="faq-question">
-          <h3>How long does it take to send a percel?</h3>
+          <h3>How long does it take to send a parcel?</h3>
           <div className="faq-answer">
           </div>
           <li>This depend on the distance between the pick up and drop off</li>
