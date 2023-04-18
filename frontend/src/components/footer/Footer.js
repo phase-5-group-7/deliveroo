@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Footer.css'
+import { BsFacebook, BsTwitter } from 'react-icons/bs';
+import {FaInstagramSquare} from 'react-icons/fa'
 
 function Footer() {
   return (
@@ -34,14 +36,13 @@ function Footer() {
         <h3>Follow Us</h3>
         <ul>
           <li>
-            <a href="#">Facebook</a>
-            <img src="https://icons8.com/icon/118497/facebook"></img>
+            <a href="#"> <BsFacebook/> deliverooke</a>
           </li>
           <li>
-            <a href="#">Instagram</a>
+            <a href="#"><FaInstagramSquare/> deliverooke</a>
           </li>
           <li>
-            <a href="#">Twitter</a>
+            <a href="#"><BsTwitter/> deliverooke</a>
           </li>
         </ul>
       </div>
