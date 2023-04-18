@@ -1,0 +1,65 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: rgb(2,0,36);
+  background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(163,42,223,0.8435749299719888) 35%, rgba(0,212,255,1) 100%);
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+  
+  /* In a separate stylesheet file */
+  
+  .faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .faq-container h1 {
+    text-align: center;
+  }
+  
+  .faq-container input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .faq-section {
+    margin-bottom: 40px;
+  }
+  
+  .faq-question {
+    margin-bottom: 20px;
+  }
+  
+  .faq-question h3 {
+    font-size: 18px;
+  }
+  
+  .faq-answer {
+    margin-left: 20px;
+    font-size: 16px;
+  }
+  
+  .faq-answer li {
+    margin-bottom: 10px;
+  }
+  
+  .faq-answer li:before {
+    content: "\2022";
+    color: #ff9900;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+  }
