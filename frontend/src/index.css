@@ -13,3 +13,54 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* In a separate stylesheet file */
+
+.faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.faq-container h1 {
+  text-align: center;
+}
+
+.faq-container input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.faq-section {
+  margin-bottom: 40px;
+}
+
+.faq-question {
+  margin-bottom: 20px;
+}
+
+.faq-question h3 {
+  font-size: 18px;
+}
+
+.faq-answer {
+  margin-left: 20px;
+  font-size: 16px;
+}
+
+.faq-answer li {
+  margin-bottom: 10px;
+}
+
+.faq-answer li:before {
+  content: "\2022";
+  color: #ff9900;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+

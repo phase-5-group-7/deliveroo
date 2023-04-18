@@ -1,5 +1,4 @@
 nav {
-    background: rgb(34,193,195);
     background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(200,11,232,1) 100%);    display: flex;
     justify-content:flex-end;
     align-items: center;
@@ -21,11 +20,12 @@ nav {
   }
   
   nav a {
-    color: #f5e1e1;
+    color: #aefafa;
     text-decoration:underline;
-    font-size: 18px;
+    font-size: 25px;
     font-weight: bold;
-    transition: color 0.2s ease-in-out;
+    transition: color 0.1s ease-in-out;
+    
   }
   
   nav a:hover {
