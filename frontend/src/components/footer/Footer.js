@@ -35,6 +35,7 @@ function Footer() {
         <ul>
           <li>
             <a href="#">Facebook</a>
+            <img src="https://icons8.com/icon/118497/facebook"></img>
           </li>
           <li>
             <a href="#">Instagram</a>
