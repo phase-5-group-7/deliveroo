@@ -6,8 +6,12 @@ class OrdersController < ApplicationController
     end
 
     def show
-        @order = Order.find(params[:id])
-        render json: @order
+        @order = Order.find_by(id: params[:id])
+        if @order
+          render json: @order
+        else 
+          render json: { message: "Order not found" }
+        end
     end
 
     def create
@@ -39,10 +43,14 @@ class OrdersController < ApplicationController
 
     def destroy
         @order = Order.find(params[:id])
-        if @order.destroy
-          render json: { message: 'Order deleted successfully' }
-        else
-          render json: { error: 'Unable to delete order' }, status: :unprocessable_entity
+        if @order.status == 'ONGOING'
+          @order.destroy
+            render json: { message: 'Order deleted successfully' }
+          else
+            render json: { error: 'Unable to delete order' }, status: :unprocessable_entity
+          end
+        else  
+          render json: { message: "Your parcel has been delivered already!" }, status: :forbidden 
         end
     end
 
@@ -60,18 +68,18 @@ class OrdersController < ApplicationController
 
     # Example of request to be sent to the server
 
-        # {
-        #   "phone_number": 71111111,
-        #   "recepient_name": "vinus",
-        #   "recepient_phone_number": 72222222,
-        #   "description": "Fragile",
-        #   "weight": 240.0,
-        #   "drop_off": "ngong",
-        #   "pick_up": "dago",
-        #   "distance": 30.0,
-        #   "price": 300.0,
-        #   "status": "ongoing",
-        #   "user_id": 1
-        # }
+          # {
+          #   "phone_number": "071111111",
+          #   "recepient_name": "vinus",
+          #   "recepient_phone_no": "072222222",
+          #   "description": "Fragile",
+          #   "weight": 240.0,
+          #   "drop_off": "ngong",
+          #   "pick_up": "dago",
+          #   "distance": 30.0,
+          #   "price": 300.0,
+          #   "status": 0,
+          #   "user_id": 1
+          # }
         
 end
