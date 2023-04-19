@@ -37,16 +37,20 @@ function Signup() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="name">Name</label>
-      <input type="text" id="name" value={name} onChange={handleNameChange} />
+     <div className="card-back-t">
+            <h2>Create Account</h2>
+            <form onSubmit={handleSubmit}>
+              <label htmlFor="username">Username</label>
+              <input className="input-box-t" type="username" id="username" value={name} onChange={handleNameChange} />
 
-      <label htmlFor="email">Email</label>
-      <input type="email" id="email" value={email} onChange={handleEmailChange} />
+              <label htmlFor="email">Email</label>
+              <input className="input-box-t" type="email" id="email" value={email} onChange={handleEmailChange} />
 
-      <label htmlFor="password">Password</label>
-      <input type="password" id="password" value={password} onChange={handlePasswordChange} />
-
-      <button type="submit">Signup</button>
+              <label htmlFor="password">Password</label>
+              <input className="input-box-t" type="password" id="password" value={password} onChange={handlePasswordChange} />
+              <button type="submit">Create Account</button>
+            </form>
+          </div>
       <p>Already have an account? <a href="/login">Login here</a>.</p>
     </form>
   );

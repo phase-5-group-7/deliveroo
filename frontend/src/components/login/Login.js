@@ -29,16 +29,28 @@ function Login() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="email">Email</label>
-      <input type="email" id="email" value={email} onChange={handleEmailChange} />
+    <div className="container-t">
+      <div className="card-t">
+        <div className="inner-box-t" id="card">
+          <div className="card-front-t">
+            <h2>Login</h2>
+            <form onSubmit={handleSubmit}>
+              <label htmlFor="email">Email</label>
+              <input className="input-box-t" type="email" id="email" value={email} onChange={handleEmailChange} />
 
-      <label htmlFor="password">Password</label>
-      <input type="password" id="password" value={password} onChange={handlePasswordChange} />
+              <label htmlFor="password">Password</label>
+              <input type="password" id="password" value={password} onChange={handlePasswordChange} />
+              <button type="submit">Login</button>
+            </form>
 
-      <button type="submit">Login</button>
-    </form>
+          </div>
+          
+        </div>
+      </div>
+     
+    </div>
   );
 }
 
 export default Login;
+
