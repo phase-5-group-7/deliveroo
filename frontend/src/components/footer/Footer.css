@@ -1,44 +1,7 @@
-/* About.css */
-.about-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .about-title {
-    font-size: 36px;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  
-  .about-description {
-    font-size: 18px;
-    line-height: 1.5;
-    margin-bottom: 20px;
-  }
-  
-  .about-video {
-    display: block;
-    width: 100%;
-    height: 0;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
-    position: relative;
-    margin-bottom: 20px;
-  }
-  
-  .about-video iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-  }
-
 
   footer {
-    background: rgb(34,193,195);
-    background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(190,11,232,1) 100%);    padding: 20px;
+    background-color: rgb(250, 246, 255);
+    padding: 20px;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -52,6 +15,7 @@
   .footer-section h3 {
     font-size: 20px;
     margin-bottom: 10px;
+    font-weight: 550;
   }
   
   .footer-section ul {
@@ -70,7 +34,8 @@
   }
   
   .footer-section ul li a:hover {
-    color: #e62315;
+    color: rgba(242, 78, 30, 1);
+    font-weight: 700;
   }
   
   @media (max-width: 768px) {

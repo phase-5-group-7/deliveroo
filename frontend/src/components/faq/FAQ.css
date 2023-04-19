@@ -1,20 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
+
   .faq-container {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    font-family: Arial, sans-serif;
+    color: rgba(44, 17, 79, 1);
   }
   
   .faq-container h1 {
     text-align: center;
-  }
-  
-  .faq-container input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    margin-bottom: 50px;
+    font-size: 36px;
+    font-weight: bold;
   }
   
   .faq-section {
@@ -23,15 +20,19 @@
   
   .faq-question {
     margin-bottom: 20px;
+    font-size: 30px;
   }
   
   .faq-question h3 {
-    font-size: 18px;
+    font-size: 20px;
+    font-weight: bold;
   }
   
-  .faq-answer {
+  .faq-answer li{
     margin-left: 20px;
-    font-size: 16px;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
   }
   
   .faq-answer li {
@@ -40,7 +41,6 @@
   
   .faq-answer li:before {
     content: "\2022";
-    color: #ff9900;
     display: inline-block;
     width: 1em;
     margin-left: -1em;
