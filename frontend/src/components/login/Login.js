@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import './Login.css'
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -35,19 +36,17 @@ function Login() {
           <div className="card-front-t">
             <h2>Login</h2>
             <form onSubmit={handleSubmit}>
-              <label htmlFor="email">Email</label>
-              <input className="input-box-t" type="email" id="email" value={email} onChange={handleEmailChange} />
 
-              <label htmlFor="password">Password</label>
-              <input type="password" id="password" value={password} onChange={handlePasswordChange} />
+              <input placeholder="Email" className="input-box-t" type="email" id="email" value={email} onChange={handleEmailChange} />
+
+              <input placeholder="Password" type="password" id="password" value={password} onChange={handlePasswordChange} />
               <button type="submit">Login</button>
+              
+              <p>Don't have an account?<a href="/signup">Sign up here</a></p>
             </form>
-
           </div>
-          
         </div>
       </div>
-     
     </div>
   );
 }

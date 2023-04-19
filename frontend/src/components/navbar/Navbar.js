@@ -16,7 +16,7 @@ function Navbar() {
           <Link to="/about">ABOUT</Link>
         </li>
         <li classname="navbar-item">
-          <Link to="/login">ORDER</Link>
+          <Link to="/order">ORDER</Link>
         </li>
         <li classname="navbar-item">
           <Link id="login" to="/login">LOGIN</Link>
