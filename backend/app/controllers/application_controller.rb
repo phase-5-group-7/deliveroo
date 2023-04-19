@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::API
     before_action :authorized # Calls authorized method before any other controller method is called
+    include Pundit::Authorization
 
     def encode_token(payload)
         JWT.encode(payload, 'secret')
