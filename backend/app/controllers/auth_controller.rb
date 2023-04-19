@@ -13,6 +13,11 @@ class AuthController < ApplicationController
         end
     end
 
+    # def destroy 
+    #     user_id.delete(:jwt)
+    #     head :no_content
+    # end
+
     private
 
     def user_login_params

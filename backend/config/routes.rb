@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :create]
   post '/login', to: 'auth#create'
   get '/orders', to: 'users#orders'  #This route needs review after merge
-
+  # delete '/logout', to: 'auth#destroy'
   resources :orders
   
 end
