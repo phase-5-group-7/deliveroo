@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   get '/orders', to: 'users#orders'  #This route needs review after merge
   # delete '/logout', to: 'auth#destroy'
   resources :orders
+  get '/me', to: 'users#me' # is the same as 'whoami' in a normal cli
   
 end

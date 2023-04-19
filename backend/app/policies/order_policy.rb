@@ -10,4 +10,8 @@ class OrderPolicy < ApplicationPolicy
         user.admin?
     end
 
+    def show
+        user.admin?
+    end
+
 end

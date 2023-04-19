@@ -3,7 +3,11 @@ class UsersController < ApplicationController
 
     def index # This code was added to confirm that the users are in the db
         user = User.all 
-        render json: user, status: :ok
+        if current_user.admin 
+            render json: user, status: :ok
+        else
+            render json: { message: "You are not an admin!" }, status: :unauthorized
+        end
     end
 
     def orders  # Only authenticated users can access the orders
@@ -18,6 +22,10 @@ class UsersController < ApplicationController
         else 
             render json: { error: 'failed to create user' }, status: :unprocessable_entity
         end
+    end
+
+    def me 
+        render json: current_user
     end
 
 
