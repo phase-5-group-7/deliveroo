@@ -1,0 +1,69 @@
+/* Login.css */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  label {
+    margin-bottom: 10px;
+  }
+  input[type="username"],
+  input[type="email"],
+  input[type="password"] {
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    width: auto;
+    border-bottom-style: none;
+    border-bottom: 2px solid rgba(44, 17, 79, 1);
+  }
+  
+  button[type="submit"] {
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  /* * {
+    margin: 0px;
+    padding: 0px;
+} */
+  .container-t {
+    margin: 100px;
+    /* padding: 30px; */
+    width: 50%;
+    height: 50vh;
+    font-family: sans-serif;
+    background-color: rgb(235, 216, 244);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.card-front-t h2 {
+  display: flex;
+  justify-content: center;
+
+}
+
+/* .card-front-t input{
+  width: auto;
+  text-decoration: underline;
+  border: none;
+  border-bottom: 2px solid red;
+} */
+
+#email, # {
+  padding: 8px;
+    border: none;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    width: auto;
+    border-bottom-style: none;
+    border-bottom: 2px solid rgba(44, 17, 79, 1);
+}

@@ -1,11 +1,10 @@
 import React from 'react';
-import Login from '../components/Login';
-import Signup from '../components/Signup';
+import Login from '../login/Login';
+import Signup from './Signup';
 
 function LoginSignup() {
   return (
     <div>
-      <h2>Login or Signup</h2>
       <div>
         <Login />
         <Signup />

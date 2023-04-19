@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
+
+  .faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    color: rgba(44, 17, 79, 1);
+  }
+  
+  .faq-container h1 {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 36px;
+    font-weight: bold;
+  }
+  
+  .faq-section {
+    margin-bottom: 40px;
+  }
+  
+  .faq-question {
+    margin-bottom: 20px;
+    font-size: 30px;
+  }
+  
+  .faq-question h3 {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .faq-answer li{
+    margin-left: 20px;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+  }
+  
+  .faq-answer li {
+    margin-bottom: 10px;
+  }
+  
+  .faq-answer li:before {
+    content: "\2022";
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+  }
