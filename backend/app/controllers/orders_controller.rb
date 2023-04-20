@@ -52,7 +52,7 @@ class OrdersController < ApplicationController
     def destroy
       @order = Order.find(params[:id])
       if current_user.admin
-        if @order.status == "DELIVERED"
+        if @order.order_status == "DELIVERED"
           if @order.destroy
             render json: { message: 'Order deleted successfully' }
           else
@@ -69,29 +69,28 @@ class OrdersController < ApplicationController
 
       private
 
-    def order_params
-        params.require(:order).permit(:phone_number, :recepient_name, :recepient_phone_no, :description, :weight, :drop_off, :pick_up, :distance, :price, :status, :user_id)
-    end
+      def order_params
+        params.require(:order).permit(:phone_number, :recepient_name, :recepient_phone_no, :description, :order_status, :weight, :delivery_drop_off, :pick_up, :distance, :routeamount, :routes, :user_id)
+      end
 
-    def update_params 
-      params.require(:order).permit(:phone_number, :recepient_name, :recepient_phone_no, :description, :weight, :drop_off, :pick_up, :distance)
-    end
+      def update_params
+        params.require(:order).permit(:phone_number, :recepient_name, :recepient_phone_no, :description, :weight, :delivery_drop_off, :distance)
+      end
     
 
     # Example of request to be sent to the server
-
-          # {
-          #   "phone_number": "071111111",
-          #   "recepient_name": "vinus",
-          #   "recepient_phone_no": "072222222",
-          #   "description": "Fragile",
-          #   "weight": 240.0,
-          #   "drop_off": "ngong",
-          #   "pick_up": "dago",
-          #   "distance": 30.0,
-          #   "price": 300.0,
-          #   "status": 0,
-          #   "user_id": 1
-          # }
+    # {
+    #   "phone_number": "071111111",
+    #   "recepient_name": "vinus",
+    #     "recepient_phone_no": "072222222",
+    #     "description": "Fragile",
+    #     "weight": 240.0,
+    #     "delivery_drop_off":1,
+    #     "pick_up": 2,
+    #     "distance": 2,
+    #     "routes": 2,
+    #     "routeamount": 1,
+    #     "user_id": 1
+    #  }
         
 end

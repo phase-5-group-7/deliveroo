@@ -15,16 +15,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_18_104903) do
   enable_extension "plpgsql"
 
   create_table "orders", force: :cascade do |t|
-    t.string "phone_number"
-    t.string "recepient_name"
-    t.string "recepient_phone_no"
-    t.text "description"
-    t.float "weight"
-    t.string "pick_up"
-    t.string "drop_off"
-    t.float "distance"
-    t.float "price"
-    t.integer "status"
+    t.string "phone_number", null: false
+    t.string "recepient_name", null: false
+    t.string "recepient_phone_no", null: false
+    t.text "description", null: false
+    t.float "weight", null: false
+    t.integer "pick_up", null: false
+    t.integer "delivery_drop_off", null: false
+    t.integer "distance", null: false
+    t.integer "price", default: 0
+    t.integer "order_status", default: 0
+    t.integer "routes", null: false
+    t.integer "routeamount", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
