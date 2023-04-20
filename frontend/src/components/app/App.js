@@ -8,6 +8,7 @@ import Login from '../login/Login';
 import Footer from '../footer/Footer';
 import FAQPage from '../faq/FaqPage';
 import Signup from '../signup/Signup';
+import Order from '../Order/order';
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          {/* Remove this Route */}
+          <Route path="/order" element={<Order />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/faq" element={<FAQPage/>}/>
