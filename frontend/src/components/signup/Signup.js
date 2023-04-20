@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import './Signup.css'
+import '../login/Login.css'
 
 function Signup() {
   const [name, setName] = useState("");
@@ -36,18 +36,18 @@ function Signup() {
   };
 
   return (
-    <div id="log-box" className="login-box">
+    <div id="login-box" className="login-box">
     <h2>Sign Up</h2>
     <form onSubmit={handleSubmit}>
-      <div id="login" className="user-box">
+      <div id="user-box" className="user-box">
           <input type="text" id="name" value={name} onChange={handleNameChange} />
           <label>Name</label>
       </div>
-      <div id="login" className="user-box">
+      <div id="user-box" className="user-box">
         <input type="text" id="email" value={email} onChange={handleEmailChange} />
         <label>Email</label>
       </div>
-      <div id="login" className="user-box">
+      <div id="user-box" className="user-box">
         <input type="password" id="password" value={password} onChange={handlePasswordChange} />
         <label>Password</label>
       </div>

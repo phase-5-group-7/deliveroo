@@ -6,10 +6,10 @@ form {
   margin-top: 50px;
 }
 
-.login-box {
+#login-box {
   margin: 0 auto;
   margin-top: 400px;
-  margin-left: 700px;
+  /* margin-left: 500px; */
   font-family: sans-serif;
   width: 400px;
   padding: 30px;
@@ -20,18 +20,18 @@ form {
   border-radius: 10px;
 }
 
-.login-box h2 {
+#login-box h2 {
   margin: 0 0 30px;
   padding: 20px;
   color: #fff;
   text-align: center;
 }
 
- .user-box {
+#user-box {
   position: relative;
 }
 
-.user-box input {
+#user-box input {
   width: 300px;
   padding: 10px 0;
   font-size: 16px;
@@ -44,19 +44,19 @@ form {
 }
 
 
-label {
+#login-box label {
   font-weight: bold;
   margin-bottom: 5px;
 }
 
-.login-box p {
+#login-box p {
   color: white;
   font-size: 15px;
   margin-top: 10px;
   margin-bottom: 0px;
 }
 
-.login-box .user-box label {
+#login-box #user-box label {
   position: absolute;
   top:0;
   left: 0;
@@ -67,15 +67,15 @@ label {
   transition: .5s;
 }
 
-.login-box .user-box input:focus ~ label,
-.login-box .user-box input:valid ~ label {
+#login-box #user-box input:focus ~ label,
+#login-box #user-box input:valid ~ label {
   top: -20px;
   left: 0;
   color: #03e9f4;
   font-size: 14px;
 }
 
-.login-box form a {
+#login-box form a {
   position: relative;
   display: inline-block;
   padding: 10px 20px;
@@ -89,7 +89,7 @@ label {
   letter-spacing: 4px
 }
 
-.login-box a:hover {
+#login-box a:hover {
   background: #03e9f4;
   color: #fff;
   border-radius: 5px;
@@ -99,12 +99,12 @@ label {
               0 0 100px #03e9f4;
 }
 
-.login-box a span {
+#login-box a span {
   position: absolute;
   display: block;
 }
 
-.login-box a span:nth-child(1) {
+#login-box a span:nth-child(1) {
   top: 0;
   left: -100%;
   width: 100%;
@@ -122,7 +122,7 @@ label {
   }
 }
 
-.login-box a span:nth-child(2) {
+#login-box a span:nth-child(2) {
   top: -100%;
   right: 0;
   width: 2px;
@@ -141,7 +141,7 @@ label {
   }
 }
 
-.login-box a span:nth-child(3) {
+#login-box a span:nth-child(3) {
   bottom: 0;
   right: -100%;
   width: 100%;
@@ -160,7 +160,7 @@ label {
   }
 }
 
-.login-box a span:nth-child(4) {
+#login-box a span:nth-child(4) {
   bottom: -100%;
   left: 0;
   width: 2px;

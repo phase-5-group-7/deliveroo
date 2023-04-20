@@ -8,8 +8,12 @@ import Login from '../login/Login';
 import Footer from '../footer/Footer';
 import FAQPage from '../faq/FaqPage';
 import Signup from '../signup/Signup';
+import OrderCard from '../order-card/OrderCard';
 
 function App() {
+
+  
+
   return (
     <div className="App">
       <Router>
@@ -17,6 +21,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/ordercard" element={<OrderCard/>}/>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/faq" element={<FAQPage/>}/>
