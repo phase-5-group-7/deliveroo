@@ -7,10 +7,18 @@ class OrdersController < ApplicationController
 
     def show
         @order = Order.find_by(id: params[:id])
-        if @order
+        if current_user.admin
+          if @order
+            render json: @order
+          else 
+            render json: { message: "Order not found" }
+          end
+        elsif current_user && current_user.id != @order.user_id
+          render json: { message: "Unauthorized" }, status: :unauthorized
+        elsif current_user && current_user.id == @order.user_id
           render json: @order
-        else 
-          render json: { message: "Order not found" }
+        else
+          render json: { message: "Order not found" }, status: :not_found 
         end
     end
 
@@ -42,16 +50,20 @@ class OrdersController < ApplicationController
     end
 
     def destroy
-        @order = Order.find(params[:id])
-        if @order.status == 'ONGOING'
-          @order.destroy
+      @order = Order.find(params[:id])
+      if current_user.admin
+        if @order.status == "DELIVERED"
+          if @order.destroy
             render json: { message: 'Order deleted successfully' }
           else
-            render json: { error: 'Unable to delete order' }, status: :unprocessable_entity
+            render json: { error: 'Failed to delete order' }, status: :unprocessable_entity
           end
-        else  
-          render json: { message: "Your parcel has been delivered already!" }, status: :forbidden 
+        else
+          render json: { error: 'Only delivered orders can be deleted by admin' }, status: :unprocessable_entity
         end
+      else
+        render json: { error: 'Delivered orders can only be deleted by admin!' }, status: :unprocessable_entity
+      end
     end
 
 
