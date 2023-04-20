@@ -36,26 +36,35 @@ function Signup() {
   };
 
   return (
-    <div className="container-t">
-    <div className="card-t">
-      <div className="inner-box-t" id="card">
-        <div className="card-back-t">
-          <h2>Create Account</h2>
-          <form onSubmit={handleSubmit}>
-    
-            <input className="input-box-t" type="username" id="username" value={name} placeholder="username" onChange={handleNameChange} />
-    
-            <input placeholder="Email" className="input-box-t" type="email" id="email" value={email} onChange={handleEmailChange} />
-    
-            <input placeholder="Password" className="input-box-t" type="password" id="password" value={password} onChange={handlePasswordChange} />
-            <button type="submit">Create Account</button>
-            <p>Already have an account? <a href="/login">login</a></p>
-          </form>
-        </div>
+    <div id="log-box" className="login-box">
+    <h2>Sign Up</h2>
+    <form onSubmit={handleSubmit}>
+      <div id="login" className="user-box">
+          <input type="text" id="name" value={name} onChange={handleNameChange} />
+          <label>Name</label>
       </div>
+      <div id="login" className="user-box">
+        <input type="text" id="email" value={email} onChange={handleEmailChange} />
+        <label>Email</label>
+      </div>
+      <div id="login" className="user-box">
+        <input type="password" id="password" value={password} onChange={handlePasswordChange} />
+        <label>Password</label>
+      </div>
+    
+      <a href="#">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Sign Up
+      </a>
+      <p>Already have an account?</p>
+      <a href="/login">Login here</a>
+    </form>
     </div>
-    </div>
-  );
+  )
 }
 
 export default Signup;
+

@@ -1,5 +1,6 @@
 nav {
-    background: rgba(44, 17, 79, 1);
+    margin: 0 auto;
+    background: #141e30;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -38,8 +39,7 @@ nav a:hover {
 
 #logo {
   color: white;
-  margin: 0 10;
-  margin-top: 10px;
+  /* margin: 0 10px; */
   font-size: 18px;
-  position: sticky;
+  /* margin-left: 0; */
 }

@@ -30,26 +30,31 @@ function Login() {
   };
 
   return (
-    <div className="container-t">
-      <div className="card-t">
-        <div className="inner-box-t" id="card">
-          <div className="card-front-t">
+
+          <div id="log-box" className="login-box">
             <h2>Login</h2>
             <form onSubmit={handleSubmit}>
+              <div id="login" className="user-box">
+                <input type="text" id="email" value={email} onChange={handleEmailChange} />
+                <label>Email</label>
+              </div>
+              <div id="login" className="user-box">
+                <input type="password" id="password" value={password} onChange={handlePasswordChange} />
+                <label>Password</label>
+              </div>
 
-              <input placeholder="Email" className="input-box-t" type="email" id="email" value={email} onChange={handleEmailChange} />
-
-              <input placeholder="Password" type="password" id="password" value={password} onChange={handlePasswordChange} />
-              <button type="submit">Login</button>
-              
-              <p>Don't have an account?<a href="/signup">Sign up here</a></p>
+              <a href="#">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Login
+              </a>
+              <p>Don't have an account?</p>
+              <a href="/signup">Sign up here</a>
             </form>
           </div>
-        </div>
-      </div>
-    </div>
   );
 }
 
 export default Login;
-
