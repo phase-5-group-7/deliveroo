@@ -3,7 +3,7 @@ import axios from "axios";
 import '../login/Login.css'
 
 function Signup() {
-  const [name, setName] = useState("");
+  const [username, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -22,25 +22,27 @@ function Signup() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("place your signup api here ", {
-        name,
+      const response = await axios.post("http://localhost:3000/users", {
+       username,
         email,
         password,
       });
       localStorage.setItem("token", response.data.token);
-      window.location.href = "/dashboard";
+      window.location.href = "/";
+      console.log(username);
     } catch (error) {
       console.error(error);
       alert("An error occurred during signup.");
     }
   };
 
+
   return (
     <div id="login-box" className="login-box">
     <h2>Sign Up</h2>
     <form onSubmit={handleSubmit}>
       <div id="user-box" className="user-box">
-          <input type="text" id="name" value={name} onChange={handleNameChange} />
+          <input type="text" id="name" value={username} onChange={handleNameChange} />
           <label>Name</label>
       </div>
       <div id="user-box" className="user-box">
@@ -57,7 +59,7 @@ function Signup() {
         <span></span>
         <span></span>
         <span></span>
-        Sign Up
+        <button>Sign Up</button>
       </a>
       <p>Already have an account?</p>
       <a href="/login">Login here</a>

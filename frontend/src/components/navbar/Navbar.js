@@ -5,27 +5,27 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 function Navbar() {
   return (
-    <nav classname="navbar " >
-       <div classname="container-fluid">
-        <span id="logo" className="navbar-brand  h1">DELIVEROO</span>
+    <nav className="navbar " >
+       <div>
+        <span id="logo">DELIVEROO</span>
       </div>
-      <ul classname="navbar-nav me-auto">
-        <li classname="navbar-item">
+      <ul>
+        <li>
           <Link to="/">HOME</Link>
         </li>
-        <li classname="navbar-item">
+        <li >
           <Link to="/about">ABOUT</Link>
         </li>
-        <li classname="navbar-item">
-          <Link to="/order">ORDER</Link>
+        <li >
+          <Link to="/orders">ORDER</Link>
         </li>
-        <li classname="navbar-item">
-          <Link to="/ordercard">ORDER CARD</Link>
+        <li >
+          <Link to="/orders">ORDER CARD</Link>
         </li>
-        <li classname="navbar-item">
+        <li >
           <Link id="login" to="/login">LOGIN</Link>
         </li>
-        {/* <li classname="navbar-item">
+        {/* <li >
           <Link id="login" to="/login">LOGOUT</Link>
         </li> */}
       </ul>
