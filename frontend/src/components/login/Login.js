@@ -3,39 +3,45 @@ import axios from "axios";
 import './Login.css'
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [values, setValues] = useState({
+    email: "",
+    password: ""
+  })
+ 
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
   // const [username, setUsername] = useState(null);
-  const [userId, setUserId] = useState("")
+  // const [userId, setUserId] = useState("")
 
   const handleEmailChange = (event) => {
-    setEmail(event.target.value);
+    setValues({...values, email:event.target.value});
   };
 
   const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
+    setValues({...values, password:event.target.value});
   };
 
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     // setIsAuthenticated(true);
-    try {
-      const response = await axios.post("http://localhost:3000/login", {
-        email,
-        password,
-      });
-      const token = response.data.token;
-      localStorage.setItem("token", token);
-      window.location.href = "/";
-      
-    } catch (error) {
-      console.error(error);
-      alert("An error occurred during login.");
-    }
+    axios
+      .post("http://localhost:3000/login", {
+          email: values.email,
+          password: values.password,
+      })
+      .then((res) => {
+        localStorage.setItem("token", res.data.jwt)
+        // window.location.href = "/";
+        console.log(res.data.jwt)
+      })
+      .catch(error => {
+        console.error(error)
+        alert("An error occurred during login.")
+      })
   };
   // const token = localStorage.getItem("token")
-
+   
  
   return (
 
@@ -43,11 +49,11 @@ function Login() {
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <div id="user-box" className="user-box">
-          <input type="text" id="email" value={email} onChange={handleEmailChange} />
+          <input type="text" id="email" onChange={handleEmailChange} />
           <label>Email</label>
         </div>
         <div id="user-box" className="user-box">
-          <input type="password" id="password" value={password} onChange={handlePasswordChange} />
+          <input type="password" id="password" onChange={handlePasswordChange} />
           <label>Password</label>
         </div>
 
