@@ -2,6 +2,7 @@ import {React, useState} from 'react';
 import { Routes, Route} from 'react-router-dom';
 
 import Navbar from '../navbar/Navbar';
+import SearchBar from '../searchbar/SearchBar';
 import Home from '../home/Home';
 import About from '../about/About';
 import Login from '../login/Login';
@@ -12,6 +13,9 @@ import OrderCard from '../order-card/OrderCard';
 import OrderForm from '../Order/order';
 import axios from 'axios';
 
+
+
+
 function App() {
   
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -19,6 +23,7 @@ function App() {
 
 
   return (
+    
     <div className="App">
         <Navbar setIsAuthenticated={setIsAuthenticated} isAuthenticated={isAuthenticated} />
         <Routes>

@@ -41,6 +41,9 @@ function Navbar({isAuthenticated, setIsAuthenticated}) {
           <li >
             <Link to="/ordercard">ORDER CARD</Link>
           </li>
+          <li >
+            <Link to="/ordercard">SEARCH</Link>
+          </li>
           
           <li >
             <Link onClick={handleLogout} id="login" to="/login">LOGOUT</Link>
