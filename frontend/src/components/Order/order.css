@@ -33,4 +33,16 @@
     margin-bottom: 1rem;
     background-color:#9f7eb9
   }
+
+.main_container{
+  display: flex;
+  gap: 27px;
+}
+
+.map_container{
+  display: flex;
+  align-items: center;
+  margin: 100px;
+}
+
   
