@@ -15,7 +15,7 @@ function OrderCard() {
             headers: {
                 Authorization: `Bearer ${token}`
             }
-            })
+            },)
             .then((res) => {
                 if (res.data) {
                     setOrders(res.data.user.orders);

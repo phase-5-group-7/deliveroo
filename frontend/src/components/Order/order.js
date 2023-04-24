@@ -3,30 +3,49 @@ import '../Order/order.css';
 
 function OrderForm() {
   const [order, setOrder] = useState({
-    phone_number: '',
-    delivery_drop_off: '', 
-    recepient_name: '',
-    recepient_phone_no: '',
-    pick_up: '',
-    description: '',
-    weight: '',
-    distance: '',
-    routes: '',
+    phone_number: "",
+    recepient_name: "",
+    recepient_phone_no: "",
+    description: "",
+    weight: "",
+    delivery_drop_off: "",
+    pick_up: "",
+    distance: "",
+    routes: "",
+    routeamount: ""
   });
 
   const handleChange = (event) => {
+
+  //   const token = localStorage.getItem("token")
+        
+  //       axios.post("http://localhost:3000/orders", {
+  //           headers: {
+  //               Authorization: `Bearer ${token}`
+  //           }
+  //           })
+  //           .then((res) => {
+  //               if (res) {
+  //                   setOrders(res.data.user.orders);
+  //                   console.log(res.data);
+  //               } else {
+  //                   alert("An error occurred while fetching orders")
+  //               }
+  //           })
+  //           .catch(error => {
+  //           console.error(error);
+  //           alert("An error occurred while fetching orders.")
+  //       })
     const { name, value } = event.target;
     setOrder((prevOrder) => ({
       ...prevOrder,
       [name]: value,
     }));
   };
-
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(order);
   };
-
   return (
     <div className="card">
       <form onSubmit={handleSubmit}>
@@ -36,7 +55,7 @@ function OrderForm() {
           <input
             type="text"
             name="name"
-            value={order.username}
+            value={order.name}
             onChange={handleChange}
           />
         </label>
@@ -58,7 +77,6 @@ function OrderForm() {
             onChange={handleChange}
           />
         </label>
-
         <h2>Recipient</h2>
         <label>
           Name:
@@ -87,7 +105,6 @@ function OrderForm() {
             onChange={handleChange}
           />
         </label>
-
         <h2>Package</h2>
         <label>
           Description:
@@ -117,15 +134,24 @@ function OrderForm() {
           />
         </label>
         <label>
-          Estimated Time:
+          Routes:
           <input
             type="text"
-            name="estimatedTime"
-            value={order.estimatedTime}
+            name="routes"
+            value={order.routes}
             onChange={handleChange}
           />
         </label>
         <label>
+          Route Amount:
+          <input
+            type="text"
+            name="estimatedTime"
+            value={order.routeamount}
+            onChange={handleChange}
+          />
+        </label>
+        {/* <label>
           Price:
           <input
             type="text"
@@ -133,12 +159,15 @@ function OrderForm() {
             value={order.price}
             onChange={handleChange}
           />
-        </label>
-
-        <button type="submit">Submit</button>
+        </label> */}
+        <button type="submit" onClick={handleSubmit}>Submit</button>
       </form>
     </div>
   );
 }
-
 export default OrderForm;
+
+
+
+
+
