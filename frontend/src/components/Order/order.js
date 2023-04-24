@@ -3,17 +3,15 @@ import '../Order/order.css';
 
 function OrderForm() {
   const [order, setOrder] = useState({
-    name: '',
-    phoneNumber: '',
-    dropOff: '',
-    recipientName: '',
-    recipientPhoneNumber: '',
-    pickUp: '',
+    phone_number: '',
+    delivery_drop_off: '', 
+    recepient_name: '',
+    recepient_phone_no: '',
+    pick_up: '',
     description: '',
     weight: '',
     distance: '',
-    estimatedTime: '',
-    price: '',
+    routes: '',
   });
 
   const handleChange = (event) => {
@@ -38,7 +36,7 @@ function OrderForm() {
           <input
             type="text"
             name="name"
-            value={order.name}
+            value={order.username}
             onChange={handleChange}
           />
         </label>
@@ -47,7 +45,7 @@ function OrderForm() {
           <input
             type="tel"
             name="phoneNumber"
-            value={order.phoneNumber}
+            value={order.phone_number}
             onChange={handleChange}
           />
         </label>
@@ -56,7 +54,7 @@ function OrderForm() {
           <input
             type="text"
             name="dropOff"
-            value={order.dropOff}
+            value={order.delivery_drop_off}
             onChange={handleChange}
           />
         </label>
@@ -67,7 +65,7 @@ function OrderForm() {
           <input
             type="text"
             name="recipientName"
-            value={order.recipientName}
+            value={order.recepient_name}
             onChange={handleChange}
           />
         </label>
@@ -76,7 +74,7 @@ function OrderForm() {
           <input
             type="tel"
             name="recipientPhoneNumber"
-            value={order.recipientPhoneNumber}
+            value={order.recepient_phone_no}
             onChange={handleChange}
           />
         </label>
@@ -85,7 +83,7 @@ function OrderForm() {
           <input
             type="text"
             name="pickUp"
-            value={order.pickUp}
+            value={order.pick_up}
             onChange={handleChange}
           />
         </label>

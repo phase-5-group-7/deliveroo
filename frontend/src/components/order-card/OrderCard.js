@@ -19,9 +19,9 @@ function OrderCard() {
             .then((res) => {
                 if (res.data) {
                     setOrders(res.data.user.orders);
-                    console.log(res.data.user.orders);
+                    console.log(res.data);
                 } else {
-                    alert("An error occurred while fetching orders.")
+                    alert("An error occurred while fetching orders")
                 }
             })
             .catch(error => {
@@ -55,14 +55,14 @@ function OrderCard() {
                     <h6 className="card-subtitle mb-2">Package</h6>
                     <ul className="list">
                         <li className="list-item">Description: <span>{order.description}</span></li>
-                        <li className="list-item">Weight: <span>{order.weight}</span></li>
-                        <li className="list-item">Distance: <span>{order.distance}</span></li>
+                        <li className="list-item">Weight: <span>{order.weight}kg</span></li>
+                        <li className="list-item">Distance: <span>{order.distance}km</span></li>
                         <li className="list-item">Route: <span>{order.routes}</span></li>
-                        <li className="list-item">Estimated Time: <span>{order.routeamount}</span></li>
-                        <li className="list-item">Price: <span>{order.price}</span></li>
+                        <li className="list-item">Route Amount: ksh <span>{order.routeamount}</span></li>
+                        <li className="list-item">Price: ksh <span>{order.price}</span></li>
                     </ul>
 
-                    <h6 className="card-subtitle mb-2">Status: <span>{order.order_status}</span></h6>
+                    <h6 className="card-subtitle mb-2">Status: <span id="status">{order.order_status}</span></h6>
 
                     <button className="order-icon"><TiDeleteOutline/></button>
                     <button className="order-icon"><MdEditLocationAlt/></button>
