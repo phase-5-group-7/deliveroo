@@ -14,4 +14,8 @@ class OrderPolicy < ApplicationPolicy
         user.admin?
     end
 
+    def delete 
+        user.admin?
+    end
+
 end

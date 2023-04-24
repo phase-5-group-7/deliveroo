@@ -9,11 +9,11 @@ class ApplicationPolicy
   end
 
   def index?
-    false
+    user.admin?
   end
 
   def show?
-    false
+    user.admin?
   end
 
   def create?
@@ -25,7 +25,7 @@ class ApplicationPolicy
   end
 
   def update?
-    false
+    user.admin?
   end
 
   def edit?
