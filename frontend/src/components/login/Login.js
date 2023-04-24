@@ -3,53 +3,67 @@ import axios from "axios";
 import './Login.css'
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [values, setValues] = useState({
+    email: "",
+    password: ""
+  })
 
   const handleEmailChange = (event) => {
-    setEmail(event.target.value);
+    setValues({...values, email:event.target.value});
   };
 
   const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
+    setValues({...values, password:event.target.value});
   };
 
-  const handleSubmit = async (event) => {
+
+  const handleSubmit = (event) => {
     event.preventDefault();
-    try {
-      const response = await axios.post("place your login api here ", {
-        email,
-        password,
-      });
-      localStorage.setItem("token", response.data.token);
-      window.location.href = "/dashboard";
-    } catch (error) {
-      console.error(error);
-      alert("An error occurred during login.");
-    }
+    // setIsAuthenticated(true);
+    axios
+      .post("http://localhost:3000/login", {
+          email: values.email,
+          password: values.password,
+      })
+      .then((res) => {
+        localStorage.setItem("token", res.data.jwt)
+        window.location.href = "/";
+        console.log(res)
+      })
+      .catch(error => {
+        console.error(error)
+        alert("An error occurred during login.")
+      })
   };
-
+  // const token = localStorage.getItem("token")
+   
+ 
   return (
-    <div className="container-t">
-      <div className="card-t">
-        <div className="inner-box-t" id="card">
-          <div className="card-front-t">
-            <h2>Login</h2>
-            <form onSubmit={handleSubmit}>
 
-              <input placeholder="Email" className="input-box-t" type="email" id="email" value={email} onChange={handleEmailChange} />
-
-              <input placeholder="Password" type="password" id="password" value={password} onChange={handlePasswordChange} />
-              <button type="submit">Login</button>
-              
-              <p>Don't have an account?<a href="/signup">Sign up here</a></p>
-            </form>
-          </div>
+    <div id="login-box" className="login-box">
+      <h2>Login</h2>
+      <form onSubmit={handleSubmit}>
+        <div id="user-box" className="user-box">
+          <input type="text" id="email" onChange={handleEmailChange} />
+          <label>Email</label>
         </div>
-      </div>
+        <div id="user-box" className="user-box">
+          <input type="password" id="password" onChange={handlePasswordChange} />
+          <label>Password</label>
+        </div>
+
+        <a href="#">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <button >Login</button>
+        </a>
+        <p>Don't have an account?</p>
+        <a href="/signup">Sign up here</a>
+      </form>
     </div>
   );
 }
 
 export default Login;
-

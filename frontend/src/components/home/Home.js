@@ -20,13 +20,6 @@ function Home() {
           <img id="img" src={image} alt="Deliveroo" />
         </div>
       </div>
-      
-     
-      {/* <div className="card-footer">
-        <li>Find restaurants near you</li>
-        <li>Explore menus and reviews</li>
-        <li>Place an order for delivery or pickup</li>
-      </div> */}
     </div>
   </div>
   );

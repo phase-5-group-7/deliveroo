@@ -1,7 +1,7 @@
 import React from 'react'
 import './Faq.css'
 
-function FAQPage() {
+function FaqPage() {
   return (
     <div className="faq-container">
       <h1>Frequently Asked Questions</h1>
@@ -44,4 +44,4 @@ function FAQPage() {
   );
 }
 
-export default FAQPage;
+export default FaqPage;
