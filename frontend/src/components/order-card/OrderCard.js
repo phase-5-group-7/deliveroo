@@ -9,29 +9,32 @@ function OrderCard() {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-        const handleOrder = async () => {
-            try {
-              const response = await axios.get("http://localhost:3000/orders", {
-                headers: {
-                  Authorization: `Bearer ${localStorage.getItem("token")}`
-                }
-              });
-              const orders = response.data;
-              setOrders(orders)
-              console.log(orders);
-            } catch (error) {
-              console.error(error);
-              alert("An error occurred while fetching orders.");
+        const token = localStorage.getItem("token")
+        
+        axios.get("http://localhost:3000/orders", {
+            headers: {
+                Authorization: `Bearer ${token}`
             }
-          }
-          handleOrder()
+            })
+            .then((res) => {
+                if (res.data) {
+                    setOrders(res.data.user.orders);
+                    console.log(res.data.user.orders);
+                } else {
+                    alert("An error occurred while fetching orders.")
+                }
+            })
+            .catch(error => {
+            console.error(error);
+            alert("An error occurred while fetching orders.")
+        })
     }, [])
    
     
     return (
         <div>
-            {orders.map(order => (
-            <div className="card" style={{width: "18rem"}}>
+            {orders && orders.length > 0 ? orders.map(order => (
+            <div key={order.id} className="card" style={{width: "18rem"}}>
                 <div className="card-body">
                     <h5 className="card-title">Order</h5>
 
@@ -65,7 +68,9 @@ function OrderCard() {
                     <button className="order-icon"><MdEditLocationAlt/></button>
                 </div>
             </div>
-            ))}
+              )) : (
+                <p>No orders found.</p>
+            )}
         </div>
     )
 }

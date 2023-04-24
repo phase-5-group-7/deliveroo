@@ -7,11 +7,6 @@ function Login() {
     email: "",
     password: ""
   })
- 
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [username, setUsername] = useState(null);
-  // const [userId, setUserId] = useState("")
 
   const handleEmailChange = (event) => {
     setValues({...values, email:event.target.value});
