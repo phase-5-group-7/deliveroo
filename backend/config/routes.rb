@@ -9,3 +9,5 @@ Rails.application.routes.draw do
   get '/orders', to: 'users#orders'  #This routes needs review after merge
   get '/me', to: 'users#me'
 end
+
+  

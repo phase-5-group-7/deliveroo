@@ -1,11 +1,11 @@
 class ApplicationController < ActionController::API
-    include Pundit::Authorization
-
     before_action :authorized # Calls authorized method before any other controller method is called
+    include Pundit::Authorization
 
     def encode_token(payload)
         JWT.encode(payload, 'secret')
     end
+    
 
     def auth_header 
         request.headers['Authorization']
@@ -26,7 +26,7 @@ class ApplicationController < ActionController::API
     def current_user 
         if decoded_token
             user_id = decoded_token[0]['user_id']
-             @user = User.find_by(id: user_id)
+            @user = User.find_by(id: user_id)
         end
     end
 
@@ -37,5 +37,4 @@ class ApplicationController < ActionController::API
     def authorized 
         render json: { message: 'Please log in' }, status: :unauthorized unless logged_in?
     end
-
 end
