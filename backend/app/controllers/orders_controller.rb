@@ -38,17 +38,21 @@ class OrdersController < ApplicationController
     def update
       @order = Order.find(params[:id])
       if current_user.admin
-        if @order.update(order_params)
+        if @order.update(admin_update_params)
           render json: { message: 'Order updated successfully', data: @order }
         else
           render json: { error: 'Unable to update order' }, status: :unprocessable_entity
         end
 
       else
-        if @order.update(update_params)
-          render json: { message: 'Order updated successfully', data: @order }
+        if @order.order_status == "ONGOING"
+          if @order.update(update_params)
+            render json: { message: 'Order updated successfully', data: @order }
+          else
+            render json: { error: 'Unable to update order' }, status: :unprocessable_entity
+          end
         else
-          render json: { error: 'Unable to update order' }, status: :unprocessable_entity
+          render json: { error: 'Parcel has already been delivered' }, status: :unprocessable_entity
         end
       end
     end
@@ -83,12 +87,15 @@ class OrdersController < ApplicationController
 
       private
 
+      def admin_update_params
+        params.require(:order).permit(:order_status)
+      end
       def order_params
         params.require(:order).permit(:name, :phone_number, :recepient_name, :recepient_phone_no, :description, :order_status, :weight, :delivery_drop_off, :pick_up, :distance, :user_id)
       end
 
       def update_params
-        params.require(:order).permit(:phone_number, :recepient_name, :recepient_phone_no, :description, :weight, :delivery_drop_off, :distance)
+        params.require(:order).permit(:phone_number, :recepient_name, :recepient_phone_no, :delivery_drop_off)
       end
     
 
