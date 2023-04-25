@@ -84,3 +84,13 @@ production:
   database: backend_production
   username: backend
   password: <%= ENV["BACKEND_DATABASE_PASSWORD"] %>
+
+#   # config/database.yml
+# production:
+#   adapter: postgresql
+#   host: your_database_host
+#   port: your_database_port
+#   database: your_database_name
+#   username: your_database_username
+#   password: your_database_password
+
