@@ -39,7 +39,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:username, :phone_number, :recepient_name, :recepient_phone_number, :description, :weight, :drop_off, :pick_up, :distance, :price, :status, :user_id)
+    params.require(:order).permit(:phone_number, :recepient_name, :recepient_phone_no, :description, :weight, :drop_off, :pick_up, :distance, :price, :status, :user_id)
   end
 end
 
