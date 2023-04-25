@@ -65,6 +65,14 @@ class OrdersController < ApplicationController
         else
           render json: { error: 'Only delivered orders can be deleted by admin' }, status: :unprocessable_entity
         end
+      elsif current_user
+        if @order.order_status == "ONGOING"
+          if @order.destroy
+            render json: { message: 'Order deleted successfully' }
+          else
+            render json: { error: 'Failed to delete order' }, status: :unprocessable_entity
+          end
+        end
       else
         render json: { error: 'Delivered orders can only be deleted by admin!' }, status: :unprocessable_entity
       end
