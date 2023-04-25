@@ -1,0 +1,56 @@
+#home{
+  width: 600px;
+  height: auto;
+}
+
+#welcome {
+    font-size: 45px;
+    font-weight:700;
+    color: rgba(44, 17, 79, 1);
+  }
+  
+  p {
+    font-size: 22px;
+    line-height: 1.5;
+    text-align: center;
+    color: rgba(44, 17, 79, 1);
+    padding: 20px 0;
+  }
+  
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  li {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  #img {
+    width: 355px; 
+    height: auto; 
+  }
+  
+  #btn{
+    background-color: rgba(201, 157, 221);
+    color: black;
+    font-weight: bolder;
+    margin: auto;
+    height: 50px;
+    width: 150px;
+    font-size: 20px;
+    border-radius: 0%;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Optional: Set height to fill the viewport */
+  }
+  

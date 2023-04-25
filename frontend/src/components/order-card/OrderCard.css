@@ -1,0 +1,22 @@
+.card {
+  margin: 0 auto;
+  padding-left: 10px;
+}
+
+.card-title {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.card-subtitle {
+  color: rgba(242, 78, 30, 1);
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.order-icon {
+  font-size: 30px;
+  margin: 10px;
+}
