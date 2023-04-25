@@ -19,7 +19,7 @@ function OrderCard() {
             .then((res) => {
                 if (res.data) {
                     setOrders(res.data);
-                    console.log(res);
+                    console.log(res.data);
                 } else {
                     alert("An error occurred while fetching orders")
                 }

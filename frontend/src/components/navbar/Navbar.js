@@ -32,6 +32,9 @@ function Navbar({isAuthenticated, setIsAuthenticated}) {
         </>
       ) : (
         <>
+        <li>
+            <Link to="/">HOME</Link>
+          </li>
           <li >
             <Link to="/about">ABOUT</Link>
           </li>

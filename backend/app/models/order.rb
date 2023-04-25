@@ -13,8 +13,14 @@ class Order < ApplicationRecord
 
 
     private
-    def price
-      price = routeamount*distance
-    end
+
+    # def price
+    #   if weight <= 5 && distance < 5
+    #     price = 410 + 500
+    #   elsif weight > 5 
+         
+    #   end
+    #   # price = routeamount*distance
+    # end
 
 end
