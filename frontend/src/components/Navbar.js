@@ -5,6 +5,9 @@ import './Navbar.css'
 function Navbar() {
   return (
     <nav>
+
+      <img src='../images/Deliveroo.png' alt="logo" />
+
       <ul>
         <li>
           <Link to="/">Home</Link>
