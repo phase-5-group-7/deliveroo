@@ -1,14 +1,22 @@
-import React from 'react'
-import {FaSearch} from "react-icons/fa"
- 
-const SearchBar = () => {
+import React from 'react';
+import { FaSearch } from 'react-icons/fa';
+
+function SearchBar() {
+  const handleSearch = (event) => {
+    event.preventDefault();
+    // TODO: Implement search logic
+  };
+
   return (
-    <div className="input-wrapper">
-        <FaSearch id="search-icon"/>
-        <input placeholder="Type to search..."/>
-      
+    <div>
+      <form onSubmit={handleSearch}>
+        <input type="text" placeholder="Search..." />
+        <button type="submit">
+          <FaSearch />
+        </button>
+      </form>
     </div>
-  )
+  );
 }
 
-export default SearchBar
+export default SearchBar;
