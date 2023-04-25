@@ -27,6 +27,7 @@ function Login() {
       })
       .then((res) => {
         localStorage.setItem("token", res.data.jwt)
+        localStorage.setItem("user_id", res.data.user.id)
         window.location.href = "/";
         console.log(res)
       })

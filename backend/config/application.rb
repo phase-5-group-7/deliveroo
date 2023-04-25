@@ -32,14 +32,6 @@ module Backend
     config.middleware.use config.session_store, config.session_options
     
     
-    config.middleware.insert_before 0, Rack::Cors do
-      allow do
-         origins '*'
-         resource '*',
-          :headers => :any,
-           :methods => [:get, :post, :patch, :put, :delete, :create, :options ]
-       end
-    end
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

@@ -1,9 +1,13 @@
 class OrdersController < ApplicationController
 
-    def index
-        @orders = Order.all
-        render json: @orders
+  def index
+    if current_user.admin?
+      @orders = Order.all
+    else
+      @orders = current_user.orders
     end
+    render json: @orders
+  end
 
     def show
         @order = Order.find_by(id: params[:id])

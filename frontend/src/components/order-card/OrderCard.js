@@ -15,10 +15,10 @@ function OrderCard() {
             headers: {
                 Authorization: `Bearer ${token}`
             }
-            })
+            },)
             .then((res) => {
                 if (res.data) {
-                    setOrders(res.data.user.orders);
+                    setOrders(res.data);
                     console.log(res.data);
                 } else {
                     alert("An error occurred while fetching orders")
