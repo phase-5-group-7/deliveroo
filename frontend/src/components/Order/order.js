@@ -98,13 +98,14 @@ function OrderForm() {
 
   const [travelData, setTravelData] = useState(null);
   const [distance, setDistance] = useState(0);
-
+console.log(distance)
   const setData = (travelData) => {
     setTravelData(travelData);
     console.log(travelData)
     if (travelData != null) {
       if (travelData.distance != null) {
-        setDistance(travelData.distance.text)
+        const distanceWithoutUnit = travelData.distance.text.replace(" km", "");
+        setDistance(distanceWithoutUnit);
       }
 
     }
@@ -140,12 +141,7 @@ function OrderForm() {
                 </label>
                 <label>
                   Drop-off:
-                  {/* <input
-              type="text"
-              name="delivery_drop_off"
-              value={order.delivery_drop_off}
-              onChange={handleChange}
-            /> */}
+                  
                   <PlacesAutocomplete setSeleted={setSeleted} />
                 </label>
                 <h2>Recipient</h2>
@@ -169,12 +165,7 @@ function OrderForm() {
                 </label>
                 <label>
                   Pick-up:
-                  {/* <input
-              type="text"
-              name="pick_up"
-              value={order.pick_up}
-              onChange={handleChange}
-            /> */}
+                  
                   <PlacesAutocomplete setSeleted={setSeleted} />
                 </label>
                 <h2>Package</h2>

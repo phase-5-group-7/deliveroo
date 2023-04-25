@@ -6,6 +6,7 @@ function Signup() {
   const [username, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [admin, setAdmin] = useState()
 
   const handleNameChange = (event) => {
     setName(event.target.value);
@@ -18,7 +19,10 @@ function Signup() {
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
-
+  
+  const handleAdmin = (event) => {
+    setAdmin(event.target.value)
+  }
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -26,6 +30,7 @@ function Signup() {
        username,
         email,
         password,
+        admin
       });
       localStorage.setItem("token", response.data.token);
       window.location.href = "/";
@@ -53,7 +58,11 @@ function Signup() {
         <input type="password" id="password" value={password} onChange={handlePasswordChange} />
         <label>Password</label>
       </div>
-    
+      <div id="user-box" className="user-box">
+        <input type="text" id="admin" value={admin} onChange={handleAdmin} />
+        <label>Admin Rights</label>
+      </div>
+
       <a href="#">
         <span></span>
         <span></span>
