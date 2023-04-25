@@ -9,7 +9,7 @@ class Order < ApplicationRecord
 
     private
     def price
-      price = routeamount*distance
+      # price = routeamount*distance
     end
 
 end

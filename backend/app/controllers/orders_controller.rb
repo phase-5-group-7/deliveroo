@@ -84,17 +84,16 @@ class OrdersController < ApplicationController
 
     # Example of request to be sent to the server
     # {
-    #   "phone_number": "071111111",
-    #   "recepient_name": "vinus",
-    #     "recepient_phone_no": "072222222",
-    #     "description": "Fragile",
-    #     "weight": 240.0,
-    #     "delivery_drop_off":1,
-    #     "pick_up": 2,
-    #     "distance": 2,
-    #     "routes": 2,
-    #     "routeamount": 1,
-    #     "user_id": 1
+    # "name": "Lincoln",
+    #  "phone_number": "0720000000",
+    #  "recepient_name": "Venus",
+    #  "recepient_phone_no": "0735353535",
+    #    "description": "Very Urgent",
+    #    "weight": 20.0,
+    #    "delivery_drop_off": "Ngong",
+    #    "pick_up": "CBd",
+    #    "distance": 15.0,
+    #    "user_id": 1
     #  }
         
 end
