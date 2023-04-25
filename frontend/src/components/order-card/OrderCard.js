@@ -11,7 +11,7 @@ function OrderCard() {
     useEffect(() => {
         const token = localStorage.getItem("token")
         
-        axios.get("https://deliveroo-api.onrender.com//orders", {
+        axios.get("http://127.0.0.1:3000/orders", {
             headers: {
                 Authorization: `Bearer ${token}`
             }

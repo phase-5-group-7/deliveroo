@@ -12,7 +12,7 @@ function SearchBar() {
     const query = event.target.elements.query.value;
 
     try {
-      const response = await fetch("https://deliveroo-api.onrender.com/order?q=${query}");
+      const response = await fetch(" https://deliveroo-api.onrender.com/order?q=${query}");
       const data = await response.json();
       setSearchResults(data);
     } catch (error) {
