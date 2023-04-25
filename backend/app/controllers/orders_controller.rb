@@ -74,7 +74,7 @@ class OrdersController < ApplicationController
       private
 
       def order_params
-        params.require(:order).permit(:phone_number, :recepient_name, :recepient_phone_no, :description, :order_status, :weight, :delivery_drop_off, :pick_up, :distance, :routeamount, :routes, :user_id)
+        params.require(:order).permit(:name, :phone_number, :recepient_name, :recepient_phone_no, :description, :order_status, :weight, :delivery_drop_off, :pick_up, :distance, :user_id)
       end
 
       def update_params

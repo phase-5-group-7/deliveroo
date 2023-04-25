@@ -15,6 +15,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_18_104903) do
   enable_extension "plpgsql"
 
   create_table "orders", force: :cascade do |t|
+    t.string "name", null: false
     t.string "phone_number", null: false
     t.string "recepient_name", null: false
     t.string "recepient_phone_no", null: false
@@ -22,10 +23,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_18_104903) do
     t.float "weight", null: false
     t.string "pick_up", null: false
     t.string "delivery_drop_off", null: false
-    t.integer "distance", null: false
+    t.float "distance", null: false
     t.integer "price", default: 0
     t.integer "order_status", default: 0
-    t.integer "routeamount", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
