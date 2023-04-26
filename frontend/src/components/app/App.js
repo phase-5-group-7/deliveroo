@@ -11,6 +11,7 @@ import Signup from '../signup/Signup';
 import OrderCard from '../order-card/OrderCard';
 import OrderForm from '../Order/order';
 import axios from 'axios';
+import UpdateOrder from '../order-card/UpdateOrder';
 
 function App() {
   
@@ -28,6 +29,8 @@ function App() {
           <Route path="/faq" element={<FaqPage setIsAuthenticated={setIsAuthenticated}/>}/>
           <Route path="/orders" element={<OrderForm isAuthenticated={isAuthenticated}/>}/>
           <Route path="/ordercard" element={<OrderCard isAuthenticated={isAuthenticated}/>}/>
+          <Route path="/updateorder" element={<UpdateOrder isAuthenticate=
+          {isAuthenticated}/>}/>
 
           {/* {isAuthenticated && (
             <>

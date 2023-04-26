@@ -1,12 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, {Link, useEffect, useState } from "react";
 import './OrderCard.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import { TiDeleteOutline } from 'react-icons/ti';
 import { MdEditLocationAlt } from 'react-icons/md';
 import axios from "axios";
+// import UpdateOrder from "./UpdateOrder";
 
 function OrderCard() {
     const [orders, setOrders] = useState([]);
+
+    const [phone_number, setPhone_number] = useState("")
+    const [recepient_name, setRecepient_name] = useState("")
+    const [recepient_phone_no, setRecepient_phone_no] = useState("")
+    const [delivery_drop_off, setDelivery_drop_off] = useState("")
 
     useEffect(() => {
     const token = localStorage.getItem("token")
@@ -53,6 +59,38 @@ function OrderCard() {
             alert("An error occurred while fetching orders.")
         })
     }
+
+
+    function handleUpdate(id) {
+        const token = localStorage.getItem("token")
+        let config = {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            }
+          }
+          axios
+            .patch(
+              `http://localhost:3000/orders/${id}`, 
+              {
+                phone_number: phone_number,
+                recipient_name: recepient_name,
+                recipient_phone_no: recepient_phone_no,
+                delivery_drop_off: delivery_drop_off
+              },
+              config
+              )
+              .then((res) => {
+                console.log(res)
+                if (res.status === 200) {
+                  console.log("Order updated successfully:", res);
+                } else {
+                  alert("Failed to create order")
+                }
+              })
+              .catch((error) => {
+                console.error("Error creating order:", error);
+              })  
+    }
     
     return (
         <div>
@@ -86,7 +124,9 @@ function OrderCard() {
                     <h6 className="card-subtitle mb-2">Status: <span id="status">{order.order_status}</span></h6>
 
                     <button onClick={() => handleDelete(order.id) } className="order-icon"><TiDeleteOutline/></button>
-                    <button className="order-icon"><MdEditLocationAlt/></button>
+                   <Link to="/updateorder"> <button onClick={() => handleUpdate(order.id) } className="order-icon"><MdEditLocationAlt/></button></Link>
+                   
+                   
                 </div>
             </div>
               )) : (

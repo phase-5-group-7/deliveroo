@@ -26,10 +26,11 @@ class OrdersController < ApplicationController
         end
     end
 
-    def create
-        @order = Order.new(order_params)
-        if @order.save
+    def create 
+      if @order = Order.create(order_params)
+         @order
           render json: @order, status: :created
+          p @order
         else
           render json: {error: "Unable to create order"}, status: :unprocessable_entity
         end
@@ -91,7 +92,7 @@ class OrdersController < ApplicationController
         params.require(:order).permit(:order_status)
       end
       def order_params
-        params.require(:order).permit(:name, :phone_number, :recepient_name, :recepient_phone_no, :description, :order_status, :weight, :delivery_drop_off, :pick_up, :distance, :user_id)
+        params.require(:order).permit(:name, :phone_number, :recepient_name, :recepient_phone_no, :description, :weight, :delivery_drop_off, :pick_up, :distance, :user_id)
       end
 
       def update_params

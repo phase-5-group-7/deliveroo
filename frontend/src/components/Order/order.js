@@ -30,6 +30,10 @@ function OrderForm() {
     googleMapsApiKey: "AIzaSyDz2zx3bpHyh-ZpLHijapk9S4jXwsK0GZE",
     libraries: ["places", "geometry"]
   });
+
+  const [deliveryDropOff,setDeliveryDropOff] = useState(null)
+  const [distance, setDistance] = useState(null);
+  const [pickUp, setPickUp] = useState(null);
  
   const [order, setOrder] = useState({
     name: "",
@@ -48,8 +52,29 @@ function OrderForm() {
 
 
   useEffect(() => {
-    console.log(selected.length)
-  }, [selected])
+    if(deliveryDropOff != null){
+      setOrder((prevOrder) => ({
+        ...prevOrder,
+        ["delivery_drop_off"]: deliveryDropOff,
+      }));
+    }
+
+    if(pickUp != null){
+      setOrder((prevOrder) => ({
+        ...prevOrder,
+        ["pick_up"]: pickUp,
+      }));
+    }
+
+    if(distance != null) {
+      setOrder((prevOrder) => ({
+        ...prevOrder,
+        ["distance"]: distance,
+      })); 
+    }
+
+  }, [deliveryDropOff,pickUp,distance])
+
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -62,43 +87,48 @@ function OrderForm() {
   const handleSubmit = (event) => {
     const token = localStorage.getItem("token")
     const user_id = localStorage.getItem("user_id")
-
+   
     event.preventDefault();
 
-    fetch("http://localhost:3000/orders", {
-      method: 'POST',
+    let config = {
       headers: {
-        Authorization: `Bearer ${token}`
-      },
-      
-      body: JSON.stringify(order)
-    })
-      .then((res) => {
-        if (res.ok) {
-          console.log("Order created successfully:", res);
-          setOrder({
-            name: "",
-            phone_number: "",
-            recipient_name: "",
-            recipient_phone_no: "",
-            description: "",
-            weight: "",
-            delivery_drop_off: "",
-            pick_up: "",
-            user_id: "",
-          });
-        } else {
-          alert("Failed to create order")
-        }
-      })
-      .catch((error) => {
-        console.error("Error creating order:", error);
-      })
+        Authorization: `Bearer ${token}`,
+      }
+    }
+    axios
+      .post(
+        "http://localhost:3000/orders", 
+        order,
+        config
+        )
+        .then((res) => {
+          console.log(res)
+          if (res.status === 201) {
+            console.log("Order created successfully:", res);
+            setOrder({
+              name: "",
+              phone_number: "",
+              recipient_name: "",
+              recipient_phone_no: "",
+              description: "",
+              weight: "",
+              delivery_drop_off: "",
+              pick_up: "",
+              user_id: "",
+            });
+          } else {
+            alert("Failed to create order")
+          }
+        })
+        .catch((error) => {
+          console.error("Error creating order:", error);
+        })  
+    
   }
 
   const [travelData, setTravelData] = useState(null);
-  const [distance, setDistance] = useState(0);
-console.log(distance)
+  
+
   const setData = (travelData) => {
     setTravelData(travelData);
     console.log(travelData)
@@ -126,7 +156,7 @@ console.log(distance)
                   <input
                     type="text"
                     name="name"
-                    value={order.username}
+                    value={order.name}
                     onChange={handleChange}
                   />
                 </label>
@@ -142,7 +172,7 @@ console.log(distance)
                 <label>
                   Pick_up:
                   
-                  <PlacesAutocomplete setSeleted={setSeleted} />
+                  <PlacesAutocomplete type={setPickUp} setSeleted={setSeleted} />
                 </label>
                 <h2>Recipient</h2>
                 <label>
@@ -166,7 +196,7 @@ console.log(distance)
                 <label>
                   Drop_off:
                   
-                  <PlacesAutocomplete setSeleted={setSeleted} />
+                  <PlacesAutocomplete type={setDeliveryDropOff} setSeleted={setSeleted} />
                 </label>
                 <h2>Package</h2>
                 <label>
@@ -181,7 +211,7 @@ console.log(distance)
                 <label>
                   Weight:
                   <input
-                    type="text"
+                    type="number"
                     name="weight"
                     value={order.weight}
                     onChange={handleChange}
@@ -190,7 +220,7 @@ console.log(distance)
                 <label>
                   Distance:
                   <input
-                    type="text"
+                    type="number"
                     name="distance"
                     value={distance}
                     onChange={handleChange}
@@ -199,7 +229,7 @@ console.log(distance)
                 <label>
                   UserId:
                   <input
-                    type="text"
+                    type="number"
                     name="user_id"
                     value={order.user_id}
                     onChange={handleChange}
@@ -240,7 +270,7 @@ console.log(distance)
 export default OrderForm;
 
 
-const PlacesAutocomplete = ({ setSeleted }) => {
+const PlacesAutocomplete = ({ type,setSeleted }) => {
   const {
     ready,
     value,
@@ -252,7 +282,7 @@ const PlacesAutocomplete = ({ setSeleted }) => {
   const handleSelect = async (address) => {
     setValue(address, false)
     clearSuggestions();
-
+    type(address)
     const results = await getGeocode({ address });
     const { lat, lng } = await getLatLng(results[0])
     // setSeleted()
