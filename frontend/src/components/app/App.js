@@ -17,7 +17,6 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   // const [error, setError] = useState(null);
 
-
   return (
     <div className="App">
         <Navbar setIsAuthenticated={setIsAuthenticated} isAuthenticated={isAuthenticated} />

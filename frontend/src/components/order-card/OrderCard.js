@@ -9,7 +9,7 @@ function OrderCard() {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-        const token = localStorage.getItem("token")
+    const token = localStorage.getItem("token")
         
         axios.get("http://localhost:3000/orders", {
             headers: {
@@ -30,6 +30,29 @@ function OrderCard() {
         })
     }, [])
    
+
+    function handleDelete(id) {
+        const token = localStorage.getItem("token")
+
+        fetch(`http://localhost:3000/orders/${id}`, {
+            method: 'DELETE',
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+        .then((res) => {
+            if (res.ok){
+                console.log(res)
+                setOrders(orders.filter((order) => order.id !== id))
+            } else {
+                console.log(`Already Delivered`)
+            }
+        })
+        .catch(error => {
+            console.error(error);
+            alert("An error occurred while fetching orders.")
+        })
+    }
     
     return (
         <div>
@@ -40,7 +63,7 @@ function OrderCard() {
 
                     <h6 className="card-subtitle mb-2">User</h6>
                     <ul className="list">
-                        <li className="list-item">Name: <span>{order.username}</span></li>
+                        <li className="list-item">Name: <span>{order.name}</span></li>
                         <li className="list-item">Phone Number: <span>{order.phone_number}</span></li>
                         <li className="list-item">Drop-off: <span>{order.delivery_drop_off}</span></li>
                     </ul>
@@ -57,14 +80,12 @@ function OrderCard() {
                         <li className="list-item">Description: <span>{order.description}</span></li>
                         <li className="list-item">Weight: <span>{order.weight}kg</span></li>
                         <li className="list-item">Distance: <span>{order.distance}km</span></li>
-                        <li className="list-item">Route: <span>{order.routes}</span></li>
-                        <li className="list-item">Route Amount: ksh <span>{order.routeamount}</span></li>
                         <li className="list-item">Price: ksh <span>{order.price}</span></li>
                     </ul>
 
                     <h6 className="card-subtitle mb-2">Status: <span id="status">{order.order_status}</span></h6>
 
-                    <button className="order-icon"><TiDeleteOutline/></button>
+                    <button onClick={() => handleDelete(order.id) } className="order-icon"><TiDeleteOutline/></button>
                     <button className="order-icon"><MdEditLocationAlt/></button>
                 </div>
             </div>
@@ -76,3 +97,4 @@ function OrderCard() {
 }
 
 export default OrderCard
+

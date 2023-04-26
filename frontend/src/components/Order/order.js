@@ -30,8 +30,9 @@ function OrderForm() {
     googleMapsApiKey: "AIzaSyDz2zx3bpHyh-ZpLHijapk9S4jXwsK0GZE",
     libraries: ["places", "geometry"]
   });
-
+ 
   const [order, setOrder] = useState({
+    name: "",
     phone_number: "",
     recepient_name: "",
     recepient_phone_no: "",
@@ -40,8 +41,7 @@ function OrderForm() {
     delivery_drop_off: "",
     pick_up: "",
     distance: "",
-    routes: "",
-    routeamount: ""
+    user_id: ""
   });
 
   const [selected, setSeleted] = useState([])
@@ -65,16 +65,19 @@ function OrderForm() {
 
     event.preventDefault();
 
-    axios.post("http://localhost:3000/orders", {
+    fetch("http://localhost:3000/orders", {
+      method: 'POST',
       headers: {
         Authorization: `Bearer ${token}`
       },
+      
       body: JSON.stringify(order)
     })
       .then((res) => {
         if (res.ok) {
           console.log("Order created successfully:", res);
           setOrder({
+            name: "",
             phone_number: "",
             recipient_name: "",
             recipient_phone_no: "",
@@ -82,10 +85,7 @@ function OrderForm() {
             weight: "",
             delivery_drop_off: "",
             pick_up: "",
-            distance: "",
-            routes: "",
-            routeamount: "",
-            user_id: user_id,
+            user_id: "",
           });
         } else {
           alert("Failed to create order")
@@ -125,7 +125,7 @@ console.log(distance)
                   Name:
                   <input
                     type="text"
-                    name="username"
+                    name="name"
                     value={order.username}
                     onChange={handleChange}
                   />
@@ -140,7 +140,7 @@ console.log(distance)
                   />
                 </label>
                 <label>
-                  Drop-off:
+                  Pick_up:
                   
                   <PlacesAutocomplete setSeleted={setSeleted} />
                 </label>
@@ -164,7 +164,7 @@ console.log(distance)
                   />
                 </label>
                 <label>
-                  Pick-up:
+                  Drop_off:
                   
                   <PlacesAutocomplete setSeleted={setSeleted} />
                 </label>
@@ -197,20 +197,11 @@ console.log(distance)
                   />
                 </label>
                 <label>
-                  Routes:
+                  UserId:
                   <input
                     type="text"
-                    name="routes"
-                    value={order.routes}
-                    onChange={handleChange}
-                  />
-                </label>
-                <label>
-                  Route Amount:
-                  <input
-                    type="text"
-                    name="routeamount"
-                    value={order.routeamount}
+                    name="user_id"
+                    value={order.user_id}
                     onChange={handleChange}
                   />
                 </label>
