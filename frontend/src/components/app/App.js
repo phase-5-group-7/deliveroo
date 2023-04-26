@@ -29,7 +29,7 @@ function App() {
           <Route path="/faq" element={<FaqPage setIsAuthenticated={setIsAuthenticated}/>}/>
           <Route path="/orders" element={<OrderForm isAuthenticated={isAuthenticated}/>}/>
           <Route path="/ordercard" element={<OrderCard isAuthenticated={isAuthenticated}/>}/>
-          <Route path="/updateorder" element={<UpdateOrder isAuthenticate=
+          <Route path="/updateorder/:id" element={<OrderForm isAuthenticate=
           {isAuthenticated}/>}/>
 
           {/* {isAuthenticated && (

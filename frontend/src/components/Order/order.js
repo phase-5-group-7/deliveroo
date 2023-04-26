@@ -14,6 +14,7 @@ import {
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
 import Map from "./Map";
+import {useParams} from 'react-router-dom';
 
 const containerStyle = {
   width: '400px',
@@ -30,6 +31,10 @@ function OrderForm() {
     googleMapsApiKey: "AIzaSyDz2zx3bpHyh-ZpLHijapk9S4jXwsK0GZE",
     libraries: ["places", "geometry"]
   });
+  const {id} = useParams();
+
+
+  
 
   const [deliveryDropOff,setDeliveryDropOff] = useState(null)
   const [distance, setDistance] = useState(null);
@@ -95,7 +100,9 @@ function OrderForm() {
         Authorization: `Bearer ${token}`,
       }
     }
-    axios
+
+    if(id == null){
+      axios
       .post(
         "http://localhost:3000/orders", 
         order,
@@ -123,6 +130,26 @@ function OrderForm() {
         .catch((error) => {
           console.error("Error creating order:", error);
         })  
+    } else {
+      axios.patch(
+        `http://localhost:3000/orders/${id}`, 
+        order,
+        config
+        )
+        .then((res) => {
+          console.log(res)
+          if (res.status === 200) {
+            console.log("Order update successfully:", res);
+          } else {
+            alert("Failed to update order")
+          }
+        })
+        .catch((error) => {
+          console.error("Error updating order:", error);
+        })  
+    }
+
+    
     
   }
 
@@ -140,6 +167,30 @@ function OrderForm() {
 
     }
   };
+
+
+  if(id !== undefined && order.name == ""){
+    const token = localStorage.getItem("token")
+  
+    axios.get(`http://localhost:3000/orders/${id}`, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+        },)
+        .then((res) => {
+            if (res.data) {
+                setOrder(res.data);
+                console.log(res.data);
+                setDistance(res.data.distance)
+            } else {
+                alert("An error occurred while fetching orders")
+            }
+        })
+        .catch(error => {
+        console.error(error);
+        alert("An error occurred while fetching orders.")
+    })
+  }
 
   return (
     <>
@@ -169,11 +220,30 @@ function OrderForm() {
                     onChange={handleChange}
                   />
                 </label>
-                <label>
-                  Pick_up:
+
+
+              {id == undefined ? 
+                <>
+                 <label>
+                  Pick Up:
                   
                   <PlacesAutocomplete type={setPickUp} setSeleted={setSeleted} />
                 </label>
+                </> : 
+                <>
+                <div style={{display:"flex",gap:"20px",width: "-webkit-fill-available"}}>
+                  <label style={{width:"max-content"}}>Current pick up location</label>
+                  <h4>{order.pick_up}</h4>
+                </div>
+                
+                 <label>
+                  New Pick Up:
+                  
+                  <PlacesAutocomplete type={setPickUp} setSeleted={setSeleted} />
+                </label>
+                </>
+              }
+               
                 <h2>Recipient</h2>
                 <label>
                   Name:
@@ -193,11 +263,29 @@ function OrderForm() {
                     onChange={handleChange}
                   />
                 </label>
-                <label>
-                  Drop_off:
+
+                {id == undefined ? 
+                <>
+                 <label>
+                 Drop off:
                   
                   <PlacesAutocomplete type={setDeliveryDropOff} setSeleted={setSeleted} />
                 </label>
+                </> : 
+                <>
+                <div style={{display:"flex",gap:"20px",width: "-webkit-fill-available"}}>
+                  <label style={{width:"max-content"}}>Current drop off location</label>
+                  <h4>{order.delivery_drop_off}</h4>
+                </div>
+                
+                 <label>
+                  New Drop off:
+                  
+                  <PlacesAutocomplete type={setDeliveryDropOff} setSeleted={setSeleted} />
+                </label>
+                </>
+              }
+
                 <h2>Package</h2>
                 <label>
                   Description:
@@ -235,15 +323,7 @@ function OrderForm() {
                     onChange={handleChange}
                   />
                 </label>
-                {/* <label>
-            Price:
-            <input
-              type="text"
-              name="price"
-              value={order.price}
-              onChange={handleChange}
-            />
-          </label> */}
+              
                 <button type="submit" onClick={handleSubmit}>Submit</button>
               </form>
             </div>
