@@ -102,7 +102,7 @@ class Map extends React.Component {
           center={defaultLocation}
           zoom={5}
           onLoad={map => this.onMapLoad(map)}
-          mapContainerStyle={{ height: "400px", width: "500px" }}
+          mapContainerStyle={{ height: "400px", width: "500px", borderRadius:"10px" }}
         >
           {this.state.directions !== null && (
             <DirectionsRenderer directions={this.state.directions} />
