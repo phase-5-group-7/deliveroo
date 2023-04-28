@@ -9,7 +9,7 @@ class Order < ApplicationRecord
 
     private
    
-    def price
+    def price  # This calculates the price of a particular order.
       min_price_weight = 410
       min_price_distance = 500
       if weight <= 5 && distance <= 2

@@ -48,7 +48,7 @@ function OrderForm() {
     delivery_drop_off: "",
     pick_up: "",
     distance: "",
-    user_id: ""
+    user_id: ""   // It should pick automatically
   });
 
   const [selected, setSeleted] = useState([])
