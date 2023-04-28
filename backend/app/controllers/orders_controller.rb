@@ -30,7 +30,6 @@ class OrdersController < ApplicationController
       if @order = Order.create(order_params)
          @order
           render json: @order, status: :created
-          p @order
         else
           render json: {error: "Unable to create order"}, status: :unprocessable_entity
         end
