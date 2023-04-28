@@ -2,11 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import './Login.css'
 
-function Login() {
-  const [values, setValues] = useState({
-    email: "",
-    password: ""
-  })
+function Login({handleSubmit, setValues, values}) {
 
   const handleEmailChange = (event) => {
     setValues({...values, email:event.target.value});
@@ -15,28 +11,6 @@ function Login() {
   const handlePasswordChange = (event) => {
     setValues({...values, password:event.target.value});
   };
-
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // setIsAuthenticated(true);
-    axios
-      .post("http://localhost:3000/login", {
-          email: values.email,
-          password: values.password,
-      })
-      .then((res) => {
-        localStorage.setItem("token", res.data.jwt)
-        localStorage.setItem("user_id", res.data.user.id)
-        window.location.href = "/";
-        console.log(res)
-      })
-      .catch(error => {
-        console.error(error)
-        alert("An error occurred during login.")
-      })
-  };
-  // const token = localStorage.getItem("token")
    
  
   return (
