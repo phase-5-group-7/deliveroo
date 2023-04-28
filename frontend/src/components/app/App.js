@@ -30,7 +30,7 @@ function App() {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post("https://deliveroo-api.onrender.com/login", {
+      .post("https://deliveroo-backend-api.onrender.com/login", {
           email: values.email,
           password: values.password
       })
@@ -40,9 +40,9 @@ function App() {
         setUserId(res.data.user.id)
         setAdmin(res.data.user.admin)
         window.location.href = "/";
-        console.log(res)
-        console.log(res.data.user.id)
-        console.log(res.data.user.admin)
+        console.log("Sucessfully logged in")
+        // console.log(res.data.user.id)
+        // console.log(res.data.user.admin)
 
       })
       .catch(error => {

@@ -107,7 +107,7 @@ function OrderForm({admin}) {
     if (id == null) {
       axios
         .post(
-          "https://deliveroo-api.onrender.com/orders",
+          "https://deliveroo-backend-api.onrender.com/orders",
           order,
           config
         )
@@ -135,7 +135,7 @@ function OrderForm({admin}) {
         })
     } else {
       axios.patch(
-        `https://deliveroo-api.onrender.com/orders/${id}`,
+        `https://deliveroo-backend-api.onrender.com/orders/${id}`,
         order,
         config
       )
@@ -175,7 +175,7 @@ function OrderForm({admin}) {
   if (id !== undefined && order.name == "") {
     const token = localStorage.getItem("token")
 
-    axios.get(`https://deliveroo-api.onrender.com/orders/${id}`, {
+    axios.get(`https://deliveroo-backend-api.onrender.com/orders/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }
