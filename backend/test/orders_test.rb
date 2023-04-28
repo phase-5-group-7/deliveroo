@@ -27,3 +27,12 @@ class CreateOrdersTest < ActiveSupport::TestCase
     @order.recepient_phone_no = ""
     assert_not @order.valid?
   end
+  test "description should be present" do
+    @order.description = ""
+    assert_not @order.valid?
+  end
+
+  test "weight should be present" do
+    @order.weight = nil
+    assert_not @order.valid?
+  end
