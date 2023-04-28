@@ -92,7 +92,7 @@ class OrdersController < ApplicationController
         params.require(:order).permit(:order_status)
       end
       def order_params
-        params.require(:order).permit(:name, :phone_number, :recepient_name, :recepient_phone_no, :description, :weight, :delivery_drop_off, :pick_up, :distance, :user_id)
+        params.require(:order).permit(:name, :phone_number, :recepient_name, :recepient_phone_no, :description, :order_status, :weight, :delivery_drop_off, :pick_up, :distance).merge(user_id: current_user.id)
       end
 
       def update_params
