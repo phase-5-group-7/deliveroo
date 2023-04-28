@@ -29,7 +29,6 @@ function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // setIsAuthenticated(true);
     axios
       .post("http://localhost:3000/login", {
           email: values.email,
@@ -51,7 +50,6 @@ function App() {
         alert("An error occurred during login.")
       })
   };
-  // const token = localStorage.getItem("token")
 
   return (
     <div className="App">

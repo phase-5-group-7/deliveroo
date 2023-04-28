@@ -27,7 +27,7 @@ const key = "AIzaSyDz2zx3bpHyh-ZpLHijapk9S4jXwsK0GZE";
 
 
 
-function OrderForm({admin, setAdmin}) {
+function OrderForm({admin}) {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: "AIzaSyDz2zx3bpHyh-ZpLHijapk9S4jXwsK0GZE",
     libraries: ["places", "geometry"]
@@ -36,6 +36,7 @@ function OrderForm({admin, setAdmin}) {
 
   const [deliveryDropOff, setDeliveryDropOff] = useState(null)
   const [distance, setDistance] = useState(null);
+  const [duration, setDuration] = useState(null)
   const [pickUp, setPickUp] = useState(null);
 
   const [order, setOrder] = useState({
@@ -48,7 +49,8 @@ function OrderForm({admin, setAdmin}) {
     delivery_drop_off: "",
     pick_up: "",
     distance: "",
-    order_status: ""
+    order_status: "",
+    duration: ""
   });
 
   const [selected, setSeleted] = useState([])
@@ -76,7 +78,13 @@ function OrderForm({admin, setAdmin}) {
       }));
     }
 
-  }, [deliveryDropOff, pickUp, distance])
+    if (duration != null) {
+      setOrder((prevOrder) => ({
+        ...prevOrder, ["duration"]: duration,
+      }))
+    }
+
+  }, [deliveryDropOff, pickUp, distance, duration])
 
 
   const handleChange = (event) => {
@@ -160,11 +168,11 @@ function OrderForm({admin, setAdmin}) {
       if (travelData.distance != null) {
         const distanceWithoutUnit = travelData.distance.text.replace(" km", "");
         setDistance(distanceWithoutUnit);
+       setDuration(travelData.duration.text)
       }
 
     }
   };
-
 
   if (id !== undefined && order.name == "") {
     const token = localStorage.getItem("token")
@@ -241,7 +249,6 @@ function OrderForm({admin, setAdmin}) {
                
                 {section === 1 ?
                   <div className='card_padding'>
-                    {/* <h2>User</h2> */}
                     <label>
                       Name:
                       <input
@@ -337,19 +344,32 @@ function OrderForm({admin, setAdmin}) {
                         onChange={handleChange}
                       />
                     </label>
+
+                    <label>
+                      Duration:
+                      <input
+                        value={duration}
+                        onChange={handleChange}
+                      />
+                    </label>
                     
                     {admin === true ?
                        <select name="order_status"
                        value={order.order_status}
                        onChange={handleChange}
-                      //  setAdmin={true}
                        >
                          <option value="" disabled>STATUS</option>
                          <option value={ONGOING}>ONGOING</option>
                          <option value={DELIVERED}>DELIVERED</option>
                        </select>
                        :
-                       <></>
+                       <select name="order_status"
+                       value={order.order_status}
+                       onChange={handleChange}
+                       >
+                         <option value="" disabled>STATUS</option>
+                         <option value={ONGOING}>ONGOING</option>
+                       </select>
                     }
                  
                     
@@ -399,13 +419,6 @@ function OrderForm({admin, setAdmin}) {
                 </div>
                   </>
                 }
-
-
-               
-
-
-
-
 
               </form>
             </div>

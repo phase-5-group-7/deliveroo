@@ -1,11 +1,10 @@
-import React, {Link, useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import './OrderCard.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import { TiDeleteOutline } from 'react-icons/ti';
 import { MdEditLocationAlt } from 'react-icons/md';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-// import UpdateOrder from "./UpdateOrder";
 
 function OrderCard() {
     const navigate = useNavigate();
@@ -89,6 +88,7 @@ function OrderCard() {
                         <li className="list-item">Description: <span>{order.description}</span></li>
                         <li className="list-item">Weight: <span>{order.weight}kg</span></li>
                         <li className="list-item">Distance: <span>{order.distance}km</span></li>
+                        <li className="list-item">Time: <span>{order.duration}</span></li>
                         <li className="list-item">Price: ksh <span>{order.price}</span></li>
                     </ul>
 
