@@ -55,7 +55,7 @@ Only the user who created the parcel delivery order can cancel the order.
 Deployment link: https://deliveroo-wine.vercel.app/
 
 ## Back-end
-Deployment link: http://localhost:3000/
+Deployment link: https://deliveroo-api.onrender.com/
 
 ## Authors
 This project was contributed to by:

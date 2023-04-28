@@ -1,8 +1,7 @@
-import React, { useState, useMemo, useEffect,LinearProgress } from 'react';
-import { GoogleMap, Marker, useLoadScript, LoadScript } from "@react-google-maps/api";
+import React, { useState, useEffect} from 'react';
+import {useLoadScript } from "@react-google-maps/api";
 import '../Order/order.css';
 import axios from 'axios';
-import env from "react-dotenv";
 import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocomplete"
 import {
   Combobox,
@@ -10,20 +9,19 @@ import {
   ComboboxPopover,
   ComboboxList,
   ComboboxOption,
-  ComboboxOptionText,
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
 import Map from "./Map";
 import { useParams } from 'react-router-dom';
 import { ProgressBar } from './Progress';
 
-const containerStyle = {
-  width: '400px',
-  height: '400px'
-};
+// const containerStyle = {
+//   width: '400px',
+//   height: '400px'
+// };
 
-const lib = ["places"];
-const key = "AIzaSyDz2zx3bpHyh-ZpLHijapk9S4jXwsK0GZE";
+// const lib = ["places"];
+// const key = "AIzaSyDz2zx3bpHyh-ZpLHijapk9S4jXwsK0GZE";
 
 
 
@@ -109,7 +107,7 @@ function OrderForm({admin}) {
     if (id == null) {
       axios
         .post(
-          "http://localhost:3000/orders",
+          "https://deliveroo-api.onrender.com/orders",
           order,
           config
         )
@@ -126,7 +124,7 @@ function OrderForm({admin}) {
               weight: "",
               delivery_drop_off: "",
               pick_up: "",
-              order_status: ""
+              order_status: "",
             });
           } else {
             alert("Failed to create order")
@@ -137,7 +135,7 @@ function OrderForm({admin}) {
         })
     } else {
       axios.patch(
-        `http://localhost:3000/orders/${id}`,
+        `https://deliveroo-api.onrender.com/orders/${id}`,
         order,
         config
       )
@@ -177,7 +175,7 @@ function OrderForm({admin}) {
   if (id !== undefined && order.name == "") {
     const token = localStorage.getItem("token")
 
-    axios.get(`http://localhost:3000/orders/${id}`, {
+    axios.get(`https://deliveroo-api.onrender.com/orders/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -348,6 +346,8 @@ function OrderForm({admin}) {
                     <label>
                       Duration:
                       <input
+                       type="text"
+                       name="duration"
                         value={duration}
                         onChange={handleChange}
                       />

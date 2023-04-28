@@ -13,7 +13,7 @@ function OrderCard() {
     useEffect(() => {
     const token = localStorage.getItem("token")
         
-        axios.get("http://localhost:3000/orders", {
+        axios.get("https://deliveroo-api.onrender.com/orders", {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -36,7 +36,7 @@ function OrderCard() {
     function handleDelete(id) {
         const token = localStorage.getItem("token")
 
-        fetch(`http://localhost:3000/orders/${id}`, {
+        fetch(`https://deliveroo-api.onrender.com/orders/${id}`, {
             method: 'DELETE',
             headers: {
                 Authorization: `Bearer ${token}`
@@ -88,7 +88,7 @@ function OrderCard() {
                         <li className="list-item">Description: <span>{order.description}</span></li>
                         <li className="list-item">Weight: <span>{order.weight}kg</span></li>
                         <li className="list-item">Distance: <span>{order.distance}km</span></li>
-                        <li className="list-item">Time: <span>{order.duration}</span></li>
+                        <li className="list-item">Duration: <span>{order.duration}</span></li>
                         <li className="list-item">Price: ksh <span>{order.price}</span></li>
                     </ul>
 

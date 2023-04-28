@@ -26,7 +26,7 @@ function Signup() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3000/users", {
+      const response = await axios.post("https://deliveroo-api.onrender.com/users", {
        username,
         email,
         password,
