@@ -10,7 +10,7 @@ class CreateOrders < ActiveRecord::Migration[7.0]
         t.string :pick_up, null: false
         t.string :delivery_drop_off, null: false
         t.float :distance, null: false
-        t.string :durarion, null: false
+        t.string :duration, null: false
         t.integer :price, default: 0
         t.integer :order_status, default: 0
         t.belongs_to :user, null: false, foreign_key: true
