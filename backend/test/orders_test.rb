@@ -45,3 +45,8 @@ class CreateOrdersTest < ActiveSupport::TestCase
     @order.delivery_drop_off = nil
     assert_not @order.valid?
   end
+  test "user should be present" do
+    @order.user = nil
+    assert_not @order.valid?
+  end
+end
