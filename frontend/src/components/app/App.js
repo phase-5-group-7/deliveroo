@@ -18,10 +18,11 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   // const [error, setError] = useState(null);
   const [userId, setUserId] = useState(null)
+  const [admin, setAdmin] = useState(null)
 
   const [values, setValues] = useState({
     email: "",
-    password: ""
+    password: "",
   })
 
 
@@ -32,15 +33,17 @@ function App() {
     axios
       .post("http://localhost:3000/login", {
           email: values.email,
-          password: values.password,
+          password: values.password
       })
       .then((res) => {
         localStorage.setItem("token", res.data.jwt)
         localStorage.setItem("user_id", res.data.user.id)
         setUserId(res.data.user.id)
+        setAdmin(res.data.user.admin)
         // window.location.href = "/";
         console.log(res)
         console.log(res.data.user.id)
+        console.log(res.data.user.admin)
 
       })
       .catch(error => {
@@ -54,15 +57,15 @@ function App() {
     <div className="App">
         <Navbar setIsAuthenticated={setIsAuthenticated} isAuthenticated={isAuthenticated} />
         <Routes>
-          <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} setValues={setValues} values={values} handleSubmit={handleSubmit} setUserId={userId} />} />
+          <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} setValues={setValues} values={values} handleSubmit={handleSubmit} setUserId={userId} setAdmin={setAdmin}/>} />
           <Route path="/signup" element={<Signup setIsAuthenticated={setIsAuthenticated} />} />
           <Route path="/" element={<Home setIsAuthenticated={setIsAuthenticated}/>} />
           <Route path="/about" element={<About setIsAuthenticated={setIsAuthenticated} />} />
           <Route path="/faq" element={<FaqPage setIsAuthenticated={setIsAuthenticated}/>}/>
-          <Route path="/orders" element={<OrderForm isAuthenticated={isAuthenticated} userId={userId}/>}/>
-          <Route path="/ordercard" element={<OrderCard isAuthenticated={isAuthenticated} userId={userId}/>}/>
+          <Route path="/orders" element={<OrderForm isAuthenticated={isAuthenticated} userId={userId} admin={admin}/>}/>
+          <Route path="/ordercard" element={<OrderCard isAuthenticated={isAuthenticated} userId={userId} admin={admin}/>}/>
           <Route path="/updateorder/:id" element={<OrderForm isAuthenticate=
-          {isAuthenticated} userId={userId}/>}/>
+          {isAuthenticated} userId={userId} admin={admin}/>}/>
 
           {/* {isAuthenticated && (
             <>

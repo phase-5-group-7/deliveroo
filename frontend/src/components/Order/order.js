@@ -27,7 +27,7 @@ const key = "AIzaSyDz2zx3bpHyh-ZpLHijapk9S4jXwsK0GZE";
 
 
 
-function OrderForm() {
+function OrderForm({admin, setAdmin}) {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: "AIzaSyDz2zx3bpHyh-ZpLHijapk9S4jXwsK0GZE",
     libraries: ["places", "geometry"]
@@ -47,7 +47,8 @@ function OrderForm() {
     weight: "",
     delivery_drop_off: "",
     pick_up: "",
-    distance: ""
+    distance: "",
+    order_status: ""
   });
 
   const [selected, setSeleted] = useState([])
@@ -116,7 +117,8 @@ function OrderForm() {
               description: "",
               weight: "",
               delivery_drop_off: "",
-              pick_up: ""
+              pick_up: "",
+              order_status: ""
             });
           } else {
             alert("Failed to create order")
@@ -214,6 +216,8 @@ function OrderForm() {
     setShowMap(!showMap)
   }
   
+  const ONGOING = "ONGOING"
+  const DELIVERED = "DELIVERED"
 
   return (
     <>
@@ -306,7 +310,6 @@ function OrderForm() {
 
                 {section === 3 ?
                   <div className='card_padding'>
-                    {/* <h2>Package</h2> */}
                     <label>
                       Description:
                       <input
@@ -334,6 +337,22 @@ function OrderForm() {
                         onChange={handleChange}
                       />
                     </label>
+                    
+                    {admin === true ?
+                       <select name="order_status"
+                       value={order.order_status}
+                       onChange={handleChange}
+                      //  setAdmin={true}
+                       >
+                         <option value="" disabled>STATUS</option>
+                         <option value={ONGOING}>ONGOING</option>
+                         <option value={DELIVERED}>DELIVERED</option>
+                       </select>
+                       :
+                       <></>
+                    }
+                 
+                    
 
                   </div>
                   :

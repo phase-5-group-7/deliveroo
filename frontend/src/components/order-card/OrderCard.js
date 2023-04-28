@@ -11,11 +11,6 @@ function OrderCard() {
     const navigate = useNavigate();
     const [orders, setOrders] = useState([]);
 
-    const [phone_number, setPhone_number] = useState("")
-    const [recepient_name, setRecepient_name] = useState("")
-    const [recepient_phone_no, setRecepient_phone_no] = useState("")
-    const [delivery_drop_off, setDelivery_drop_off] = useState("")
-
     useEffect(() => {
     const token = localStorage.getItem("token")
         
