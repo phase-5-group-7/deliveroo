@@ -12,7 +12,7 @@ class CreateOrders < ActiveRecord::Migration[7.0]
         t.float :distance, null: false
         t.string :duration, null: false
         t.integer :price, default: 0
-        t.integer :order_status, default: 0
+        t.integer :order_status, null: false, default: 0
         t.belongs_to :user, null: false, foreign_key: true
 
         t.timestamps
