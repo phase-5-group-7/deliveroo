@@ -27,7 +27,7 @@ const key = "AIzaSyDz2zx3bpHyh-ZpLHijapk9S4jXwsK0GZE";
 
 
 
-function OrderForm({userId}) {
+function OrderForm() {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: "AIzaSyDz2zx3bpHyh-ZpLHijapk9S4jXwsK0GZE",
     libraries: ["places", "geometry"]
@@ -47,8 +47,7 @@ function OrderForm({userId}) {
     weight: "",
     delivery_drop_off: "",
     pick_up: "",
-    distance: "",
-    // user_id: "" // It should pick automatically
+    distance: ""
   });
 
   const [selected, setSeleted] = useState([])
@@ -89,8 +88,6 @@ function OrderForm({userId}) {
 
   const handleSubmit = (event) => {
     const token = localStorage.getItem("token")
-    const user_id = userId
-    console.log(user_id)
 
     event.preventDefault();
 
@@ -110,8 +107,6 @@ function OrderForm({userId}) {
         .then((res) => {
           if (res.status === 201) {
             console.log("Order created successfully:", res);
-            console.log(user_id)
-            console.log(token)
             
             setOrder({
               name: "",
@@ -336,15 +331,6 @@ function OrderForm({userId}) {
                         type="number"
                         name="distance"
                         value={distance}
-                        onChange={handleChange}
-                      />
-                    </label>
-                    <label>
-                      UserId:
-                      <input
-                        type="number"
-                        name="user_id"
-                        value={userId}
                         onChange={handleChange}
                       />
                     </label>
