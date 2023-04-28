@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
           if @order
             render json: @order
           else 
-            render json: { message: "Order not found" }
+            render json: { message: "Order not found" }, status: :unauthorized
           end
         elsif current_user && current_user.id != @order.user_id
           render json: { message: "Unauthorized" }, status: :unauthorized
@@ -27,6 +27,9 @@ class OrdersController < ApplicationController
     end
 
     def create 
+      if current_user.admin?
+        render json: {message: "cannot create order"}
+      else
       if @order = Order.create(order_params)
          @order
           render json: @order, status: :created
@@ -34,6 +37,7 @@ class OrdersController < ApplicationController
           render json: {error: "Unable to create order"}, status: :unprocessable_entity
         end
     end
+  end
 
     def update
       @order = Order.find(params[:id])
