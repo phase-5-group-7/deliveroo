@@ -18,3 +18,12 @@ class CreateOrdersTest < ActiveSupport::TestCase
     @order.phone_number = ""
     assert_not @order.valid?
   end
+  test "recepient name should be present" do
+    @order.recepient_name = ""
+    assert_not @order.valid?
+  end
+
+  test "recepient phone number should be present" do
+    @order.recepient_phone_no = ""
+    assert_not @order.valid?
+  end
