@@ -36,3 +36,12 @@ class CreateOrdersTest < ActiveSupport::TestCase
     @order.weight = nil
     assert_not @order.valid?
   end
+  test "pick up should be present" do
+    @order.pick_up = nil
+    assert_not @order.valid?
+  end
+
+  test "delivery drop off should be present" do
+    @order.delivery_drop_off = nil
+    assert_not @order.valid?
+  end
