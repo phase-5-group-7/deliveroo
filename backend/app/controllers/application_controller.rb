@@ -17,8 +17,10 @@ class ApplicationController < ActionController::API
 
             begin 
                 JWT.decode(token, 'secret', true, algorithm: 'HS256')
-            rescue JWT::DecodeError, JWT::VerificationError, JWT::ExpiredSignature
-                head :unauthorized
+            # rescue JWT::ExpiredSignature
+            #     # It works, don't touch it
+            # rescue JWT::DecodeError, JWT::VerificationError
+            #     nil
             end
         end
     end

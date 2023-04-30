@@ -6,7 +6,7 @@ class AuthController < ApplicationController
         #User#authenticate comes from BCrypt
         if @user && @user.authenticate(user_login_params[:password])
             # encode token comes from ApplicationController
-            token = encode_token({user_id: @user.id })
+            token = encode_token({user_id: @user.id, exp: 2.hours.from_now.to_i })
             render json: { user: UserSerializer.new(@user), jwt: token }, status: :accepted
         else
             render json: { message: 'Invalid username or password' }, status: :unauthorized
