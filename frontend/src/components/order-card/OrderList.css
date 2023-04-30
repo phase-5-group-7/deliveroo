@@ -56,3 +56,15 @@
 .ms-3{
   margin-left: unset !important;
 }
+.page_number{
+  padding: unset;
+  margin: unset;
+  display: inline;
+  font-size: 20px;
+}
+
+.table_button_container{
+  display: flex;
+  justify-content: end;
+  gap: 20px;
+}

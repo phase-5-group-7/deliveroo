@@ -10,13 +10,14 @@ import {MdDeleteOutline,MdOutlineEdit} from 'react-icons/md'
 
 function OrderList() {
     const navigate = useNavigate();
+    const [allOrders, setAllOrders] = useState([]);
     const [orders, setOrders] = useState([]);
     const token = localStorage.getItem("token")
 
+    const [pageSize,setPageSize] = useState(5)
+    const [orderPage,setOrderPage] = useState(1)
 
     useEffect(() => {
-
-
         axios.get("https://deliveroo-backend-api.onrender.com/orders", {
             headers: {
                 Authorization: `Bearer ${token}`
@@ -24,7 +25,8 @@ function OrderList() {
         },)
             .then((res) => {
                 if (res.data) {
-                    setOrders(res.data);
+                    setAllOrders(res.data)
+                    // setOrders(res.data.splice(0,pageSize));
                     console.log(res.data);
                 } else {
                     alert("An error occurred while fetching orders")
@@ -35,6 +37,14 @@ function OrderList() {
                 alert("An error occurred while fetching orders.")
             })
     }, [])
+
+
+    useEffect(() => {
+        let current = allOrders
+        setOrders(current.slice(0,pageSize));
+    },allOrders)
+
+   
 
 
     function handleDelete(id) {
@@ -68,6 +78,28 @@ function OrderList() {
     function moreDetails(id){
         navigate(`/ordercard/${id}`);
     }
+
+    function nextPage(){
+        setOrderPage(orderPage+1)
+
+        const startIndex = (orderPage)*pageSize
+        const endIndex = startIndex + pageSize
+
+        setOrders(allOrders.slice(startIndex,endIndex))
+    }
+
+    function prevPage(){
+        setOrderPage(orderPage-1)
+
+        const startIndex = (orderPage-2)*pageSize
+        const endIndex = startIndex + pageSize
+    
+        setOrders(allOrders.slice(startIndex,endIndex))
+    }
+
+    useEffect(() => {
+
+    },orderPage)
 
     return (
 
@@ -185,7 +217,13 @@ function OrderList() {
 
         </MDBTable>
 
+         <div className="table_button_container">
+         <button class="previous_button" onClick={prevPage} type="button">prev</button>
 
+        <p className="page_number">{orderPage}</p>      
+         <button class="next_button" onClick={nextPage} type="button">next</button>
+                  
+        </div>           
    
         </div>
     )
