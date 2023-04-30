@@ -29,7 +29,7 @@ function Home() {
            <>
 
             { auth && !admin ?  <>
-              <Link to="/ordercard"><button id="btn">Get Stated</button></Link>
+              <Link to="/orderlist"><button id="btn">Get Stated</button></Link>
             </> :
             <>
              <Link to="/login"><button id="btn">Get Stated</button></Link>
@@ -52,7 +52,7 @@ function Home() {
           
           { (auth && !admin) ? 
            <>
-            <Link to="/ordercard"><button id="btn">Get Stated</button></Link>
+            <Link to="/orderlist"><button id="btn">Get Stated</button></Link>
            </>
            :
            <></>
@@ -64,7 +64,7 @@ function Home() {
 
           {/* auth ?
             (admin ?
-              <Link to="/ordercard"><button id="btn">Get Stated</button></Link>
+              <Link to="/orderlist"><button id="btn">Get Stated</button></Link>
                : (
                 <Link to="/orders"><button id="btn">Get Stated</button></Link>
               )

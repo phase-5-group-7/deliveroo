@@ -14,6 +14,7 @@ import "@reach/combobox/styles.css";
 import Map from "./Map";
 import { useParams } from 'react-router-dom';
 import { ProgressBar } from './Progress';
+import { useNavigate } from "react-router-dom";
 
 // const containerStyle = {
 //   width: '400px',
@@ -26,8 +27,8 @@ import { ProgressBar } from './Progress';
 
 
 function OrderForm() {
-
- const admin = localStorage.getItem("admin") === "true"
+  const navigate = useNavigate();
+  const admin = localStorage.getItem("admin") === "true"
 
   // setAdmin(admins)
   // const [admin, setAdmin] = useState(localStorage.getItem("admin"));
@@ -132,6 +133,7 @@ function OrderForm() {
               pick_up: "",
               order_status: "",
             });
+            navigate("/orderlist")
           } else {
             alert("Failed to create order")
           }

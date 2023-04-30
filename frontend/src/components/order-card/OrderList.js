@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from "react";
-import './OrderCard.css'
+import './OrderList.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import { TiDeleteOutline } from 'react-icons/ti';
 import { MdEditLocationAlt } from 'react-icons/md';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-function OrderCard() {
+function OrderList() {
     const navigate = useNavigate();
     const [orders, setOrders] = useState([]);
     const token = localStorage.getItem("token")
@@ -110,5 +110,5 @@ function OrderCard() {
     )
 }
 
-export default OrderCard
+export default OrderList
 

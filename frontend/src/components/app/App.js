@@ -8,7 +8,7 @@ import Login from '../login/Login';
 import Footer from '../footer/Footer';
 import FaqPage from '../faq/FaqPage';
 import Signup from '../signup/Signup';
-import OrderCard from '../order-card/OrderCard';
+import OrderList from '../order-card/OrderList';
 import OrderForm from '../Order/order';
 import axios from 'axios';
 
@@ -45,7 +45,7 @@ function App() {
         setIsAuthenticated(auth)
 
         if(res.data.user.admin){
-          window.location.href = "/ordercard";
+          window.location.href = "/orderlist";
         } else{
           window.location.href = "/orders";
         }
@@ -80,7 +80,7 @@ function App() {
         {isAuthenticated && (
         <>
           <Route path="/orders" element={<OrderForm userId={userId} admin={admin}/>}/>
-          <Route path="/ordercard" element={<OrderCard userId={userId} admin={admin}/>}/>
+          <Route path="/orderlist" element={<OrderList userId={userId} admin={admin}/>}/>
           <Route path="/updateorder/:id" element={<OrderForm setAdmin={admin} userId={userId} admin={admin}/>}/> 
           </>)
           }

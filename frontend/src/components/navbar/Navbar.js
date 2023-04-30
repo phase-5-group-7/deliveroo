@@ -48,10 +48,10 @@ function Navbar() {
             <Link to="/about">ABOUT</Link>
           </li>
           <li >
-            <Link to="/ordercard">ORDER CARD</Link>
+            <Link to="/orderlist">ORDERS</Link>
           </li>
            {!admin ? <><li >
-            <Link to="/orders">ORDERS</Link>
+            <Link to="/orders">CREATE ORDER</Link>
           </li></> : <></>}
           
           <li >
