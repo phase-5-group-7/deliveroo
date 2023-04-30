@@ -5,26 +5,24 @@ import { TiDeleteOutline } from 'react-icons/ti';
 import { MdEditLocationAlt } from 'react-icons/md';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { MDBBadge, MDBBtn, MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
-import {MdDeleteOutline,MdOutlineEdit} from 'react-icons/md'
+import { useParams } from 'react-router-dom';
 
 function OrderList() {
+    const {id} = useParams();
     const navigate = useNavigate();
-    const [orders, setOrders] = useState([]);
+    const [order, setOrder] = useState([]);
     const token = localStorage.getItem("token")
-
-
     useEffect(() => {
 
 
-        axios.get("https://deliveroo-backend-api.onrender.com/orders", {
+        axios.get(`https://deliveroo-backend-api.onrender.com/orders/${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
         },)
             .then((res) => {
                 if (res.data) {
-                    setOrders(res.data);
+                    setOrder(res.data);
                     console.log(res.data);
                 } else {
                     alert("An error occurred while fetching orders")
@@ -48,7 +46,7 @@ function OrderList() {
             .then((res) => {
                 if (res.ok) {
                     console.log(res)
-                    setOrders(orders.filter((order) => order.id !== id))
+                    // setOrders(orders.filter((order) => order.id !== id))
                 } else {
                     console.log(`Already Delivered`)
                 }
@@ -65,71 +63,9 @@ function OrderList() {
         navigate(`/updateorder/${id}`);
     }
 
-    function moreDetails(id){
-        navigate(`/ordercard/${id}`);
-    }
-
     return (
-
-        <div className="table_container">    
-
-        <MDBTable align='middle'>
-                <MDBTableHead>
-                    <tr>
-                        <th scope='col'>Order Number</th>
-                        <th scope='col'>Name</th>
-                        <th scope='col'>Recipient</th>
-                        <th scope='col'>Status</th>
-                        <th scope='col'>Actions</th>
-                    </tr>
-                </MDBTableHead>
-                <MDBTableBody >
-            
-            {orders && orders.length > 0 ? orders.map(order => (
-                <>
-
-    
-                    <tr key={order.id}>
-                            <td>
-                            <p className='table_text'>{order.id}</p>
-                        </td>
-                        <td>
-                            <div className='d-flex align-items-center'>
-                                <div className='ms-3'>
-                                    <p className='table_text'>{order.name}</p>
-                                    <p className='table_text table_sub_text'>{order.pick_up}</p>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <div className='d-flex align-items-center'>
-                                <div className='ms-3'>
-                                    <p className='table_text'>{order.recepient_name}</p>
-                                    <p className='table_text table_sub_text'>{order.delivery_drop_off}</p>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-
-                            <p className="status_badge"> {order.order_status}</p>
-                            
-                        </td>
-    
-                        <td >
-                            <div style={{display:"flex",alignItems: "center",gap:"4px"}}>
-                            <MdOutlineEdit className="action_icon"/>
-                            <MdDeleteOutline className="action_icon"/>
-                            
-                            <p onClick={() => moreDetails(order.id)} className="action_icon_text" style={{fontSize:"14px"}} color='link' rounded size='sm'>
-                                View details
-                            </p>
-                            </div>
-                            
-                        </td>
-                    </tr>
-      
-          
-            {/* <div key={order.id} className="card" style={{width: "18rem"}}>
+        <>
+        <div key={order.id} className="card" style={{width: "18rem"}}>
                 <div className="card-body">
                     <h5 className="card-title">Order No: <span>{order.id}</span></h5>
 
@@ -167,27 +103,9 @@ function OrderList() {
                    
                    
                 </div>
-            </div> */}
-                </>
-           
-
-            
-              )) : (
-                <p>No orders found.</p>
-            )}
-
-
-
-    
-
-                </MDBTableBody>
-                
-
-        </MDBTable>
-
-
-   
-        </div>
+            </div>
+        
+        </>
     )
 }
 

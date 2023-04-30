@@ -10,6 +10,7 @@ import FaqPage from '../faq/FaqPage';
 import Signup from '../signup/Signup';
 import OrderList from '../order-card/OrderList';
 import OrderForm from '../Order/order';
+import OrderCard from "../order-card/OrderCard"
 import axios from 'axios';
 
 function App() {
@@ -82,8 +83,11 @@ function App() {
           <Route path="/orders" element={<OrderForm userId={userId} admin={admin}/>}/>
           <Route path="/orderlist" element={<OrderList userId={userId} admin={admin}/>}/>
           <Route path="/updateorder/:id" element={<OrderForm setAdmin={admin} userId={userId} admin={admin}/>}/> 
-          </>)
+          <Route path="/ordercard/:id" element={<OrderCard userId={userId} admin={admin}/>}/>
+          </>
+          )
           }
+           
         </Routes>
         <Footer/>
     </div>

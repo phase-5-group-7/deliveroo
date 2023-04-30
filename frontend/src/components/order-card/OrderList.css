@@ -20,3 +20,39 @@
   font-size: 30px;
   margin: 10px;
 }
+.table_text{
+  text-align: start;
+  padding: unset;
+  margin: unset;
+}
+.table_sub_text{
+  opacity: .5;
+  font-size: 16px;
+}
+.table_container{
+  margin: 6rem;
+}
+.status_badge{
+  background-color: rgb(218, 204, 235);
+  font-weight: bold;
+  padding: 8px;
+  border-radius: 40px;
+  font-size: 12px;
+}
+.action_icon{
+  font-size: 22px;
+  color: #141e30;
+}
+.action_icon_text{
+  font-size: 14px;
+  color: #141e30;
+  padding: unset;
+  margin: unset;
+}
+.action_icon_text:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+.ms-3{
+  margin-left: unset !important;
+}
