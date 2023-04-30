@@ -2,13 +2,22 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import { useNavigate } from "react-router-dom";
 
-function Navbar({isAuthenticated, setIsAuthenticated}) {
+function Navbar() {
+  const navigate = useNavigate();
+  const admin = localStorage.getItem("admin") === "true"
+  let auth = localStorage.getItem("isAuthenticated") === "true"
 
   const handleLogout = () => {
     // Clear the token from local storage
     localStorage.removeItem("token");
-    // setIsAuthenticated(false)
+    localStorage.removeItem("isAuthenticated")
+    localStorage.removeItem("admin")
+    auth = false
+
+    navigate(`/login`);
+    
   };
 
 
@@ -18,19 +27,7 @@ function Navbar({isAuthenticated, setIsAuthenticated}) {
         <Link to="/"><span id="logo">DELIVEROO</span></Link>
       </div>
       <ul>
-      {isAuthenticated ? ( 
-        <>
-          <li>
-            <Link to="/">HOME</Link>
-          </li>
-          <li >
-            <Link to="/about">ABOUT</Link>
-          </li>
-          <li >
-            <Link id="login" to="/login">LOGIN</Link>
-          </li>
-        </>
-      ) : (
+        { !auth ? 
         <>
         <li>
             <Link to="/">HOME</Link>
@@ -39,18 +36,30 @@ function Navbar({isAuthenticated, setIsAuthenticated}) {
             <Link to="/about">ABOUT</Link>
           </li>
           <li >
-              <Link to="/orders">ORDER</Link>
+            <button onClick={handleLogout} id="login">LOGIN</button>
+          </li>
+        </>
+        : 
+        <>
+          <li>
+            <Link to="/">HOME</Link>
+          </li>
+          <li >
+            <Link to="/about">ABOUT</Link>
           </li>
           <li >
             <Link to="/ordercard">ORDER CARD</Link>
           </li>
+           {!admin ? <><li >
+            <Link to="/orders">ORDERS</Link>
+          </li></> : <></>}
           
           <li >
-            <Link onClick={handleLogout} id="login" to="/login">LOGOUT</Link>
+            <button onClick={handleLogout} id="login">LOGOUT</button>
           </li>
         </>
-        )
-        }
+
+      }
       </ul>
     </nav>
   );

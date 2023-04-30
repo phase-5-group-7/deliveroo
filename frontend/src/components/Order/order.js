@@ -25,7 +25,13 @@ import { ProgressBar } from './Progress';
 
 
 
-function OrderForm({admin}) {
+function OrderForm() {
+
+ const admin = localStorage.getItem("admin") === "true"
+
+  // setAdmin(admins)
+  // const [admin, setAdmin] = useState(localStorage.getItem("admin"));
+
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: "AIzaSyDz2zx3bpHyh-ZpLHijapk9S4jXwsK0GZE",
     libraries: ["places", "geometry"]
@@ -82,7 +88,7 @@ function OrderForm({admin}) {
       }))
     }
 
-  }, [deliveryDropOff, pickUp, distance, duration])
+  }, [deliveryDropOff, pickUp, distance, duration,admin])
 
 
   const handleChange = (event) => {
@@ -195,14 +201,14 @@ function OrderForm({admin}) {
       })
   }
 
-  var [section, setSection] = useState(1)
-  var [percent, setPercent] = useState(33.3)
+ const [section, setSection] = useState(1)
+ const [percent, setPercent] = useState(33.3)
 
   const handleNextPage = (event) => {
     event.preventDefault()
     if (section !== 3) {
       setSection(section + 1)
-      var percent= ((section + 1)/3) *100
+     const percent= ((section + 1)/3) *100
       setPercent(percent)
     }
   }
@@ -210,12 +216,12 @@ function OrderForm({admin}) {
   const handlePrevPage = (event) => {
     if (section !== 1) {
       setSection(section - 1)
-      var percent= ((section - 1)/3) *100
+     const percent= ((section - 1)/3) *100
       setPercent(percent)
     }
   }
 
-  var [showMap,setShowMap] = useState(false)
+ const [showMap,setShowMap] = useState(false)
 
   const handleToggleMap = (event) => {
     event.preventDefault()
@@ -353,24 +359,28 @@ function OrderForm({admin}) {
                       />
                     </label>
                     
-                    {admin === true ?
+                    {!admin ?
+                       
+                      
                        <select name="order_status"
                        value={order.order_status}
                        onChange={handleChange}
                        >
                          <option value="" disabled>STATUS</option>
                          <option value={ONGOING}>ONGOING</option>
-                         <option value={DELIVERED}>DELIVERED</option>
-                       </select>
-                       :
-                       <select name="order_status"
-                       value={order.order_status}
-                       onChange={handleChange}
-                       >
-                         <option value="" disabled>STATUS</option>
-                         <option value={ONGOING}>ONGOING</option>
-                       </select>
+                       </select> :
+                        <select name="order_status"
+                        value={order.order_status}
+                        onChange={handleChange}
+                        >
+                          <option value="" disabled>STATUS</option>
+                          <option value={ONGOING}>ONGOING</option>
+                          <option value={DELIVERED}>DELIVERED</option>
+                        </select>
+
                     }
+
+               
                  
                     
 
@@ -473,7 +483,7 @@ const PlacesAutocomplete = ({ type, setSeleted,initial,setOrder,orderKey }) => {
     clearSuggestions,
   } = usePlacesAutocomplete();
 
-  var initialVal = initial
+ const initialVal = initial
 
 
 

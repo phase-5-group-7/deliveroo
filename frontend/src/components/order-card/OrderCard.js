@@ -9,9 +9,9 @@ import { useNavigate } from "react-router-dom";
 function OrderCard() {
     const navigate = useNavigate();
     const [orders, setOrders] = useState([]);
-
-    useEffect(() => {
     const token = localStorage.getItem("token")
+    useEffect(() => {
+   
         
         axios.get("https://deliveroo-backend-api.onrender.com/orders", {
             headers: {
@@ -34,7 +34,6 @@ function OrderCard() {
    
 
     function handleDelete(id) {
-        const token = localStorage.getItem("token")
 
         fetch(`https://deliveroo-backend-api.onrender.com/orders/${id}`, {
             method: 'DELETE',
