@@ -6,7 +6,7 @@ function Signup() {
   const [username, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [admin, setAdmin] = useState()
+  // const [admin, setAdmin] = useState()
 
   const handleNameChange = (event) => {
     setName(event.target.value);
@@ -19,10 +19,10 @@ function Signup() {
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
-  
-  const handleAdmin = (event) => {
-    setAdmin(event.target.value)
-  }
+  // Only to be used when creating an admin
+  // const handleAdmin = (event) => {
+  //   setAdmin(event.target.value)
+  // }
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -30,10 +30,10 @@ function Signup() {
        username,
         email,
         password,
-        admin
+        // admin
       });
       localStorage.setItem("token", response.data.token);
-      window.location.href = "/";
+      window.location.href = "/login";
       console.log(username);
     } catch (error) {
       console.error(error);
@@ -58,10 +58,12 @@ function Signup() {
         <input type="password" id="password" value={password} onChange={handlePasswordChange} />
         <label>Password</label>
       </div>
-      <div id="user-box" className="user-box">
+      
+      {/* Only to be used when creating an admin */}
+      {/* <div id="user-box" className="user-box">
         <input type="text" id="admin" value={admin} onChange={handleAdmin} />
         <label>Admin Rights</label>
-      </div>
+      </div> */}
 
       <a href="#">
         <span></span>

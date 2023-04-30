@@ -67,9 +67,9 @@ function OrderCard() {
             {orders && orders.length > 0 ? orders.map(order => (
             <div key={order.id} className="card" style={{width: "18rem"}}>
                 <div className="card-body">
-                    <h5 className="card-title">Order</h5>
+                    <h5 className="card-title">Order No: <span>{order.id}</span></h5>
 
-                    <h6 className="card-subtitle mb-2">User</h6>
+                    <h6 className="card-subtitle mb-2">User Id: <span>{order.user_id}</span></h6>
                     <ul className="list">
                         <li className="list-item">Name: <span>{order.name}</span></li>
                         <li className="list-item">Phone Number: <span>{order.phone_number}</span></li>

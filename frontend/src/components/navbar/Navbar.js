@@ -8,14 +8,14 @@ function Navbar({isAuthenticated, setIsAuthenticated}) {
   const handleLogout = () => {
     // Clear the token from local storage
     localStorage.removeItem("token");
-    setIsAuthenticated(false)
+    // setIsAuthenticated(false)
   };
 
 
   return (
     <nav className="navbar " >
        <div>
-        <span id="logo">DELIVEROO</span>
+        <Link to="/"><span id="logo">DELIVEROO</span></Link>
       </div>
       <ul>
       {isAuthenticated ? ( 
