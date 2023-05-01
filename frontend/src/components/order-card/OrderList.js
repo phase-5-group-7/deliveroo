@@ -16,7 +16,7 @@ function OrderList() {
     const [orderPage, setOrderPage] = useState(1)
 
     useEffect(() => {
-        axios.get("https://deliveroo-backend-api.onrender.com/orders", {
+        axios.get("http://localhost:3000/orders", {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -46,7 +46,7 @@ function OrderList() {
 
     function handleDelete(id) {
 
-        fetch(`https://deliveroo-backend-api.onrender.com/orders/${id}`, {
+        fetch(`http://localhost:3000/orders/${id}`, {
             method: 'DELETE',
             headers: {
                 Authorization: `Bearer ${token}`
@@ -57,6 +57,7 @@ function OrderList() {
                     console.log(res)
                     setOrders(orders.filter((order) => order.id !== id))
                 } else {
+                    alert(`Parcel has already been delivered`)
                     console.log(`Already Delivered`)
                 }
             })
@@ -101,7 +102,7 @@ function OrderList() {
     return (
 
         <div className="table_container">
-
+       
             <MDBTable align='middle'>
                 <MDBTableHead>
                     <tr>
@@ -169,7 +170,6 @@ function OrderList() {
 
 
 
-
                 </MDBTableBody>
 
 
@@ -177,6 +177,15 @@ function OrderList() {
 
             <div className="table_button_container">
                 <button className="previous_button" onClick={prevPage} type="button">prev</button>
+                {/* {deleteError && (
+                <div className="bg-red-100 border mb-4 border-red-400 text-red-700 px-4 py-3 rounded ">
+                    <strong className="font-bold">Error:</strong>
+                    <ul className="list-disc ml-4">
+
+                        <li>{deleteError}</li>
+                    </ul>
+                </div>
+            )} */}
 
                 <p className="page_number">{orderPage}</p>
                 <button className="next_button" onClick={nextPage} type="button">next</button>

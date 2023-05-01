@@ -10,12 +10,20 @@
   margin-bottom: 20px;
 }
 
+.list-item {
+  color: black;
+}
+
 .card-subtitle {
   color: rgba(242, 78, 30, 1);
   font-weight: bold;
   margin-top: 20px;
 }
 
+#edit_card{
+  font-size: 30px;
+  margin: 10px;
+}
 .order-icon {
   font-size: 30px;
   margin: 10px;

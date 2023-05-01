@@ -60,8 +60,8 @@ function App() {
       })
       .catch(error => {
         if (error.response && error.response.status === 401) {
-          console.log(error.response.data.errors)
-          setError(error.response.data.errors)
+           console.log(error.response.data.error)
+        setError(error.response.data.error)
         } else {
           console.log("An error occurred. Please try again later.")
           setError("An error occurred. Please try again later.");
@@ -76,7 +76,7 @@ function App() {
           <Route path="/" element={<Home setIsAuthenticated={setIsAuthenticated} isAuthenticated={isAuthenticated} admin={admin}/>} />
           <Route path="/about" element={<About setIsAuthenticated={setIsAuthenticated} />} />
           <Route path="/faq" element={<FaqPage setIsAuthenticated={setIsAuthenticated}/>}/>
-          <Route path="/login" element={<Login error={error} setError={setError}setIsAuthenticated={setIsAuthenticated} setValues={setValues} values={values} handleLogin={handleLogin} setUserId={userId} setAdmin={setAdmin}/>} />
+          <Route path="/login" element={<Login error={error}setIsAuthenticated={setIsAuthenticated} setValues={setValues} values={values} handleLogin={handleLogin} setUserId={userId} setAdmin={setAdmin}/>} />
           <Route path="/signup" element={<Signup error={error} setError={setError} setIsAuthenticated={setIsAuthenticated} />} />
         {isAuthenticated && (
         <>

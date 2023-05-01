@@ -57,9 +57,9 @@ function Signup() {
           <div className="bg-red-100 border mb-4 border-red-400 text-red-700 px-4 py-3 rounded ">
             <strong className="font-bold">Error:</strong>
             <ul className="list-disc ml-4">
-              {errors.map((error) => (
-                 <li>{error}</li>
-              ))}
+              {
+                 <li>{errors}</li>
+              }
             </ul>
           </div>
         }

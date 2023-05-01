@@ -75,7 +75,16 @@ word-break: break-word;
 border: 0;
 }
 
+.list-disc li {
+  color: purple;
+  display: flex;
+  justify-content: center;
+}
 
+.font-bold {
+  display: flex;
+  justify-content: center;
+}
 .next_button {
 background: #a50ed3;
 border-radius: 999px;

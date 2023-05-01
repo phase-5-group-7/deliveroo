@@ -1,27 +1,26 @@
 import React, { useEffect, useState } from "react";
 import './OrderList.css'
 import 'bootstrap/dist/css/bootstrap.css';
-import { TiDeleteOutline } from 'react-icons/ti';
-import { MdEditLocationAlt } from 'react-icons/md';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useParams } from 'react-router-dom';
+import { MdDeleteOutline, MdOutlineEdit } from 'react-icons/md'
 
 function OrderList() {
-    const {id} = useParams();
+    const { id } = useParams();
     const navigate = useNavigate();
     const [order, setOrder] = useState([]);
     const token = localStorage.getItem("token")
     useEffect(() => {
 
 
-        axios.get(`https://deliveroo-backend-api.onrender.com/orders/${id}`, {
+        axios.get(`http://localhost:3000/orders/${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
         },)
             .then((res) => {
-                if (res.data) {
+                if (res.status === 200) {
                     setOrder(res.data);
                     console.log(res.data);
                 } else {
@@ -37,7 +36,7 @@ function OrderList() {
 
     function handleDelete(id) {
 
-        fetch(`https://deliveroo-backend-api.onrender.com/orders/${id}`, {
+        fetch(`http://localhost:3000/orders/${id}`, {
             method: 'DELETE',
             headers: {
                 Authorization: `Bearer ${token}`
@@ -47,7 +46,9 @@ function OrderList() {
                 if (res.ok) {
                     console.log(res)
                     // setOrders(orders.filter((order) => order.id !== id))
+                    navigate("/orderlist")
                 } else {
+                    alert(`Parcel has already been delivered`)
                     console.log(`Already Delivered`)
                 }
             })
@@ -65,7 +66,7 @@ function OrderList() {
 
     return (
         <>
-        <div key={order.id} className="card" style={{width: "18rem"}}>
+            <div key={order.id} className="card" style={{ width: "18rem" }}>
                 <div className="card-body">
                     <h5 className="card-title">Order No: <span>{order.id}</span></h5>
 
@@ -94,17 +95,15 @@ function OrderList() {
 
                     <h6 className="card-subtitle mb-2">Status: <span id="status">{order.order_status}</span></h6>
 
-                    <button onClick={() => handleDelete(order.id) } className="order-icon"><TiDeleteOutline/></button>
-                    
-                
-                   <button onClick={() => handleUpdate(order.id) } className="order-icon"><MdEditLocationAlt/>
-                   </button>
-        
-                   
-                   
+
+                    <MdOutlineEdit onClick={() => handleUpdate(order.id)} className="action_icon" id="edit_card"/>
+                    <MdDeleteOutline onClick={() => handleDelete(order.id)} className="action_icon" id="edit_card"/>
+
+
+
                 </div>
             </div>
-        
+
         </>
     )
 }

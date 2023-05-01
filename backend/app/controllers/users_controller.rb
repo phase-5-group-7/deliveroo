@@ -6,7 +6,7 @@ class UsersController < ApplicationController
         if current_user.admin 
             render json: user, status: :ok
         else
-            render json: { message: "You are not an admin!" }, status: :unauthorized
+            render json: { error: "You are not an admin!" }, status: :unauthorized
         end
     end
 
@@ -14,6 +14,7 @@ class UsersController < ApplicationController
         render json: { user: UserSerializer.new(current_user) }, status: :accepted
     end
 
+    
     def create 
         @user = User.create(user_params)
         if @user.valid?

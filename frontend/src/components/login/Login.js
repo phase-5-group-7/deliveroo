@@ -17,16 +17,12 @@ function Login({handleLogin, setValues, values, error}) {
     <div id="login-box" className="login-box"> 
       <form onSubmit={handleLogin}>
       <h2 id="loginTitle">Login</h2>
-      {
-          <div className="bg-red-100 border mb-4 border-red-400 text-red-700 px-4 py-3 rounded ">
-            <strong className="font-bold">Error:</strong>
-            <ul className="list-disc ml-4">
-              {error.map((error) => (
-                 <li>{error}</li>
-              ))}
-            </ul>
+        {error && (
+          <div id="error" className="bg-red-100 border mb-4 border-red-400 text-red-700 px-4 py-3 rounded ">
+            <strong id="errorTitle">Error: </strong>
+            <span>{error}</span>
           </div>
-        }
+        )}
         <div id="user-box" className="user-box">
           <input type="text" id="email" onChange={handleEmailChange} />
           <label>Email</label>
