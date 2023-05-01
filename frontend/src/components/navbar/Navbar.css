@@ -1,16 +1,17 @@
 nav {
-    margin: 0 auto;
-    background: #141e30;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    height:75px;
-    width: auto;
-    padding: 6.5px;
-    border-bottom: 3px solid #ccc; 
+  background: #3d1266;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  transition: all 0.3s ease-in-out;
 }
 nav ul {
-  display: flex; 
+  display: flex;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -30,16 +31,44 @@ nav a {
 }
 
 nav a:hover {
-  color: rgba(242, 78, 30, 1);
+  color: rgb(240, 63, 10);
 }
 
 #login {
   margin-left: 50px;
 }
 
-#logo {
-  color: white;
-  margin: 0 10px;
-  font-size: 18px;
-  margin-left: 0;
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+
+.fade-exit {
+  opacity: 0;
+}
+
+.fade-exit-active {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+
+.logo-container {
+  height: 50px; /* adjust height to fit your logo */
+}
+
+.logo-container img {
+  height: 100%;
+  max-width: 100%;
+}
+.navbar img {
+  height: 74px;
+  margin-right: 20px;
+  padding: 5px;
+  border-radius: 5px;
+  object-fit: contain;
+  /* ensure the logo does not distort */
 }
