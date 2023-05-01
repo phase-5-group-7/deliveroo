@@ -18,7 +18,7 @@ function OrderCard(orderDetails) {
     }, [])
 
 
-    function handleDelete() {
+    function handleCloseDetails() {
         orderDetails.closeModal(null)
     }
 
@@ -70,17 +70,6 @@ function OrderCard(orderDetails) {
                         </p>
                         <hr className="line" />
 
-
-
-
-                        {/* 
-                    <ul className="list">
-
-                        <li className="list-item">Name: <span>{order.name}</span></li>
-                        <li className="list-item">User Id: <span>{order.user_id}</span></li>
-                        <li className="list-item">Phone Number: <span>{order.phone_number}</span></li>
-                        <li className="list-item">Drop-off: <span>{order.delivery_drop_off}</span></li>
-                    </ul> */}
                     </div>
                     <div className="order_card_section">
 
@@ -111,12 +100,6 @@ function OrderCard(orderDetails) {
                         <hr className="line" />
 
 
-                        {/* <h6 className="card-subtitle mb-2"> Recipient</h6>
-                        <ul className="list">
-                            <li className="list-item">Name: <span>{order.recepient_name}</span></li>
-                            <li className="list-item">Phone Number: <span>{order.recepient_phone_no}</span></li>
-                            <li className="list-item">Pick-up: <span>{order.pick_up}</span></li>
-                        </ul> */}
                     </div>
                     <div className="order_card_section">
 
@@ -163,23 +146,11 @@ function OrderCard(orderDetails) {
                         </p>
                         <hr className="line" />
 
-
-
-
-
-                        {/* <h6 className="card-subtitle mb-2">Package</h6>
-                        <ul className="list">
-                            <li className="list-item">Description: <span>{order.description}</span></li>
-                            <li className="list-item">Weight: <span>{order.weight}kg</span></li>
-                            <li className="list-item">Distance: <span>{order.distance}km</span></li>
-                            <li className="list-item">Duration: <span>{order.duration}</span></li>
-                            <li className="list-item">Price: ksh <span>{order.price}</span></li>
-                        </ul> */}
                     </div>
 
                 </div>
                 <div className="close">
-                    <button className="next_button" onClick={() => handleDelete()}>Close Details</button>
+                    <button className="next_button" onClick={() => handleCloseDetails()}>Close Details</button>
                 </div>
 
 
