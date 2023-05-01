@@ -36,19 +36,10 @@ function Home() {
             </>
 
             }
-           
-           
+                    
            </>
 
           }
-
-          {/* {!auth ? 
-          <>
-            <Link to="/login"><button id="btn">Get Stated</button></Link>
-          </> 
-          :<></>
-
-          }  */}
           
           { (auth && !admin) ? 
            <>
@@ -58,20 +49,6 @@ function Home() {
            <></>
 
           }
-
-          
-
-
-          {/* auth ?
-            (admin ?
-              <Link to="/orderlist"><button id="btn">Get Stated</button></Link>
-               : (
-                <Link to="/orders"><button id="btn">Get Stated</button></Link>
-              )
-            ) :
-              <Link to="/login"><button id="btn">Get Stated</button></Link>
-          } */}
-            {/* <Link to="/orders"><button id="btn">Get Stated</button></Link> */}
         </div>
         <div className="col-sm-5 offset-sm-2 col-md-4 offset-md-0">
           <img id="img" src={image} alt="Deliveroo" />
