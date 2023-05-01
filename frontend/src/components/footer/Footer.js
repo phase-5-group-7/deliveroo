@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Footer.css'
+import './Footer.css';
 import { BsFacebook, BsTwitter } from 'react-icons/bs';
-import {FaInstagramSquare} from 'react-icons/fa'
+import { FaInstagramSquare } from 'react-icons/fa';
+import { AiFillGithub } from 'react-icons/ai';
 
 function Footer() {
   return (
@@ -27,23 +28,32 @@ function Footer() {
           <li>
             <Link to="/about">Our Story</Link>
           </li>
-          <li>
-          </li>
-          
         </ul>
       </div>
       <div className="footer-section">
         <h3>Follow Us</h3>
         <ul>
-          <li>
-            <a href="#"> <BsFacebook/> deliverooke</a>
+        <li>
+            <a href="https://github.com/phase-5-group-7/deliveroo">
+              <AiFillGithub /> Github 
+            </a>
           </li>
           <li>
-            <a href="#"><FaInstagramSquare/> deliverooke</a>
+            <a href="#">
+              <BsFacebook /> deliverooke
+            </a>
           </li>
           <li>
-            <a href="#"><BsTwitter/> deliverooke</a>
+            <a href="#">
+              <FaInstagramSquare /> deliverooke
+            </a>
           </li>
+          <li>
+            <a href="#">
+              <BsTwitter /> deliverooke
+            </a>
+          </li>
+          
         </ul>
       </div>
     </footer>
