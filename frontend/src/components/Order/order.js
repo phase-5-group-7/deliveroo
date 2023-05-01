@@ -58,27 +58,27 @@ function OrderForm({admin}) {
     if (deliveryDropOff != null) {
       setOrder((prevOrder) => ({
         ...prevOrder,
-        ["delivery_drop_off"]: deliveryDropOff,
+        "delivery_drop_off": deliveryDropOff,
       }));
     }
 
     if (pickUp != null) {
       setOrder((prevOrder) => ({
         ...prevOrder,
-        ["pick_up"]: pickUp,
+        "pick_up": pickUp,
       }));
     }
 
     if (distance != null) {
       setOrder((prevOrder) => ({
         ...prevOrder,
-        ["distance"]: distance,
+        "distance": distance,
       }));
     }
 
     if (duration != null) {
       setOrder((prevOrder) => ({
-        ...prevOrder, ["duration"]: duration,
+        ...prevOrder, "duration": duration,
       }))
     }
 
