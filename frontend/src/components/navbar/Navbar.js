@@ -36,7 +36,7 @@ function Navbar() {
             <Link to="/about">ABOUT</Link>
           </li>
           <li >
-            <button onClick={handleLogout} id="login">LOGIN</button>
+          <Link to="/login" onClick={handleLogout} id="login">LOGIN</Link>
           </li>
         </>
         : 
@@ -55,7 +55,7 @@ function Navbar() {
           </li></> : <></>}
           
           <li >
-            <button onClick={handleLogout} id="login">LOGOUT</button>
+          <Link to="/" onClick={handleLogout} id="login">LOGOUT</Link>
           </li>
         </>
 

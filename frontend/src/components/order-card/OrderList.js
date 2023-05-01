@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import './OrderList.css'
 import 'bootstrap/dist/css/bootstrap.css';
-import { TiDeleteOutline } from 'react-icons/ti';
-import { MdEditLocationAlt } from 'react-icons/md';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { MDBBadge, MDBBtn, MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
+import { MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 import { MdDeleteOutline, MdOutlineEdit } from 'react-icons/md'
 
 function OrderList() {
@@ -26,7 +24,6 @@ function OrderList() {
             .then((res) => {
                 if (res.data) {
                     setAllOrders(res.data)
-                    // setOrders(res.data.splice(0,pageSize));
                     console.log(res.data);
                 } else {
                     alert("An error occurred while fetching orders")
@@ -179,10 +176,10 @@ function OrderList() {
             </MDBTable>
 
             <div className="table_button_container">
-                <button class="previous_button" onClick={prevPage} type="button">prev</button>
+                <button className="previous_button" onClick={prevPage} type="button">prev</button>
 
                 <p className="page_number">{orderPage}</p>
-                <button class="next_button" onClick={nextPage} type="button">next</button>
+                <button className="next_button" onClick={nextPage} type="button">next</button>
 
             </div>
 

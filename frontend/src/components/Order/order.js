@@ -16,22 +16,12 @@ import { useParams } from 'react-router-dom';
 import { ProgressBar } from './Progress';
 import { useNavigate } from "react-router-dom";
 
-// const containerStyle = {
-//   width: '400px',
-//   height: '400px'
-// };
-
-// const lib = ["places"];
-// const key = "AIzaSyDz2zx3bpHyh-ZpLHijapk9S4jXwsK0GZE";
-
 
 
 function OrderForm() {
   const navigate = useNavigate();
   const admin = localStorage.getItem("admin") === "true"
 
-  // setAdmin(admins)
-  // const [admin, setAdmin] = useState(localStorage.getItem("admin"));
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: "AIzaSyDz2zx3bpHyh-ZpLHijapk9S4jXwsK0GZE",
@@ -399,7 +389,7 @@ function OrderForm() {
                   <>
 
                     <div style={{display : "flex",gap:"10px",justifyContent:"flex-end",padding:"15px",width:"-webkit-fill-available"}}>
-                      <button class="map_button" type="submit" onClick={handleToggleMap}>Show Map</button>
+                      <button clasName="map_button" type="submit" onClick={handleToggleMap}>Show Map</button>
                     </div>
                   
                   </> 
@@ -407,22 +397,22 @@ function OrderForm() {
                   <>
                    <div  style={{display : "flex",width:"-webkit-fill-available",justifyContent: "space-between"}}>
                   <div style={{padding:"15px"}}>
-                    {selected.length == 2 ?<button class="map_button" type="submit" onClick={handleToggleMap}>Show Map</button> : <></> }
+                    {selected.length == 2 ?<button className="map_button" type="submit" onClick={handleToggleMap}>Show Map</button> : <></> }
                     
                   </div>
                  
 
                   <div style={{display : "flex",gap:"10px",justifyContent:"flex-end",padding:"15px"}}>
-                    {section !== 1 ? <button class="previous_button" type="button" onClick={handlePrevPage}>Previous</button>:<></>}
+                    {section !== 1 ? <button className="previous_button" type="button" onClick={handlePrevPage}>Previous</button>:<></>}
                     
 
                     {section === 3 ?
                       <>
-                        <button class="next_button" type="submit" onClick={handleSubmit}>Submit</button>
+                        <button className="next_button" type="submit" onClick={handleSubmit}>Submit</button>
                       </>
                       :
                       <>
-                        <button class="next_button" type="submit" onClick={handleNextPage}>Next</button>
+                        <button className="next_button" type="submit" onClick={handleNextPage}>Next</button>
                       </>
 
                     }
@@ -451,7 +441,7 @@ function OrderForm() {
                     />
                   </div>
                   <div className='close_map_container'>
-                  <button class="next_button" type="submit" onClick={handleToggleMap}>Close Map</button>
+                  <button className="next_button" type="submit" onClick={handleToggleMap}>Close Map</button>
                   </div>
                     
 
