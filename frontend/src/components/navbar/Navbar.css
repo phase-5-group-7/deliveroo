@@ -72,3 +72,6 @@ nav a:hover {
   object-fit: contain;
   /* ensure the logo does not distort */
 }
+.logo{
+  padding: 15px !important;
+}

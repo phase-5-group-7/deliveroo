@@ -29,7 +29,7 @@ function App() {
   const handleLogin = (event) => {
     event.preventDefault();
     axios
-      .post("https://deliveroo-backend-api.onrender.com/login", {
+      .post("http://localhost:3000/login", {
           email: values.email,
           password: values.password
       })
@@ -60,8 +60,8 @@ function App() {
       })
       .catch(error => {
         if (error.response && error.response.status === 401) {
-          console.log("Invalid username or password")
-          setError("Invalid username or password")
+           console.log(error.response.data.error)
+        setError(error.response.data.error)
         } else {
           console.log("An error occurred. Please try again later.")
           setError("An error occurred. Please try again later.");
@@ -77,7 +77,7 @@ function App() {
           <Route path="/about" element={<About setIsAuthenticated={setIsAuthenticated} />} />
           <Route path="/faq" element={<FaqPage setIsAuthenticated={setIsAuthenticated}/>}/>
           <Route path="/login" element={<Login error={error}setIsAuthenticated={setIsAuthenticated} setValues={setValues} values={values} handleLogin={handleLogin} setUserId={userId} setAdmin={setAdmin}/>} />
-          <Route path="/signup" element={<Signup setIsAuthenticated={setIsAuthenticated} />} />
+          <Route path="/signup" element={<Signup error={error} setError={setError} setIsAuthenticated={setIsAuthenticated} />} />
         {isAuthenticated && (
         <>
           <Route path="/orders" element={<OrderForm userId={userId} admin={admin}/>}/>

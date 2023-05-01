@@ -15,69 +15,61 @@ function Home() {
 
   return (
   <div>
-    <div className="container">
-      <div className="row">
-        <div id="home" className="col-sm-5 col-md-8">
+      <div className="home_container">
+        <div id="home" className="">
           <h1 id="welcome">Welcome to Deliveroo</h1>
-          <p>Your smart choice parcel delivery service.
+          <p id="welcome_subtext">Your smart choice parcel delivery service.
           Sign up to gain access to a quick and efficient delivery for your  personal use or business products</p>
           { (auth && admin) ? 
            <>
-            <Link to="/orders"><button id="btn">Get Stated</button></Link>
+            <Link to="/orders"><button id="btn">Get Started</button></Link>
            </>
            :
            <>
 
             { auth && !admin ?  <>
-              <Link to="/orderlist"><button id="btn">Get Stated</button></Link>
+              <Link to="/orderlist"><button id="btn">Get Started</button></Link>
             </> :
             <>
-             <Link to="/login"><button id="btn">Get Stated</button></Link>
+             <Link to="/login"><button id="btn">Get Started</button></Link>
             </>
 
             }
-           
-           
+                    
            </>
 
           }
-
-          {/* {!auth ? 
-          <>
-            <Link to="/login"><button id="btn">Get Stated</button></Link>
-          </> 
-          :<></>
-
-          }  */}
           
           { (auth && !admin) ? 
            <>
-            <Link to="/orderlist"><button id="btn">Get Stated</button></Link>
+            <Link to="/orderlist"><button id="btn">Get Started</button></Link>
            </>
            :
            <></>
 
           }
-
-          
-
-
-          {/* auth ?
-            (admin ?
-              <Link to="/orderlist"><button id="btn">Get Stated</button></Link>
-               : (
-                <Link to="/orders"><button id="btn">Get Stated</button></Link>
-              )
-            ) :
-              <Link to="/login"><button id="btn">Get Stated</button></Link>
-          } */}
-            {/* <Link to="/orders"><button id="btn">Get Stated</button></Link> */}
         </div>
-        <div className="col-sm-5 offset-sm-2 col-md-4 offset-md-0">
+        <div className="">
           <img id="img" src={image} alt="Deliveroo" />
         </div>
       </div>
-    </div>
+
+      <div className='secondary_container'>
+          <div className='block block_one'>
+            <p className='block_text'>Fast</p>
+          </div>
+          <div className='block block_two'>
+
+            <p className='block_text'>Reliable</p>
+          </div>
+          <div className='block block_three'>
+            <p className='block_text'>Honest</p>
+          </div>
+          <div className='block block_four'>
+          <p className='block_text'>Afforable</p>
+          </div>
+      </div>
+
   </div>
   );
 }

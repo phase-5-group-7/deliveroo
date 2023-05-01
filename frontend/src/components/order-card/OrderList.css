@@ -10,12 +10,21 @@
   margin-bottom: 20px;
 }
 
-.card-subtitle {
-  color: rgba(242, 78, 30, 1);
-  font-weight: bold;
-  margin-top: 20px;
+.list-item {
+  color: black;
 }
 
+.card-subtitle {
+  color: #141e30;
+  font-weight: bold;
+  margin-top: 10px;
+  font-size: 22px;
+}
+
+#edit_card{
+  font-size: 30px;
+  margin: 10px;
+}
 .order-icon {
   font-size: 30px;
   margin: 10px;
@@ -43,6 +52,11 @@
   font-size: 22px;
   color: #141e30;
 }
+.action_icon_disabled{
+  font-size: 22px;
+  color: #141e30;
+  opacity: 0.3;
+}
 .action_icon_text{
   font-size: 14px;
   color: #141e30;
@@ -68,3 +82,57 @@
   justify-content: end;
   gap: 20px;
 }
+.modal_container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  justify-content: center;
+  background-color: rgba(0,0,0,.7);
+  }
+  .order_card_container{
+    display: flex;
+    gap:30px;
+    padding: 0 20px;
+  }
+  .close{
+    display: flex;
+    justify-content: end;
+    padding: 16px;
+  }
+  .order_card_header{
+    background-color:#141e30;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+  .order_card_title{
+    text-align: start;
+    font-weight: 600;
+    color: white;
+  }
+  .order_label{
+    padding: unset;
+    margin: unset;
+    text-align: start;
+    font-size: 17px;
+    color: black;
+    opacity: .5;
+  }
+  .order_text{
+    padding: unset;
+    margin: unset;
+    text-align: start;
+    font-size: 22px;
+    color: black;
+  }
+  .line{
+    margin: 4px 0;
+  }

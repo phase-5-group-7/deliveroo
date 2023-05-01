@@ -1,113 +1,165 @@
 import React, { useEffect, useState } from "react";
 import './OrderList.css'
 import 'bootstrap/dist/css/bootstrap.css';
-import { TiDeleteOutline } from 'react-icons/ti';
-import { MdEditLocationAlt } from 'react-icons/md';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useParams } from 'react-router-dom';
+import { MdDeleteOutline, MdOutlineEdit } from 'react-icons/md'
+import { SlClose } from 'react-icons/sl'
 
-function OrderList() {
-    const {id} = useParams();
+function OrderCard(orderDetails) {
+    const { id } = useParams();
     const navigate = useNavigate();
     const [order, setOrder] = useState([]);
     const token = localStorage.getItem("token")
+
     useEffect(() => {
-
-
-        axios.get(`https://deliveroo-backend-api.onrender.com/orders/${id}`, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        },)
-            .then((res) => {
-                if (res.data) {
-                    setOrder(res.data);
-                    console.log(res.data);
-                } else {
-                    alert("An error occurred while fetching orders")
-                }
-            })
-            .catch(error => {
-                console.error(error);
-                alert("An error occurred while fetching orders.")
-            })
+        setOrder(orderDetails.details[0])
     }, [])
 
 
-    function handleDelete(id) {
-
-        fetch(`https://deliveroo-backend-api.onrender.com/orders/${id}`, {
-            method: 'DELETE',
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        })
-            .then((res) => {
-                if (res.ok) {
-                    console.log(res)
-                    // setOrders(orders.filter((order) => order.id !== id))
-                } else {
-                    console.log(`Already Delivered`)
-                }
-            })
-            .catch(error => {
-                console.error(error);
-                alert("An error occurred while fetching orders.")
-            })
+    function handleCloseDetails() {
+        orderDetails.closeModal(null)
     }
 
-
-    function handleUpdate(id) {
-
-        navigate(`/updateorder/${id}`);
-    }
 
     return (
         <>
-        <div key={order.id} className="card" style={{width: "18rem"}}>
-                <div className="card-body">
-                    <h5 className="card-title">Order No: <span>{order.id}</span></h5>
+            <div key={order.id} className="card" style={{}}>
+                <div className="order_card_header">
+                    <p className="order_card_title">Order No: <span>{order.id}</span></p>
 
-                    <h6 className="card-subtitle mb-2">User Id: <span>{order.user_id}</span></h6>
-                    <ul className="list">
-                        <li className="list-item">Name: <span>{order.name}</span></li>
-                        <li className="list-item">Phone Number: <span>{order.phone_number}</span></li>
-                        <li className="list-item">Drop-off: <span>{order.delivery_drop_off}</span></li>
-                    </ul>
+                    <p className="status_badge"> {order.order_status}</p>
 
-                    <h6 className="card-subtitle mb-2"> Recipient</h6>
-                    <ul className="list">
-                        <li className="list-item">Name: <span>{order.recepient_name}</span></li>
-                        <li className="list-item">Phone Number: <span>{order.recepient_phone_no}</span></li>
-                        <li className="list-item">Pick-up: <span>{order.pick_up}</span></li>
-                    </ul>
-
-                    <h6 className="card-subtitle mb-2">Package</h6>
-                    <ul className="list">
-                        <li className="list-item">Description: <span>{order.description}</span></li>
-                        <li className="list-item">Weight: <span>{order.weight}kg</span></li>
-                        <li className="list-item">Distance: <span>{order.distance}km</span></li>
-                        <li className="list-item">Duration: <span>{order.duration}</span></li>
-                        <li className="list-item">Price: ksh <span>{order.price}</span></li>
-                    </ul>
-
-                    <h6 className="card-subtitle mb-2">Status: <span id="status">{order.order_status}</span></h6>
-
-                    <button onClick={() => handleDelete(order.id) } className="order-icon"><TiDeleteOutline/></button>
-                    
-                
-                   <button onClick={() => handleUpdate(order.id) } className="order-icon"><MdEditLocationAlt/>
-                   </button>
-        
-                   
-                   
                 </div>
+                <div className="order_card_container">
+
+                    <div className="order_card_section">
+
+                        <h6 className="card-subtitle mb-2">User </h6>
+
+                        <p className="order_label">
+                            Name
+                        </p>
+                        <p className="order_text">
+                            {order.name}
+                        </p>
+                        <hr className="line" />
+
+                        <p className="order_label">
+                            User Id
+                        </p>
+                        <p className="order_text">
+                            {order.user_id}
+                        </p>
+                        <hr className="line" />
+
+                        <p className="order_label">
+                            Phone Number
+                        </p>
+                        <p className="order_text">
+                            {order.phone_number}
+                        </p>
+                        <hr className="line" />
+
+                        <p className="order_label">
+                            Drop-off
+                        </p>
+                        <p className="order_text">
+                            {order.delivery_drop_off}
+                        </p>
+                        <hr className="line" />
+
+                    </div>
+                    <div className="order_card_section">
+
+                        <h6 className="card-subtitle mb-2">Recipient </h6>
+
+                        <p className="order_label">
+                            Name
+                        </p>
+                        <p className="order_text">
+                            {order.recepient_name}
+                        </p>
+                        <hr className="line" />
+
+                        <p className="order_label">
+                            Phone Number
+                        </p>
+                        <p className="order_text">
+                            {order.recepient_phone_no}
+                        </p>
+                        <hr className="line" />
+
+                        <p className="order_label">
+                            Pick up
+                        </p>
+                        <p className="order_text">
+                            {order.pick_up}
+                        </p>
+                        <hr className="line" />
+
+
+                    </div>
+                    <div className="order_card_section">
+
+
+                        <h6 className="card-subtitle mb-2">Package </h6>
+
+                        <p className="order_label">
+                            Description
+                        </p>
+                        <p className="order_text">
+                            {order.description}
+                        </p>
+                        <hr className="line" />
+
+                        <p className="order_label">
+                            Weight
+                        </p>
+                        <p className="order_text">
+                            {order.weight}
+                        </p>
+                        <hr className="line" />
+
+                        <p className="order_label">
+                            Distance
+                        </p>
+                        <p className="order_text">
+                            {order.distance} km
+                        </p>
+                        <hr className="line" />
+
+                        <p className="order_label">
+                            Duration
+                        </p>
+                        <p className="order_text">
+                            {order.duration}
+                        </p>
+                        <hr className="line" />
+
+                        <p className="order_label">
+                            Price
+                        </p>
+                        <p className="order_text">
+                            Ksh {order.price}
+                        </p>
+                        <hr className="line" />
+
+                    </div>
+
+                </div>
+                <div className="close">
+                    <button className="next_button" onClick={() => handleCloseDetails()}>Close Details</button>
+                </div>
+
+
+
             </div>
-        
+
         </>
     )
 }
 
-export default OrderList
+export default OrderCard
 

@@ -7,17 +7,14 @@ form {
 }
 
 #login-box {
-  margin: 0 auto;
-  margin-top: 400px;
-  margin-left: 300px;
+  margin: 5rem auto;
   font-family: sans-serif;
-  width: 400px;
   padding: 30px;
-  transform: translate(-50%, -50%);
   background: linear-gradient(#141e30, #243b55);
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0,0,0,.6);
   border-radius: 10px;
+  width: 400px;
 }
 
 #loginTitle {
@@ -104,6 +101,15 @@ form {
               0 0 25px #03e9f4,
               0 0 50px #03e9f4,
               0 0 100px #03e9f4;
+}
+
+#loginBtn{
+  padding: unset;
+}
+#loginTitle {
+  justify-content: center;
+  display: flex;
+  color: white;
 }
 
 #login-box a span {

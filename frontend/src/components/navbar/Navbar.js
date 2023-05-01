@@ -4,6 +4,7 @@ import './Navbar.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { useNavigate } from "react-router-dom";
+import logo from './courier.png'
 
 function Navbar() {
   const navigate = useNavigate();
@@ -24,7 +25,9 @@ function Navbar() {
   return (
     <nav className="navbar ">
       <div>
-        <Link to="/"><img src="https://image.similarpng.com/very-thumbnail/2020/06/Fast-delivery-logo-design-vector-PNG.png" alt="Deliveroo Logo" height="40" /></Link>
+        <Link to="/"><img className='logo' src={logo} alt="Deliveroo Logo" height="40" />
+          DELIVEROO
+        </Link>
       </div>
       <ul>
         {!auth ?

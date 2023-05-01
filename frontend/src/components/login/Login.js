@@ -14,7 +14,7 @@ function Login({handleLogin, setValues, values, error}) {
  
   return (
 
-    <div id="login-box" className="login-box"> 
+    <div id="login-box"> 
       <form onSubmit={handleLogin}>
       <h2 id="loginTitle">Login</h2>
         {error && (
@@ -37,7 +37,8 @@ function Login({handleLogin, setValues, values, error}) {
           <span></span>
           <span></span>
           <span></span>
-          <button >Login</button>
+          {/* <button id="loginBtn" >Login</button> */}
+          <p onClick={handleLogin} id="loginBtn">Login</p>
         </a>
         <p>Don't have an account?</p>
         <a href="/signup">Sign up here</a>

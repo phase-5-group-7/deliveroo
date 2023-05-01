@@ -2,11 +2,10 @@
   display:block;
   flex-wrap: wrap;
   justify-content: space-between;
-  width: 45%;
+  /* width: 45%; */
   margin: 0 auto;
-  border: 1.5px solid #b113dd;
+  border: 1.5px solid black;
   border-radius: 12px;
-  opacity: 0.8;
   background-color: rgb(250, 246, 255);
   box-shadow: #a50ed3 0 10px 20px -10px;
   padding-left: unset;
@@ -33,11 +32,7 @@ input {
   
 }
 
-h2 {
-  width: 100%;
-  margin-bottom: 1rem;
-  background-color:#9f7eb9
-}
+
 
 .main_container{
 display: flex;
@@ -75,7 +70,16 @@ word-break: break-word;
 border: 0;
 }
 
+.list-disc li {
+  color: purple;
+  display: flex;
+  justify-content: center;
+}
 
+.font-bold {
+  display: flex;
+  justify-content: center;
+}
 .next_button {
 background: #a50ed3;
 border-radius: 999px;

@@ -6,6 +6,8 @@ class Order < ApplicationRecord
   enum :order_status, [:ONGOING, :DELIVERED]
   
 
+  validates :name, :phone_number, :recepient_name, :recepient_phone_no, :description, :order_status, :weight, :delivery_drop_off, :pick_up, :distance, :duration, presence: true
+
 
     private
    
