@@ -54,12 +54,10 @@ function Signup() {
       <form onSubmit={handleSubmit}>
         <h2>Sign Up</h2>
         {
-          <div className="bg-red-100 border mb-4 border-red-400 text-red-700 px-4 py-3 rounded ">
+          <div>
             <strong className="font-bold">Error:</strong>
             <ul className="list-disc ml-4">
-              {
                  <li>{errors}</li>
-              }
             </ul>
           </div>
         }
