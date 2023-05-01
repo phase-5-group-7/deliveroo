@@ -5,6 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 import { MdDeleteOutline, MdOutlineEdit } from 'react-icons/md'
+import OrderCard from '../order-card/OrderCard'
 
 function OrderList() {
     const navigate = useNavigate();
@@ -14,6 +15,8 @@ function OrderList() {
 
     const [pageSize, setPageSize] = useState(5)
     const [orderPage, setOrderPage] = useState(1)
+
+    const [showMoreDetails,setShowMoreDetails] = useState(null)
 
     useEffect(() => {
         axios.get("http://localhost:3000/orders", {
@@ -44,27 +47,31 @@ function OrderList() {
 
 
 
-    function handleDelete(id) {
-
-        fetch(`http://localhost:3000/orders/${id}`, {
-            method: 'DELETE',
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        })
-            .then((res) => {
-                if (res.ok) {
-                    console.log(res)
-                    setOrders(orders.filter((order) => order.id !== id))
-                } else {
-                    alert(`Parcel has already been delivered`)
-                    console.log(`Already Delivered`)
+    function handleDelete(id,canDelete) {
+        if(canDelete){
+            fetch(`http://localhost:3000/orders/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    Authorization: `Bearer ${token}`
                 }
             })
-            .catch(error => {
-                console.error(error);
-                alert("An error occurred while fetching orders.")
-            })
+                .then((res) => {
+                    if (res.ok) {
+                        console.log(res)
+                        setOrders(orders.filter((order) => order.id !== id))
+                    } else {
+                        alert(`Parcel has already been delivered`)
+                        console.log(`Already Delivered`)
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                    alert("An error occurred while fetching orders.")
+                })
+        }  else {
+            alert("Sorry you can not delete a delivered item")
+        }  
+       
     }
 
 
@@ -74,7 +81,9 @@ function OrderList() {
     }
 
     function moreDetails(id) {
-        navigate(`/ordercard/${id}`);
+        let moreDetailOrder = allOrders.filter((order) => order.id === id)
+        setShowMoreDetails(moreDetailOrder)
+        // navigate(`/ordercard/${id}`);
     }
 
     function nextPage() {
@@ -148,7 +157,9 @@ function OrderList() {
                                 <td >
                                     <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
                                         <MdOutlineEdit onClick={() => handleUpdate(order.id)} className="action_icon" />
-                                        <MdDeleteOutline onClick={() => handleDelete(order.id)} className="action_icon" />
+                                        
+                                        <MdDeleteOutline onClick={() => handleDelete(order.id,order.order_status !== "DELIVERED")} className={order.order_status === "DELIVERED" ? "action_icon_disabled" : "action_icon" }/>
+
 
                                         <p onClick={() => moreDetails(order.id)} className="action_icon_text" style={{ fontSize: "14px" }} color='link' rounded size='sm'>
                                             View details
@@ -176,7 +187,9 @@ function OrderList() {
             </MDBTable>
 
             <div className="table_button_container">
-                <button className="previous_button" onClick={prevPage} type="button">prev</button>
+
+                {orderPage > 1 && (<button className="previous_button" onClick={prevPage} type="button">prev</button>)}
+               
                 {/* {deleteError && (
                 <div className="bg-red-100 border mb-4 border-red-400 text-red-700 px-4 py-3 rounded ">
                     <strong className="font-bold">Error:</strong>
@@ -192,6 +205,12 @@ function OrderList() {
 
             </div>
 
+
+            {showMoreDetails !== null  && (<div className="modal_container">
+                <OrderCard details={showMoreDetails} closeModal={setShowMoreDetails}/>
+            </div> )}    
+               
+            
         </div>
     )
 }

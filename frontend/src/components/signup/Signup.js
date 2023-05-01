@@ -7,7 +7,7 @@ function Signup() {
   const [username, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [admin, setAdmin] = useState()
+  const [admin, setAdmin] = useState()
   const [errors, setErrors] = useState("")
 
   const handleNameChange = (event) => {
@@ -22,9 +22,9 @@ function Signup() {
     setPassword(event.target.value);
   };
   // Only to be used when creating an admin
-  // const handleAdmin = (event) => {
-  //   setAdmin(event.target.value)
-  // }
+  const handleAdmin = (event) => {
+    setAdmin(event.target.value)
+  }
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -32,7 +32,7 @@ function Signup() {
         username,
         email,
         password,
-        // admin
+        admin
       });
       localStorage.setItem("token", response.data.token);
       window.location.href = "/login";
@@ -52,12 +52,12 @@ function Signup() {
   return (
     <div id="login-box" className="login-box">
       <form onSubmit={handleSubmit}>
-        <h2>Sign Up</h2>
+        <h2 id="loginTitle">Sign Up</h2>
         {
           <div>
             <strong className="font-bold">Error:</strong>
             <ul className="list-disc ml-4">
-                 <li>{errors}</li>
+                 <li id="error_color">{errors}</li>
             </ul>
           </div>
         }
@@ -75,17 +75,17 @@ function Signup() {
         </div>
 
         {/* Only to be used when creating an admin */}
-        {/* <div id="user-box" className="user-box">
+        <div id="user-box" className="user-box">
         <input type="text" id="admin" value={admin} onChange={handleAdmin} />
         <label>Admin Rights</label>
-      </div> */}
+      </div>
 
         <a href="#">
           <span></span>
           <span></span>
           <span></span>
           <span></span>
-          <button>Sign Up</button>
+          <p onClick={handleSubmit} id="loginBtn">Sign Up</p>
         </a>
         <p>Already have an account?</p>
         <a href="/login">Login here</a>

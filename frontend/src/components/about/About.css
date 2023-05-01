@@ -2,7 +2,7 @@
 
 /* About.css */
 .about-container {
-    max-width: 600px;
+    max-width: 1300px;
     margin: 0 auto;
     padding: 20px;
     color: rgba(44, 17, 79, 1);
@@ -45,4 +45,55 @@
   
   .about {
     font-family: 'Roboto', sans-serif;
+    text-align: start;
+    padding: 20px;
+    font-size: 18px;
+  }
+  .about_us_container{
+    display: flex;
+    align-items: center;
+    gap:20px;
+  }
+  .title_container{
+    display: grid;
+    width: -webkit-fill-available;
+    align-items: center;
+
+  }
+
+  .secondary_container{
+    display: flex;
+    height: 20vh;
+  }
+
+  .block{
+    display: grid;
+    width: -webkit-fill-available;
+    /* height: 20vh; */
+    align-items: center;
+  }
+
+  .block_one{
+    background-color: #9f7eb9;
+  }
+
+  .block_two{
+    background-color: #765c89;
+  }
+
+  .block_three{
+    background-color: #5a4767;
+  }
+
+
+  .block_four{
+    background-color: #403249;
+  }
+
+
+
+  .block_text {
+    font-weight: 100;
+    font-size: 30px;
+    color: white;
   }

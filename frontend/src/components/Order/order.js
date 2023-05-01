@@ -264,7 +264,7 @@ function OrderForm() {
           <h1>Loading...</h1>
         ) : (
           <>
-            <div className="card">
+            <div className="card" style={{width : "45%",minWidth:"300px"}}>
               <header className='header_container'>
                 <p className='header_text'>
                   {section === 1 ? <>User Details</> : <></>}
@@ -313,7 +313,6 @@ function OrderForm() {
 
                 {section === 2 ?
                   <div className='card_padding'>
-                    {/* <h2>Recipient</h2> */}
                     <label>
                       Name:
                       <input
@@ -423,7 +422,7 @@ function OrderForm() {
                     <>
 
                       <div style={{ display: "flex", gap: "10px", justifyContent: "flex-end", padding: "15px", width: "-webkit-fill-available" }}>
-                        <button clasName="map_button" type="submit" onClick={handleToggleMap}>Show Map</button>
+                        <button className="map_button" type="submit" onClick={handleToggleMap}>Show Map</button>
                       </div>
 
                     </>
