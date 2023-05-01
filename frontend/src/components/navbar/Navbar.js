@@ -3,21 +3,31 @@ import { Link } from 'react-router-dom';
 import './Navbar.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import { useNavigate } from "react-router-dom";
 
-function Navbar({ isAuthenticated, setIsAuthenticated }) {
+function Navbar() {
+  const navigate = useNavigate();
+  const admin = localStorage.getItem("admin") === "true"
+  let auth = localStorage.getItem("isAuthenticated") === "true"
+
   const handleLogout = () => {
     // Clear the token from local storage
-    localStorage.removeItem('token');
-    setIsAuthenticated(false);
+    localStorage.removeItem("token");
+    localStorage.removeItem("isAuthenticated")
+    localStorage.removeItem("admin")
+    auth = false
+
+    navigate(`/login`);
+
   };
 
   return (
     <nav className="navbar ">
       <div>
-        <img src="https://image.similarpng.com/very-thumbnail/2020/06/Fast-delivery-logo-design-vector-PNG.png" alt="Deliveroo Logo" height="40" />
+        <Link to="/"><img src="https://image.similarpng.com/very-thumbnail/2020/06/Fast-delivery-logo-design-vector-PNG.png" alt="Deliveroo Logo" height="40" /></Link>
       </div>
       <ul>
-        {isAuthenticated ? (
+        {!auth ?
           <>
             <CSSTransition classNames="fade" timeout={300}>
               <li>
@@ -31,13 +41,13 @@ function Navbar({ isAuthenticated, setIsAuthenticated }) {
             </CSSTransition>
             <CSSTransition classNames="fade" timeout={300}>
               <li>
-                <Link id="login" to="/login">
+                <Link id="login" onClick={handleLogout} to="/login">
                   LOGIN
                 </Link>
               </li>
             </CSSTransition>
           </>
-        ) : (
+          :
           <>
             <CSSTransition classNames="fade" timeout={300}>
               <li>
@@ -51,24 +61,24 @@ function Navbar({ isAuthenticated, setIsAuthenticated }) {
             </CSSTransition>
             <CSSTransition classNames="fade" timeout={300}>
               <li>
-                <Link to="/orders">ORDER</Link>
+                <Link to="/orderlist">ORDERS</Link>
               </li>
             </CSSTransition>
-            <CSSTransition classNames="fade" timeout={300}>
+            {!admin ? <><CSSTransition classNames="fade" timeout={300}>
               <li>
-                <Link to="/ordercard">ORDER CARD</Link>
+                <Link to="/orders">CREATE ORDER</Link>
               </li>
-            </CSSTransition>
+            </CSSTransition></> : <></>}
 
             <CSSTransition classNames="fade" timeout={300}>
               <li>
-                <Link onClick={handleLogout} id="login" to="/login">
+                <Link onClick={handleLogout} to="/">
                   LOGOUT
                 </Link>
               </li>
             </CSSTransition>
           </>
-        )}
+        }
       </ul>
     </nav>
   );

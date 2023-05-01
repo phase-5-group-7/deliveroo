@@ -20,7 +20,7 @@ form {
   border-radius: 10px;
 }
 
-#login-box h2 {
+#loginTitle {
   margin: 0 0 30px;
   padding: 20px;
   color: #fff;
@@ -43,6 +43,13 @@ form {
   background: transparent;
 }
 
+#errorTitle {
+  color: red;
+  font-weight:  bold;
+}
+#error {
+  color: red;
+}
 
 #login-box label {
   font-weight: bold;

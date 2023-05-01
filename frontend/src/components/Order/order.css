@@ -4,7 +4,6 @@
   justify-content: space-between;
   width: 45%;
   margin: 0 auto;
-  /* padding: 1rem; */
   border: 1.5px solid #b113dd;
   border-radius: 12px;
   opacity: 0.8;
@@ -49,44 +48,8 @@ padding: 40px;
 .map_container{
 display: flex;
 align-items: center;
-/* margin: 100px; */
 
 }
-
-
-/* <!-- HTML !-->
-<button class="button-16" role="button">Button 16</button> */
-
-/* CSS */
-/* .previous_button {
-background-color: #f8f9fa;
-border: 1px solid #f8f9fa;
-border-radius: 4px;
-color: #3c4043;
-cursor: pointer;
-font-family: arial,sans-serif;
-font-size: 14px;
-height: 36px;
-line-height: 27px;
-min-width: 54px;
-padding: 0 16px;
-text-align: center;
-user-select: none;
--webkit-user-select: none;
-touch-action: manipulation;
-white-space: pre;
-}
-
-.previous_button:hover {
-border-color: #dadce0;
-box-shadow: rgba(0, 0, 0, .1) 0 1px 1px;
-color: #202124;
-}
-
-.previous_button:focus {
-border-color: #4285f4;
-outline: none;
-} */
 
 
 /* CSS */

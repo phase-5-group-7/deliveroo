@@ -8,15 +8,15 @@ import Login from '../login/Login';
 import Footer from '../footer/Footer';
 import FaqPage from '../faq/FaqPage';
 import Signup from '../signup/Signup';
-import OrderCard from '../order-card/OrderCard';
+import OrderList from '../order-card/OrderList';
 import OrderForm from '../Order/order';
+import OrderCard from "../order-card/OrderCard"
 import axios from 'axios';
-import UpdateOrder from '../order-card/UpdateOrder';
 
 function App() {
   
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  // const [error, setError] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState("true");
+  const [error, setError] = useState(null);
   const [userId, setUserId] = useState(null)
   const [admin, setAdmin] = useState(null)
 
@@ -26,8 +26,7 @@ function App() {
   })
 
 
-
-  const handleSubmit = (event) => {
+  const handleLogin = (event) => {
     event.preventDefault();
     axios
       .post("https://deliveroo-backend-api.onrender.com/login", {
@@ -35,41 +34,60 @@ function App() {
           password: values.password
       })
       .then((res) => {
+        if (res.status === 202) {
         localStorage.setItem("token", res.data.jwt)
         localStorage.setItem("user_id", res.data.user.id)
+        localStorage.setItem("admin", res.data.user.admin)
+
+        const auth = localStorage.setItem("isAuthenticated", isAuthenticated)
+
         setUserId(res.data.user.id)
         setAdmin(res.data.user.admin)
-        window.location.href = "/";
-        console.log("Sucessfully logged in")
-        // console.log(res.data.user.id)
-        // console.log(res.data.user.admin)
+        setIsAuthenticated(auth)
 
+        if(res.data.user.admin){
+          window.location.href = "/orderlist";
+        } else{
+          window.location.href = "/orders";
+        }
+        
+        console.log("Sucessfully logged in")
+        console.log(res.data)
+        // console.log(res)
+        } else {
+          alert("Failed to Login")
+        }
       })
       .catch(error => {
-        console.error(error)
-        alert("An error occurred during login.")
+        if (error.response && error.response.status === 401) {
+          console.log("Invalid username or password")
+          setError("Invalid username or password")
+        } else {
+          console.log("An error occurred. Please try again later.")
+          setError("An error occurred. Please try again later.");
+        }
       })
   };
 
   return (
     <div className="App">
-        <Navbar setIsAuthenticated={setIsAuthenticated} isAuthenticated={isAuthenticated} />
+        <Navbar setIsAuthenticated={setIsAuthenticated} isAuthenticated={isAuthenticated} setadmin={admin} />
         <Routes>
-          <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} setValues={setValues} values={values} handleSubmit={handleSubmit} setUserId={userId} setAdmin={setAdmin}/>} />
-          <Route path="/signup" element={<Signup setIsAuthenticated={setIsAuthenticated} />} />
-          <Route path="/" element={<Home setIsAuthenticated={setIsAuthenticated}/>} />
+          <Route path="/" element={<Home setIsAuthenticated={setIsAuthenticated} isAuthenticated={isAuthenticated} admin={admin}/>} />
           <Route path="/about" element={<About setIsAuthenticated={setIsAuthenticated} />} />
           <Route path="/faq" element={<FaqPage setIsAuthenticated={setIsAuthenticated}/>}/>
-          <Route path="/orders" element={<OrderForm isAuthenticated={isAuthenticated} userId={userId} admin={admin}/>}/>
-          <Route path="/ordercard" element={<OrderCard isAuthenticated={isAuthenticated} userId={userId} admin={admin}/>}/>
-          <Route path="/updateorder/:id" element={<OrderForm isAuthenticate=
-          {isAuthenticated} userId={userId} admin={admin}/>}/>
-
-          {/* {isAuthenticated && (
-            <>
-            <Route path="/ordercard" element={<OrderCard token={token} isAuthenticated={isAuthenticated} userId={userId} email={email}/>}/>
-            </>
-          )} */}
+          <Route path="/login" element={<Login error={error}setIsAuthenticated={setIsAuthenticated} setValues={setValues} values={values} handleLogin={handleLogin} setUserId={userId} setAdmin={setAdmin}/>} />
+          <Route path="/signup" element={<Signup setIsAuthenticated={setIsAuthenticated} />} />
+        {isAuthenticated && (
+        <>
+          <Route path="/orders" element={<OrderForm userId={userId} admin={admin}/>}/>
+          <Route path="/orderlist" element={<OrderList userId={userId} admin={admin}/>}/>
+          <Route path="/updateorder/:id" element={<OrderForm setAdmin={admin} userId={userId} admin={admin}/>}/> 
+          <Route path="/ordercard/:id" element={<OrderCard userId={userId} admin={admin}/>}/>
+          </>
+          )
+          }
+           
         </Routes>
         <Footer/>
     </div>

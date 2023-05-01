@@ -1,40 +1,41 @@
-import React, {useEffect, useState} from "react";
-import './OrderCard.css'
+import React, { useEffect, useState } from "react";
+import './OrderList.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import { TiDeleteOutline } from 'react-icons/ti';
 import { MdEditLocationAlt } from 'react-icons/md';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 
-function OrderCard() {
+function OrderList() {
+    const {id} = useParams();
     const navigate = useNavigate();
-    const [orders, setOrders] = useState([]);
-
-    useEffect(() => {
+    const [order, setOrder] = useState([]);
     const token = localStorage.getItem("token")
-        
-        axios.get("https://deliveroo-backend-api.onrender.com/orders", {
+    useEffect(() => {
+
+
+        axios.get(`https://deliveroo-backend-api.onrender.com/orders/${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
-            },)
+        },)
             .then((res) => {
                 if (res.data) {
-                    setOrders(res.data);
+                    setOrder(res.data);
                     console.log(res.data);
                 } else {
                     alert("An error occurred while fetching orders")
                 }
             })
             .catch(error => {
-            console.error(error);
-            alert("An error occurred while fetching orders.")
-        })
+                console.error(error);
+                alert("An error occurred while fetching orders.")
+            })
     }, [])
-   
+
 
     function handleDelete(id) {
-        const token = localStorage.getItem("token")
 
         fetch(`https://deliveroo-backend-api.onrender.com/orders/${id}`, {
             method: 'DELETE',
@@ -42,34 +43,33 @@ function OrderCard() {
                 Authorization: `Bearer ${token}`
             }
         })
-        .then((res) => {
-            if (res.ok){
-                console.log(res)
-                setOrders(orders.filter((order) => order.id !== id))
-            } else {
-                console.log(`Already Delivered`)
-            }
-        })
-        .catch(error => {
-            console.error(error);
-            alert("An error occurred while fetching orders.")
-        })
+            .then((res) => {
+                if (res.ok) {
+                    console.log(res)
+                    // setOrders(orders.filter((order) => order.id !== id))
+                } else {
+                    console.log(`Already Delivered`)
+                }
+            })
+            .catch(error => {
+                console.error(error);
+                alert("An error occurred while fetching orders.")
+            })
     }
 
 
     function handleUpdate(id) {
-        
+
         navigate(`/updateorder/${id}`);
     }
-    
-    return (
-        <div>
-            {orders && orders.length > 0 ? orders.map(order => (
-            <div key={order.id} className="card" style={{width: "18rem"}}>
-                <div className="card-body">
-                    <h5 className="card-title">Order</h5>
 
-                    <h6 className="card-subtitle mb-2">User</h6>
+    return (
+        <>
+        <div key={order.id} className="card" style={{width: "18rem"}}>
+                <div className="card-body">
+                    <h5 className="card-title">Order No: <span>{order.id}</span></h5>
+
+                    <h6 className="card-subtitle mb-2">User Id: <span>{order.user_id}</span></h6>
                     <ul className="list">
                         <li className="list-item">Name: <span>{order.name}</span></li>
                         <li className="list-item">Phone Number: <span>{order.phone_number}</span></li>
@@ -104,12 +104,10 @@ function OrderCard() {
                    
                 </div>
             </div>
-              )) : (
-                <p>No orders found.</p>
-            )}
-        </div>
+        
+        </>
     )
 }
 
-export default OrderCard
+export default OrderList
 

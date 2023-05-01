@@ -1,5 +1,5 @@
 nav {
-  background: #3d1266;
+  background:  #141e30;
   height: 80px;
   display: flex;
   justify-content: center;
@@ -19,7 +19,7 @@ nav ul {
 
 nav li {
   margin-right: 10px;
-  padding: 20px;
+  padding: 0.5rem;
 }
 
 nav a {

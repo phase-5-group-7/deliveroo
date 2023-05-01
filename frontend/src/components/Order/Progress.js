@@ -4,7 +4,7 @@ import * as React from 'react';
 import '../Order/order.css';
 
 
-export var ProgressBar =  ({percent,end}) => {  
+export const ProgressBar =  ({percent,end}) => {  
 
     return (
         <div>

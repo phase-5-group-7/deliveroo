@@ -14,18 +14,15 @@ import "@reach/combobox/styles.css";
 import Map from "./Map";
 import { useParams } from 'react-router-dom';
 import { ProgressBar } from './Progress';
-
-// const containerStyle = {
-//   width: '400px',
-//   height: '400px'
-// };
-
-// const lib = ["places"];
-// const key = "AIzaSyDz2zx3bpHyh-ZpLHijapk9S4jXwsK0GZE";
+import { useNavigate } from "react-router-dom";
 
 
 
-function OrderForm({admin}) {
+function OrderForm() {
+  const navigate = useNavigate();
+  const admin = localStorage.getItem("admin") === "true"
+
+
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: "AIzaSyDz2zx3bpHyh-ZpLHijapk9S4jXwsK0GZE",
     libraries: ["places", "geometry"]
@@ -82,7 +79,7 @@ function OrderForm({admin}) {
       }))
     }
 
-  }, [deliveryDropOff, pickUp, distance, duration])
+  }, [deliveryDropOff, pickUp, distance, duration,admin])
 
 
   const handleChange = (event) => {
@@ -126,6 +123,7 @@ function OrderForm({admin}) {
               pick_up: "",
               order_status: "",
             });
+            navigate("/orderlist")
           } else {
             alert("Failed to create order")
           }
@@ -195,14 +193,14 @@ function OrderForm({admin}) {
       })
   }
 
-  var [section, setSection] = useState(1)
-  var [percent, setPercent] = useState(33.3)
+ const [section, setSection] = useState(1)
+ const [percent, setPercent] = useState(33.3)
 
   const handleNextPage = (event) => {
     event.preventDefault()
     if (section !== 3) {
       setSection(section + 1)
-      var percent= ((section + 1)/3) *100
+     const percent= ((section + 1)/3) *100
       setPercent(percent)
     }
   }
@@ -210,12 +208,12 @@ function OrderForm({admin}) {
   const handlePrevPage = (event) => {
     if (section !== 1) {
       setSection(section - 1)
-      var percent= ((section - 1)/3) *100
+     const percent= ((section - 1)/3) *100
       setPercent(percent)
     }
   }
 
-  var [showMap,setShowMap] = useState(false)
+ const [showMap,setShowMap] = useState(false)
 
   const handleToggleMap = (event) => {
     event.preventDefault()
@@ -353,24 +351,28 @@ function OrderForm({admin}) {
                       />
                     </label>
                     
-                    {admin === true ?
+                    {!admin ?
+                       
+                      
                        <select name="order_status"
                        value={order.order_status}
                        onChange={handleChange}
                        >
                          <option value="" disabled>STATUS</option>
                          <option value={ONGOING}>ONGOING</option>
-                         <option value={DELIVERED}>DELIVERED</option>
-                       </select>
-                       :
-                       <select name="order_status"
-                       value={order.order_status}
-                       onChange={handleChange}
-                       >
-                         <option value="" disabled>STATUS</option>
-                         <option value={ONGOING}>ONGOING</option>
-                       </select>
+                       </select> :
+                        <select name="order_status"
+                        value={order.order_status}
+                        onChange={handleChange}
+                        >
+                          <option value="" disabled>STATUS</option>
+                          <option value={ONGOING}>ONGOING</option>
+                          <option value={DELIVERED}>DELIVERED</option>
+                        </select>
+
                     }
+
+               
                  
                     
 
@@ -387,7 +389,7 @@ function OrderForm({admin}) {
                   <>
 
                     <div style={{display : "flex",gap:"10px",justifyContent:"flex-end",padding:"15px",width:"-webkit-fill-available"}}>
-                      <button class="map_button" type="submit" onClick={handleToggleMap}>Show Map</button>
+                      <button clasName="map_button" type="submit" onClick={handleToggleMap}>Show Map</button>
                     </div>
                   
                   </> 
@@ -395,22 +397,22 @@ function OrderForm({admin}) {
                   <>
                    <div  style={{display : "flex",width:"-webkit-fill-available",justifyContent: "space-between"}}>
                   <div style={{padding:"15px"}}>
-                    {selected.length == 2 ?<button class="map_button" type="submit" onClick={handleToggleMap}>Show Map</button> : <></> }
+                    {selected.length == 2 ?<button className="map_button" type="submit" onClick={handleToggleMap}>Show Map</button> : <></> }
                     
                   </div>
                  
 
                   <div style={{display : "flex",gap:"10px",justifyContent:"flex-end",padding:"15px"}}>
-                    {section !== 1 ? <button class="previous_button" type="button" onClick={handlePrevPage}>Previous</button>:<></>}
+                    {section !== 1 ? <button className="previous_button" type="button" onClick={handlePrevPage}>Previous</button>:<></>}
                     
 
                     {section === 3 ?
                       <>
-                        <button class="next_button" type="submit" onClick={handleSubmit}>Submit</button>
+                        <button className="next_button" type="submit" onClick={handleSubmit}>Submit</button>
                       </>
                       :
                       <>
-                        <button class="next_button" type="submit" onClick={handleNextPage}>Next</button>
+                        <button className="next_button" type="submit" onClick={handleNextPage}>Next</button>
                       </>
 
                     }
@@ -439,7 +441,7 @@ function OrderForm({admin}) {
                     />
                   </div>
                   <div className='close_map_container'>
-                  <button class="next_button" type="submit" onClick={handleToggleMap}>Close Map</button>
+                  <button className="next_button" type="submit" onClick={handleToggleMap}>Close Map</button>
                   </div>
                     
 
@@ -473,7 +475,7 @@ const PlacesAutocomplete = ({ type, setSeleted,initial,setOrder,orderKey }) => {
     clearSuggestions,
   } = usePlacesAutocomplete();
 
-  var initialVal = initial
+ const initialVal = initial
 
 
 
