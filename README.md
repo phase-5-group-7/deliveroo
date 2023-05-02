@@ -40,7 +40,7 @@ This application has been built with these technologies:
 * React `v18.0`
 * GitHub Actions
 * GitHub Projects
-* Postgres
+* Postgres `14.7+`
 
 # Project Setup
 This section will guide you through setting up and running this repository on your local machine.
