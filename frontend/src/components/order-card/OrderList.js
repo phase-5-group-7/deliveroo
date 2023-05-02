@@ -7,8 +7,9 @@ import { MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 import { MdDeleteOutline, MdOutlineEdit } from 'react-icons/md'
 import OrderCard from '../order-card/OrderCard'
 
+let allOrders = []
 function OrderList() {
-    let allOrders = []
+   
     const navigate = useNavigate();
  
     const [orders, setOrders] = useState([]);
@@ -27,8 +28,6 @@ function OrderList() {
         },)
             .then((res) => {
                 if (res.data) {
-                    // setAllOrders(res.data)
-                    // console.log(res.data);
                     setOrders(res.data.slice(0, pageSize));
                     allOrders = res.data
                     console.log(allOrders);
@@ -42,11 +41,6 @@ function OrderList() {
             })
     }, [])
 
-
-    // useEffect(() => {
-    //     let current = allOrders
-    //     setOrders(current.slice(0, pageSize));
-    // }, allOrders)
 
 
 
@@ -94,8 +88,7 @@ function OrderList() {
         setOrderPage(orderPage + 1)
 
         const startIndex = (orderPage) * pageSize
-        const endIndex = startIndex + pageSize
-
+        const endIndex = startIndex + pageSize    
         setOrders(allOrders.slice(startIndex, endIndex))
     }
 
