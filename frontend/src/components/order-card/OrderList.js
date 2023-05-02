@@ -18,8 +18,31 @@ function OrderList() {
 
     const [showMoreDetails,setShowMoreDetails] = useState(null)
 
+    useEffect(() => {
+        axios.get("https://deliveroo-backend-api.onrender.com/orders", {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        },)
+            .then((res) => {
+                if (res.data) {
+                    setAllOrders(res.data)
+                    console.log(res.data);
+                } else {
+                    alert("An error occurred while fetching orders")
+                }
+            })
+            .catch(error => {
+                console.error(error);
+                alert("An error occurred while fetching orders.")
+            })
+    }, [])
 
 
+    useEffect(() => {
+        let current = allOrders
+        setOrders(current.slice(0, pageSize));
+    }, allOrders)
 
 
 
@@ -85,39 +108,9 @@ function OrderList() {
 
     }, orderPage)
 
-    function getOrders(){
-        axios.get("https://deliveroo-backend-api.onrender.com/orders", {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            },)
-                .then((res) => {
-                    if (res.data) {
-                        setAllOrders(res.data)
-                        console.log(res.data);
-                        setOrders(res.data.slice(0, pageSize));
-                    } else {
-                        alert("An error occurred while fetching orders")
-                    }
-                })
-                .catch(error => {
-                    console.error(error);
-                    alert("An error occurred while fetching orders.")
-            })
-    }
-
-    if(orders.length === 0){
-        getOrders() 
-    }
-
-    function fetch(){
-        getOrders()
-    }
-
     return (
 
         <div className="table_container">
-
        
             <MDBTable align='middle'>
                 <MDBTableHead>
@@ -182,11 +175,7 @@ function OrderList() {
 
 
                     )) : (
-                        <div>
-                            <p>No orders found.</p>
-                            <button  onClick={()=>fetch()}>Fetch orders</button>
-                        </div>
-            
+                        <p>No orders found.</p>
                     )}
 
 
@@ -227,4 +216,3 @@ function OrderList() {
 }
 
 export default OrderList
-

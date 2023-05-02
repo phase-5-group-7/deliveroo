@@ -22,13 +22,13 @@ function Home() {
           Sign up to gain access to a quick and efficient delivery for your  personal use or business products</p>
           { (auth && admin) ? 
            <>
-            <Link to="/orders"><button id="btn">Get Started</button></Link>
+            <Link to="/orderlist"><button id="btn">Get Started</button></Link>
            </>
            :
            <>
 
             { auth && !admin ?  <>
-              <Link to="/orderlist"><button id="btn">Get Started</button></Link>
+              <Link to="/order"><button id="btn">Get Started</button></Link>
             </> :
             <>
              <Link to="/login"><button id="btn">Get Started</button></Link>
@@ -40,14 +40,7 @@ function Home() {
 
           }
           
-          { (auth && !admin) ? 
-           <>
-            <Link to="/orderlist"><button id="btn">Get Started</button></Link>
-           </>
-           :
-           <></>
-
-          }
+  
         </div>
         <div className="">
           <img id="img" src={image} alt="Deliveroo" />
