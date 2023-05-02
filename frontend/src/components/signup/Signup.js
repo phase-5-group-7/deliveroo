@@ -7,7 +7,7 @@ function Signup() {
   const [username, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [admin, setAdmin] = useState()
+  // const [admin, setAdmin] = useState()
   const [errors, setErrors] = useState("")
 
   const handleNameChange = (event) => {
@@ -22,9 +22,9 @@ function Signup() {
     setPassword(event.target.value);
   };
   // Only to be used when creating an admin
-  const handleAdmin = (event) => {
-    setAdmin(event.target.value)
-  }
+  // const handleAdmin = (event) => {
+  //   setAdmin(event.target.value)
+  // }
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -75,10 +75,10 @@ function Signup() {
         </div>
 
         {/* Only to be used when creating an admin */}
-        <div id="user-box" className="user-box">
+        {/* <div id="user-box" className="user-box">
         <input type="text" id="admin" value={admin} onChange={handleAdmin} />
         <label>Admin Rights</label>
-      </div>
+      </div> */}
 
         <a href="#">
           <span></span>
