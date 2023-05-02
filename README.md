@@ -5,15 +5,15 @@
 
 ## Table of Content
 1. [Project Pre-requisite](#project-pre-requisite)
-2. [Project Setup](#project-setup)
-3. [Technologies Used](#technologies-used)
+2. [Technologies Used](#technologies-used)
+3. [Project Setup](#project-setup)
 4. [Project Overview](#project-overview)
     - [MVP Features](#mvp-features)
     - [Optional Features](#optional-features)
     - [ERD Diagram](#erd-diagram)
     - [Figma Design](#figma-design)
-5. [Backend](#back-end)
-6. [FrontEnd](#front-end)
+5. [FrontEnd](#front-end)
+6. [Backend](#back-end)
 7. [Authors](#author)
 8. [License](#license)
 
@@ -34,6 +34,14 @@ In order to use this repository, you will need to have the following setup in yo
 * `ruby 2.7.4+`
 * `yarn v1.22.19+`
 
+## Technologies Used
+This application has been built with these technologies:
+* Ruby `v2.7.0` 
+* React `v18.0`
+* GitHub Actions
+* GitHub Projects
+* Postgres
+
 # Project Setup
 This section will guide you through setting up and running this repository on your local machine.
 
@@ -53,13 +61,6 @@ This section will guide you through setting up and running this repository on yo
     ```
     cd backend
     ```
-## Technologies Used
-This application has been built with these technologies:
-* Ruby `v2.7.0` 
-* React `v18.0`
-* GitHub Actions
-* GitHub Projects
-* Postgres
 
 
 ## Project Overview
@@ -124,7 +125,26 @@ Now that the project relies on Yarn as a project manager, you will use the comma
     ```
 
 ## Back-end
-Deployment link: https://deliveroo-backend-api.onrender.com/
+Use this Deployment link: https://deliveroo-backend-api.onrender.com/
+to access the api or follow the steps below to run the server locally
+
+After navigating to the `backend` directory follow the steps below
+* Ensure the ruby gems are setup in your machine
+    ```
+    bundle install
+    ```
+* Create a Postgres database
+    ```
+    rails db:create
+    ```
+* Perform any pending database migrations
+    ```
+    rails db:migrate
+    ```
+* Run the application in your local machine
+    ```
+    rails s or rails server
+    ```
 
 
 ## Authors
