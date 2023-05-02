@@ -19,24 +19,7 @@ function OrderList() {
     const [showMoreDetails,setShowMoreDetails] = useState(null)
 
     useEffect(() => {
-        axios.get("https://deliveroo-backend-api.onrender.com/orders", {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        },)
-            .then((res) => {
-                if (res.data) {
-                    setAllOrders(res.data)
-                    console.log(res.data);
-                    setOrders(res.data.slice(0, pageSize));
-                } else {
-                    alert("An error occurred while fetching orders")
-                }
-            })
-            .catch(error => {
-                console.error(error);
-                alert("An error occurred while fetching orders.")
-            })
+        
     }, [])
 
 
@@ -105,9 +88,32 @@ function OrderList() {
 
     }, orderPage)
 
+    function fetch(){
+        axios.get("https://deliveroo-backend-api.onrender.com/orders", {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        },)
+            .then((res) => {
+                if (res.data) {
+                    setAllOrders(res.data)
+                    console.log(res.data);
+                    setOrders(res.data.slice(0, pageSize));
+                } else {
+                    alert("An error occurred while fetching orders")
+                }
+            })
+            .catch(error => {
+                console.error(error);
+                alert("An error occurred while fetching orders.")
+            })
+    }
+
     return (
 
         <div className="table_container">
+
+            <button onClick={()=>fetch()}>TEST</button>
        
             <MDBTable align='middle'>
                 <MDBTableHead>
