@@ -1,6 +1,5 @@
 # Phase 5 Project
 # Deliveroo
-![GitHub contributors](https://img.shields.io/github.com/phase-5-group-7/deliveroo/contributors?color=green)
 ![GitHub repo size](https://img.shields.io/github/repo-size/phase-5-group-7/deliveroo?color=violet)
 
 
