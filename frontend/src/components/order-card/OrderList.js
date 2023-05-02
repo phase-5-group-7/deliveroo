@@ -8,8 +8,9 @@ import { MdDeleteOutline, MdOutlineEdit } from 'react-icons/md'
 import OrderCard from '../order-card/OrderCard'
 
 function OrderList() {
+    let allOrders = []
     const navigate = useNavigate();
-    const [allOrders, setAllOrders] = useState([]);
+ 
     const [orders, setOrders] = useState([]);
     const token = localStorage.getItem("token")
 
@@ -29,7 +30,8 @@ function OrderList() {
                     // setAllOrders(res.data)
                     // console.log(res.data);
                     setOrders(res.data.slice(0, pageSize));
-                    setAllOrders(res.data)
+                    allOrders = res.data
+                    console.log(allOrders);
                 } else {
                     alert("An error occurred while fetching orders")
                 }
