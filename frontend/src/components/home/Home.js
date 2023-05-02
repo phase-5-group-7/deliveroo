@@ -39,6 +39,12 @@ function Home() {
            </>
 
           }
+          { !auth && (
+             <>
+             <Link to="/login"><button id="btn">Get Started</button></Link>
+            </>
+          )
+          }
           
   
         </div>
