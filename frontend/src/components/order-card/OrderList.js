@@ -28,6 +28,7 @@ function OrderList() {
                 if (res.data) {
                     setAllOrders(res.data)
                     console.log(res.data);
+                    setOrders(res.data.slice(0, pageSize));
                 } else {
                     alert("An error occurred while fetching orders")
                 }
@@ -39,10 +40,6 @@ function OrderList() {
     }, [])
 
 
-    useEffect(() => {
-        let current = allOrders
-        setOrders(current.slice(0, pageSize));
-    }, allOrders)
 
 
 
