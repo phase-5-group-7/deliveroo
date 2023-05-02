@@ -88,26 +88,29 @@ function OrderList() {
 
     }, orderPage)
 
-    function fetch(){
-        axios.get("https://deliveroo-backend-api.onrender.com/orders", {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        },)
-            .then((res) => {
-                if (res.data) {
-                    setAllOrders(res.data)
-                    console.log(res.data);
-                    setOrders(res.data.slice(0, pageSize));
-                } else {
-                    alert("An error occurred while fetching orders")
+    // function fetch(){
+        if(orders.length === 0){
+            axios.get("https://deliveroo-backend-api.onrender.com/orders", {
+                headers: {
+                    Authorization: `Bearer ${token}`
                 }
-            })
-            .catch(error => {
-                console.error(error);
-                alert("An error occurred while fetching orders.")
-            })
-    }
+            },)
+                .then((res) => {
+                    if (res.data) {
+                        setAllOrders(res.data)
+                        console.log(res.data);
+                        setOrders(res.data.slice(0, pageSize));
+                    } else {
+                        alert("An error occurred while fetching orders")
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                    alert("An error occurred while fetching orders.")
+                })
+        }
+        
+    // }
 
     return (
 
