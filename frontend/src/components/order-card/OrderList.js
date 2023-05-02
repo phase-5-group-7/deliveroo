@@ -19,7 +19,7 @@ function OrderList() {
     const [showMoreDetails,setShowMoreDetails] = useState(null)
 
     useEffect(() => {
-        axios.get("http://localhost:3000/orders", {
+        axios.get("https://deliveroo-backend-api.onrender.com/orders", {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -49,7 +49,7 @@ function OrderList() {
 
     function handleDelete(id,canDelete) {
         if(canDelete){
-            fetch(`http://localhost:3000/orders/${id}`, {
+            fetch(`https://deliveroo-backend-api.onrender.com/orders/${id}`, {
                 method: 'DELETE',
                 headers: {
                     Authorization: `Bearer ${token}`

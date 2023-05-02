@@ -4,8 +4,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useParams } from 'react-router-dom';
-import { MdDeleteOutline, MdOutlineEdit } from 'react-icons/md'
-import { SlClose } from 'react-icons/sl'
 
 function OrderCard(orderDetails) {
     const { id } = useParams();

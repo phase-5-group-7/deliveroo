@@ -106,7 +106,7 @@ function OrderForm() {
     if (id == null) {
       axios
         .post(
-          "http://localhost:3000/orders",
+          "https://deliveroo-backend-api.onrender.com/orders",
           order,
           config
         )
@@ -141,7 +141,7 @@ function OrderForm() {
         })
     } else {
       axios.patch(
-        `http://localhost:3000/orders/${id}`,
+        `https://deliveroo-backend-api.onrender.com/orders/${id}`,
         order,
         config
       )
@@ -187,7 +187,7 @@ function OrderForm() {
   if (id !== undefined && order.name === "") {
     const token = localStorage.getItem("token")
 
-    axios.get(`http://localhost:3000/orders/${id}`, {
+    axios.get(`https://deliveroo-backend-api.onrender.com/orders/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }
