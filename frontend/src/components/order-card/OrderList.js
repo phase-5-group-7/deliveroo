@@ -18,9 +18,6 @@ function OrderList() {
 
     const [showMoreDetails,setShowMoreDetails] = useState(null)
 
-    useEffect(() => {
-        
-    }, [])
 
 
 
@@ -88,9 +85,8 @@ function OrderList() {
 
     }, orderPage)
 
-    // function fetch(){
-        if(orders.length === 0){
-            axios.get("https://deliveroo-backend-api.onrender.com/orders", {
+    function getOrders(){
+        axios.get("https://deliveroo-backend-api.onrender.com/orders", {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -107,16 +103,21 @@ function OrderList() {
                 .catch(error => {
                     console.error(error);
                     alert("An error occurred while fetching orders.")
-                })
-        }
-        
-    // }
+            })
+    }
+
+    if(orders.length === 0){
+        getOrders() 
+    }
+
+    function fetch(){
+        getOrders()
+    }
 
     return (
 
         <div className="table_container">
 
-            <button onClick={()=>fetch()}>TEST</button>
        
             <MDBTable align='middle'>
                 <MDBTableHead>
@@ -181,7 +182,11 @@ function OrderList() {
 
 
                     )) : (
-                        <p>No orders found.</p>
+                        <div>
+                            <p>No orders found.</p>
+                            <button  onClick={()=>fetch()}>Fetch orders</button>
+                        </div>
+            
                     )}
 
 
