@@ -26,8 +26,8 @@ function OrderList() {
         },)
             .then((res) => {
                 if (res.data) {
-                    setAllOrders(res.data)
-                    console.log(res.data);
+                    // setAllOrders(res.data)
+                    // console.log(res.data);
                     setOrders(res.data.slice(0, pageSize));
                 } else {
                     alert("An error occurred while fetching orders")
